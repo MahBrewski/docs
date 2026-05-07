@@ -16,6 +16,27 @@ It is where you place trades, manage positions, and monitor account state in rea
 - monitor open positions, orders, fills, and funding history
 - track risk alerts and trading availability
 
+## Core terminal areas
+
+The frontend indicates that the terminal is built around a few dense working areas:
+
+- a charting area for market context
+- an order entry panel for trade execution
+- account-aware market and account selection
+- bottom panels for positions, orders, trade history, position history, and funding history
+- rule and market-status notices that can affect order entry
+
+## What the terminal is tied to
+
+The terminal is not a detached trading screen.
+
+It is tied to:
+
+- your selected or active challenge account
+- the execution venue behind that account
+- the product's rule and risk model
+- market availability and trading status
+
 ## How the terminal fits the account model
 
 The terminal is tied to your active account and account rules.
@@ -27,12 +48,30 @@ That means the platform can enforce:
 - minimum trade duration
 - account-specific restrictions
 
+The frontend also indicates that trading availability can change based on asset class, market status, and account-specific constraints.
+
+## What you can monitor while trading
+
+Inside the terminal, users should expect visibility into:
+
+- current positions
+- open orders
+- trade history
+- position history
+- funding events
+- market-level pricing and book context
+- account health and risk state
+
 ## What to expect while trading
 
 - account status updates in real time
 - performance and positions sync into the dashboard
 - rule compliance is checked continuously
 - off-platform execution is not part of the funded workflow
+
+<Info>
+  The current frontend strongly suggests that the terminal is the default destination in the product. It is the center of the trading workflow, not an optional advanced page.
+</Info>
 
 ## Next steps
 

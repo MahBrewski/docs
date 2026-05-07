@@ -1,13 +1,13 @@
 {
   "$schema": "https://mintlify.com/docs.json",
   "theme": "mint",
-  "name": "SomeDoc",
+  "name": "DojiFunded",
   "colors": {
     "primary": "#B7FF00",
     "light": "#D4FF66",
     "dark": "#7EAF00"
   },
-  "favicon": "/favicon.svg",
+  "favicon": "/images/doji-logo.png",
   "navigation": {
     "tabs": [
       {
@@ -95,8 +95,8 @@
     }
   },
   "logo": {
-    "light": "/logo/light.svg",
-    "dark": "/logo/dark.svg"
+    "light": "/logo/doji-funded-logo.png",
+    "dark": "/logo/doji-funded-logo.png"
   },
   "navbar": {
     "links": [
