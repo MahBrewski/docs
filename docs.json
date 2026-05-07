@@ -1,52 +1,67 @@
 {
   "$schema": "https://mintlify.com/docs.json",
   "theme": "mint",
-  "name": "Mintlify Starter Kit",
+  "name": "SomeDoc",
   "colors": {
-    "primary": "#16A34A",
-    "light": "#07C983",
-    "dark": "#15803D"
+    "primary": "#B7FF00",
+    "light": "#D4FF66",
+    "dark": "#7EAF00"
   },
   "favicon": "/favicon.svg",
   "navigation": {
     "tabs": [
       {
-        "tab": "Guides",
+        "tab": "Docs",
         "groups": [
           {
             "group": "Getting started",
             "pages": [
               "index",
-              "quickstart",
-              "development"
+              "how-it-works",
+              "doji-accounts"
             ]
           },
           {
-            "group": "Customization",
+            "group": "Onboarding",
             "pages": [
-              "essentials/settings",
-              "essentials/navigation"
+              "onboarding/creating-account",
+              "onboarding/funding-your-account",
+              "onboarding/user-lifecycle",
+              "onboarding/autonomous-agent-strategy-funding"
             ]
           },
           {
-            "group": "Writing content",
+            "group": "Platform",
             "pages": [
-              "essentials/markdown",
-              "essentials/code",
-              "essentials/images",
-              "essentials/components",
-              "essentials/reusable-snippets"
+              "platform/overview",
+              "platform/terminal",
+              "platform/dashboard",
+              "platform/payouts"
             ]
           },
           {
-            "group": "Agent ready",
+            "group": "AI tools",
             "pages": [
-              "agent-ready/prompt",
-              "agent-ready/visibility",
-              "agent-ready/contextual",
-              "ai-tools/cursor",
-              "ai-tools/claude-code",
-              "ai-tools/windsurf"
+              "platform/ai-backtesting-engine",
+              "platform/ai-copilot"
+            ]
+          },
+          {
+            "group": "Resources",
+            "pages": [
+              "resources/available-markets",
+              "resources/execution-venues",
+              "resources/fees",
+              "resources/rules-risk-parameters",
+              "resources/partners",
+              "resources/bug-reports"
+            ]
+          },
+          {
+            "group": "Legal",
+            "pages": [
+              "legal/terms-of-use",
+              "legal/privacy-policy"
             ]
           }
         ]
@@ -55,18 +70,10 @@
         "tab": "API reference",
         "groups": [
           {
-            "group": "API documentation",
+            "group": "Reference",
             "pages": [
-              "api-reference/introduction"
-            ]
-          },
-          {
-            "group": "Endpoint examples",
-            "pages": [
-              "api-reference/endpoint/get",
-              "api-reference/endpoint/create",
-              "api-reference/endpoint/delete",
-              "api-reference/endpoint/webhook"
+              "api-reference/introduction",
+              "api-reference/authentication"
             ]
           }
         ]
@@ -75,14 +82,14 @@
     "global": {
       "anchors": [
         {
-          "anchor": "Documentation",
-          "href": "https://mintlify.com/docs",
-          "icon": "book-open-cover"
+          "anchor": "Private alpha",
+          "href": "https://dojifunded.com",
+          "icon": "rocket"
         },
         {
-          "anchor": "Blog",
-          "href": "https://mintlify.com/blog",
-          "icon": "newspaper"
+          "anchor": "Support",
+          "href": "mailto:hi@dojifunded.com",
+          "icon": "message-circle"
         }
       ]
     }
@@ -95,32 +102,30 @@
     "links": [
       {
         "label": "Support",
-        "href": "mailto:hi@mintlify.com"
+        "href": "mailto:hi@dojifunded.com"
       }
     ],
     "primary": {
       "type": "button",
-      "label": "Dashboard",
-      "href": "https://dashboard.mintlify.com"
+      "label": "Start trading",
+      "href": "/onboarding/creating-account"
     }
   },
   "contextual": {
     "options": [
-     "copy",
-     "view",
-     "chatgpt",
-     "claude",
-     "perplexity",
-     "mcp",
-     "cursor",
-     "vscode"
-   ]
+      "copy",
+      "view",
+      "chatgpt",
+      "claude",
+      "perplexity",
+      "mcp",
+      "cursor",
+      "vscode"
+    ]
   },
   "footer": {
     "socials": {
-      "x": "https://x.com/mintlify",
-      "github": "https://github.com/mintlify",
-      "linkedin": "https://linkedin.com/company/mintlify"
+      "x": "https://x.com/DojiFunded"
     }
   }
 }
