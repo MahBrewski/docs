@@ -1,55 +1,107 @@
-# Mintlify Starter Kit 
+# DojiFunded docs
 
-Use the starter kit to get your docs deployed and ready to customize.
+This repository contains the Mintlify documentation site for DojiFunded.
 
-Click the green **Use this template** button at the top of this repo to copy the Mintlify starter kit. The starter kit contains examples with
+The site is no longer using the Mintlify starter content. The navigation, page set, and writing guidance have been rewritten around the DojiFunded product and the current `doji-interface` frontend.
 
-- Guide pages
-- Navigation
-- Customizations
-- API reference pages
-- Use of popular components
+## Current structure
 
-**[Follow the full quickstart guide](https://starter.mintlify.com/quickstart)**
+The docs are organized into these main sections:
+
+- `index.mdx`
+- `how-it-works.mdx`
+- `doji-accounts.mdx`
+- `onboarding/`
+- `platform/`
+- `resources/`
+- `legal/`
+- `api-reference/`
+
+Navigation and site branding live in `docs.json`.
+
+Project-specific documentation rules live in `AGENTS.md`.
+
+## Current status
+
+The current pass covers:
+
+- introduction
+- funded trading flow
+- account types and add-ons
+- account creation
+- wallet funding
+- user lifecycle
+- platform overview
+- terminal, dashboard, and payouts at a first-pass level
+- placeholder sections for AI tools, legal, and API reference
+
+Still pending or intentionally lightweight:
+
+- deeper terminal documentation based on the live frontend
+- fuller dashboard and payout workflow detail
+- venue-specific and market-specific reference content
+- approved legal text
+- real API endpoint documentation from the backend source of truth
+
+## Local development
+
+Install the Mintlify CLI:
+
+```bash
+npm i -g mint
+```
+
+Run the docs locally from the repository root:
+
+```bash
+mint dev
+```
+
+By default, Mintlify serves the site at `http://localhost:3000`.
+
+## Validation
+
+Check internal links before wrapping up a docs pass:
+
+```bash
+mint broken-links
+```
+
+If the CLI behaves unexpectedly, update it:
+
+```bash
+mint update
+```
+
+## Writing workflow
+
+Before editing docs:
+
+- read `AGENTS.md`
+- inspect `docs.json`
+- verify user-facing product details against `doji-interface`
+
+Use the shared product brief and the frontend as the primary sources of truth for user-facing behavior.
+
+Do not invent:
+
+- API contracts
+- legal language
+- venue-specific details
+- fee tables
+
+unless those are confirmed in source material.
 
 ## AI-assisted writing
 
-Set up your AI coding tool to work with Mintlify:
+For Mintlify-specific authoring guidance, install the Mintlify skill:
 
 ```bash
 npx skills add https://mintlify.com/docs
 ```
 
-This command installs Mintlify's documentation skill for your configured AI tools like Claude Code, Cursor, Windsurf, and others. The skill includes component reference, writing standards, and workflow guidance.
+## Notes
 
-See the [AI tools guides](/ai-tools) for tool-specific setup.
-
-## Development
-
-Install the [Mintlify CLI](https://www.npmjs.com/package/mint) to preview your documentation changes locally. To install, use the following command:
-
-```
-npm i -g mint
-```
-
-Run the following command at the root of your documentation, where your `docs.json` is located:
-
-```
-mint dev
-```
-
-View your local preview at `http://localhost:3000`.
-
-## Publishing changes
-
-Install our GitHub app from your [dashboard](https://dashboard.mintlify.com/settings/organization/github-app) to propagate changes from your repo to your deployment. Changes are deployed to production automatically after pushing to the default branch.
-
-## Need help?
-
-### Troubleshooting
-
-- If your dev environment isn't running: Run `mint update` to ensure you have the most recent version of the CLI.
-- If a page loads as a 404: Make sure you are running in a folder with a valid `docs.json`.
-
-### Resources
-- [Mintlify documentation](https://mintlify.com/docs)
+- The site title in `docs.json` is currently set to `SomeDoc` per the latest request.
+- The API reference section is intentionally preserved for future backend documentation.
+- The repo has been cleaned of the old Mintlify starter pages and folders that were no longer useful.
