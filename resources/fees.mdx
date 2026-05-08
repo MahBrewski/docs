@@ -4,9 +4,9 @@ description: "Understand the account fee model and the fee areas users should re
 icon: "badge-dollar-sign"
 ---
 
-DojiFunded currently documents a one-time account or evaluation fee during onboarding.
+DojiFunded uses a one-time account or evaluation fee during onboarding and a standardized trading fee model across supported asset classes.
 
-## What users pay for
+## Account and evaluation fees
 
 Users pay a one-time fee based on:
 
@@ -14,11 +14,35 @@ Users pay a one-time fee based on:
 - account configuration
 - selected add-ons
 
-The current product brief states there are no recurring fees for evaluations.
+There are no recurring fees for evaluations.
 
-## What can vary
+## Trading fees
 
-The shared brief also indicates that trading conditions can vary by execution venue.
+DojiFunded uses a standardized open-and-close fee model across asset classes:
+
+| Asset class | Opening fee | Closing fee | Total round trip |
+| --- | --- | --- | --- |
+| Stocks | 0.010% | 0.010% | 0.020% |
+| ETFs | 0.010% | 0.010% | 0.020% |
+| Commodities | 0.006% | 0.006% | 0.012% |
+| Indices | 0.007% | 0.007% | 0.014% |
+| Forex | 0.005% | 0.005% | 0.010% |
+| Crypto | 0.020% | 0.020% | 0.040% |
+
+## Why fees are standardized
+
+DojiFunded standardizes trading fees even when the underlying execution venues use different pricing mechanics.
+
+That approach is intended to improve:
+
+- execution transparency
+- strategy analysis
+- challenge evaluation clarity
+- cross-asset fee comparison
+
+## Venue-level costs that can still vary
+
+Trading conditions can still vary by execution venue.
 
 That can include:
 
@@ -26,16 +50,24 @@ That can include:
 - funding costs
 - execution conditions
 
-## What to verify before publishing detailed fee docs
+DojiFunded also notes:
 
-Before adding a detailed fee table, confirm:
+- GMX can introduce funding fees
+- Ostium can introduce rollover fees
 
-- current account prices
-- venue-level fee differences
-- any funding or settlement costs visible to users
+These venue-level costs are not described as fixed by DojiFunded itself. They can fluctuate by asset and market conditions.
+
+## What users should check before trading
+
+Before trading, confirm:
+
+- the account price at checkout
+- the asset-class trading fee
+- any venue-level funding or rollover costs visible in the platform
+- how those costs appear in PnL and position history
 
 ## Next steps
 
 - Learn about [execution venues](/resources/execution-venues).
+- Review [available markets](/resources/available-markets).
 - Review [rules and risk parameters](/resources/rules-risk-parameters).
-- Compare [Doji accounts](/doji-accounts).
