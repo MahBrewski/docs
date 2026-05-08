@@ -1,0 +1,45 @@
+---
+title: "Explorer"
+description: "Track trade NFTs and inspect funded-phase position records on-chain."
+icon: "fingerprint"
+---
+
+The DojiFunded Explorer helps you inspect trade positions that are recorded on-chain as NFTs.
+
+It connects funded-phase trading activity to a verifiable on-chain record.
+
+## What the Explorer shows
+
+Users should expect Explorer views to surface:
+
+- trade NFT identifiers
+- position metadata such as symbol, side, size, and leverage
+- timestamps for opened and closed positions
+- account or challenge references where available
+- links out to the relevant chain explorer
+
+## How it fits the platform
+
+The frontend route is an `NFT Explorer` experience connected to your authenticated account.
+
+It is designed to help you:
+
+- confirm ownership of trade NFTs
+- inspect funded-phase position history
+- cross-check trade records against on-chain data
+
+## What to expect today
+
+The live app currently exposes an authenticated Explorer flow rather than a public browse-all directory.
+
+Users sign in, review their trade NFT inventory, and open position details from there.
+
+<Info>
+  Explorer coverage should stay aligned with the live `/explore` product route and the on-chain records available for each account.
+</Info>
+
+## Next steps
+
+- Learn how the [dashboard](/platform/dashboard) tracks account performance.
+- Learn how [payouts](/platform/payouts) connect to on-chain settlement.
+- Review [rules and risk parameters](/resources/rules-risk-parameters).

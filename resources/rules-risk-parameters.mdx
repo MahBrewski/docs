@@ -6,7 +6,7 @@ icon: "shield-alert"
 
 DojiFunded accounts operate under predefined rules and risk parameters.
 
-These rules are part of the funded trading model and determine whether an account stays eligible.
+These rules define how evaluations, funded accounts, payout eligibility, and account breaches are handled.
 
 ## Core risk areas
 
@@ -23,6 +23,42 @@ Depending on account type, users should expect rules around:
 - minimum trade duration
 - account arbitrage restrictions
 
+## Account state and breaches
+
+Accounts can be breached if the active drawdown threshold is exceeded or if platform rules are violated.
+
+When an account is breached, users should expect consequences such as:
+
+- trading access being revoked
+- payout eligibility being removed
+- the account becoming inactive
+- open positions being managed by platform controls where required
+
+## Trading requirements
+
+The current product materials position DojiFunded as:
+
+- having no consistency rule
+- having no minimum trading days requirement
+- allowing evaluation completion in a single trade if all rules are respected
+- requiring at least one trade every 30 days to keep an account active
+
+The supported style set is broad and includes discretionary trading, algorithmic trading, and autonomous strategies, provided the account remains within platform rules.
+
+## Restricted behavior
+
+The user-facing rule set prohibits behavior intended to bypass account rules or distort platform outcomes.
+
+This includes categories such as:
+
+- cross-account hedging
+- copy trading between different users
+- account sharing
+- latency or pricing exploit attempts
+- artificial volume generation
+- market manipulation
+- strategies designed purely to exploit evaluation mechanics
+
 ## Why these rules matter
 
 The platform uses these parameters to:
@@ -38,14 +74,36 @@ The product brief and frontend both indicate that rule compliance is checked con
 Users should assume that drawdowns, trade activity, and account state are monitored in real time.
 
 <Warning>
-  Attempts to bypass platform rules, including wash trading, prohibited strategies, or external execution, can invalidate the account.
+  Attempts to bypass platform rules, including wash trading, exploit attempts, prohibited coordination, or external execution, can invalidate the account.
 </Warning>
+
+## Payout rule concepts
+
+Payout eligibility depends on account state, rule compliance, and the conditions for the selected account type.
+
+The shared source material also states that:
+
+- funded accounts do not carry new profit targets after qualification
+- payout requests are made from the dashboard
+- eligible payouts settle on-chain to the embedded wallet
+- add-ons can affect the profit split
+
+## Venue and fee dependencies
+
+Some rule outcomes depend on the selected execution venue and market.
+
+Users should confirm:
+
+- the available market set for the venue
+- leverage and position constraints
+- trading fees
+- any venue-level funding or rollover costs
 
 ## Where to find account-specific rules
 
 For account-specific values, start with [Doji accounts](/doji-accounts).
 
-As the docs expand, this page can become the shared reference for cross-account rule concepts and definitions.
+Use this page as the shared reference for cross-account rule concepts and definitions.
 
 ## Next steps
 

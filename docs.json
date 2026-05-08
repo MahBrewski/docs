@@ -2,6 +2,16 @@
   "$schema": "https://mintlify.com/docs.json",
   "theme": "mint",
   "name": "DojiFunded",
+  "appearance": {
+    "default": "dark",
+    "strict": true
+  },
+  "fonts": {
+    "family": "Space Grotesk",
+    "heading": {
+      "family": "DM Sans"
+    }
+  },
   "colors": {
     "primary": "#B7FF00",
     "light": "#D4FF66",
@@ -36,6 +46,7 @@
               "platform/overview",
               "platform/terminal",
               "platform/dashboard",
+              "platform/explorer",
               "platform/payouts"
             ]
           },
@@ -85,11 +96,6 @@
           "anchor": "Private alpha",
           "href": "https://dojifunded.com",
           "icon": "rocket"
-        },
-        {
-          "anchor": "Support",
-          "href": "mailto:hi@dojifunded.com",
-          "icon": "message-circle"
         }
       ]
     }
@@ -99,12 +105,6 @@
     "dark": "/logo/doji-funded-logo.png"
   },
   "navbar": {
-    "links": [
-      {
-        "label": "Support",
-        "href": "mailto:hi@dojifunded.com"
-      }
-    ],
     "primary": {
       "type": "button",
       "label": "Start trading",
