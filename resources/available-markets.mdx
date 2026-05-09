@@ -6,18 +6,24 @@ icon: "candlestick-chart"
 
 DojiFunded is built for multi-asset market access from one trading platform.
 
+<img
+  src="/images/Cool.png"
+  alt="Available markets on DojiFunded"
+  style={{ borderRadius: "20px" }}
+/>
+
 ## Market categories
 
-DojiFunded currently supports or plans support for:
+This page reflects the current live market inventory returned by `https://oracle.dojifunded.com/v1/markets` as of May 9, 2026.
 
-- crypto
-- forex
-- commodities
-- stocks
-- ETFs
-- indices
+## How this page is divided
 
-Prediction markets and event-based products are described as planned rather than currently live.
+This market reference is divided two ways:
+
+- by asset class
+- by execution venue
+
+DojiFunded currently exposes market identity and venue availability from the live oracle feed. Leverage limits, margin rules, and live position caps can change, so check the terminal and your account configuration before you trade.
 
 ## Why markets depend on venue
 
@@ -37,17 +43,260 @@ DojiFunded currently uses two execution venues:
 | Venue | Main market coverage |
 | --- | --- |
 | GMX | Crypto and commodities |
-| Ostium | Stocks, ETFs, commodities, indices, forex, and selected crypto |
+| Ostium | Stocks, ETFs, commodities, indices, currencies, and selected crypto |
 
-## Example market coverage
+Markets available on both venues today: `ADA-USD`, `BNB-USD`, `BTC-USD`, `CVX-USD`, `ETH-USD`, `HYPE-USD`, `LINK-USD`, `SOL-USD`, `TRX-USD`, `XRP-USD`
 
-Examples include:
+<Tabs sync={false} borderBottom>
+<Tab title="GMX" icon="chart-candlestick">
 
-- `GMX`: `BTCUSD`, `ETHUSD`, `SOLUSD`, `XRPUSD`, `HYPEUSD`, `GOLDUSD`, `WTIOILUSD`, `BRENTOILUSD`
-- `Ostium`: `AAPL/USD`, `GOOG/USD`, `META/USD`, `MSFT/USD`, `NVDA/USD`, `US500/USD`, `US100/USD`, `EUR/USD`, `GBP/USD`, `BTC/USD`, `ETH/USD`
+<Tabs sync={false}>
+<Tab title="Crypto">
+
+| Symbol | Base | Quote | Also on Ostium |
+| --- | --- | --- | --- |
+| `0G-USD` | `0G` | `USD` | No |
+| `AAVE-USD` | `AAVE` | `USD` | No |
+| `ADA-USD` | `ADA` | `USD` | Yes |
+| `AERO-USD` | `AERO` | `USD` | No |
+| `AI16Z-USD` | `AI16Z` | `USD` | No |
+| `AIXBT-USD` | `AIXBT` | `USD` | No |
+| `ALGO-USD` | `ALGO` | `USD` | No |
+| `ANIME-USD` | `ANIME` | `USD` | No |
+| `APE-USD` | `APE` | `USD` | No |
+| `APT-USD` | `APT` | `USD` | No |
+| `AR-USD` | `AR` | `USD` | No |
+| `ARB-USD` | `ARB` | `USD` | No |
+| `ASTER-USD` | `ASTER` | `USD` | No |
+| `ATOM-USD` | `ATOM` | `USD` | No |
+| `AVAX-USD` | `AVAX` | `USD` | No |
+| `AVNT-USD` | `AVNT` | `USD` | No |
+| `BCH-USD` | `BCH` | `USD` | No |
+| `BERA-USD` | `BERA` | `USD` | No |
+| `BNB-USD` | `BNB` | `USD` | Yes |
+| `BOME-USD` | `BOME` | `USD` | No |
+| `BONK-USD` | `BONK` | `USD` | No |
+| `BRENTOIL-USD` | `BRENTOIL` | `USD` | No |
+| `BRETT-USD` | `BRETT` | `USD` | No |
+| `BTC-USD` | `BTC` | `USD` | Yes |
+| `CAKE-USD` | `CAKE` | `USD` | No |
+| `CC-USD` | `CC` | `USD` | No |
+| `CHZ-USD` | `CHZ` | `USD` | No |
+| `CRO-USD` | `CRO` | `USD` | No |
+| `CRV-USD` | `CRV` | `USD` | No |
+| `DASH-USD` | `DASH` | `USD` | No |
+| `DOGE-USD` | `DOGE` | `USD` | No |
+| `DOLO-USD` | `DOLO` | `USD` | No |
+| `DOT-USD` | `DOT` | `USD` | No |
+| `DYDX-USD` | `DYDX` | `USD` | No |
+| `EIGEN-USD` | `EIGEN` | `USD` | No |
+| `ENA-USD` | `ENA` | `USD` | No |
+| `ETH-USD` | `ETH` | `USD` | Yes |
+| `FARTCOIN-USD` | `FARTCOIN` | `USD` | No |
+| `FET-USD` | `FET` | `USD` | No |
+| `FIL-USD` | `FIL` | `USD` | No |
+| `FLOKI-USD` | `FLOKI` | `USD` | No |
+| `GMX-USD` | `GMX` | `USD` | No |
+| `HBAR-USD` | `HBAR` | `USD` | No |
+| `HYPE-USD` | `HYPE` | `USD` | Yes |
+| `ICP-USD` | `ICP` | `USD` | No |
+| `INJ-USD` | `INJ` | `USD` | No |
+| `IP-USD` | `IP` | `USD` | No |
+| `JTO-USD` | `JTO` | `USD` | No |
+| `JUP-USD` | `JUP` | `USD` | No |
+| `KAS-USD` | `KAS` | `USD` | No |
+| `KTA-USD` | `KTA` | `USD` | No |
+| `LDO-USD` | `LDO` | `USD` | No |
+| `LINEA-USD` | `LINEA` | `USD` | No |
+| `LINK-USD` | `LINK` | `USD` | Yes |
+| `LIT-USD` | `LIT` | `USD` | No |
+| `LTC-USD` | `LTC` | `USD` | No |
+| `MEGA-USD` | `MEGA` | `USD` | No |
+| `MELANIA-USD` | `MELANIA` | `USD` | No |
+| `MEME-USD` | `MEME` | `USD` | No |
+| `MET-USD` | `MET` | `USD` | No |
+| `MEW-USD` | `MEW` | `USD` | No |
+| `MKR-USD` | `MKR` | `USD` | No |
+| `MNT-USD` | `MNT` | `USD` | No |
+| `MON-USD` | `MON` | `USD` | No |
+| `MOODENG-USD` | `MOODENG` | `USD` | No |
+| `MORPHO-USD` | `MORPHO` | `USD` | No |
+| `NATGAS-USD` | `NATGAS` | `USD` | No |
+| `NEAR-USD` | `NEAR` | `USD` | No |
+| `OKB-USD` | `OKB` | `USD` | No |
+| `OM-USD` | `OM` | `USD` | No |
+| `ONDO-USD` | `ONDO` | `USD` | No |
+| `OP-USD` | `OP` | `USD` | No |
+| `ORDI-USD` | `ORDI` | `USD` | No |
+| `PENDLE-USD` | `PENDLE` | `USD` | No |
+| `PENGU-USD` | `PENGU` | `USD` | No |
+| `PEPE-USD` | `PEPE` | `USD` | No |
+| `PI-USD` | `PI` | `USD` | No |
+| `POL-USD` | `POL` | `USD` | No |
+| `PUMP-USD` | `PUMP` | `USD` | No |
+| `RENDER-USD` | `RENDER` | `USD` | No |
+| `S-USD` | `S` | `USD` | No |
+| `SATS-USD` | `SATS` | `USD` | No |
+| `SEI-USD` | `SEI` | `USD` | No |
+| `SHIB-USD` | `SHIB` | `USD` | No |
+| `SKY-USD` | `SKY` | `USD` | No |
+| `SOL-USD` | `SOL` | `USD` | Yes |
+| `SPX6900-USD` | `SPX6900` | `USD` | No |
+| `STX-USD` | `STX` | `USD` | No |
+| `SUI-USD` | `SUI` | `USD` | No |
+| `SYRUP-USD` | `SYRUP` | `USD` | No |
+| `TAO-USD` | `TAO` | `USD` | No |
+| `TIA-USD` | `TIA` | `USD` | No |
+| `TON-USD` | `TON` | `USD` | No |
+| `TRUMP-USD` | `TRUMP` | `USD` | No |
+| `TRX-USD` | `TRX` | `USD` | Yes |
+| `UNI-USD` | `UNI` | `USD` | No |
+| `VIRTUAL-USD` | `VIRTUAL` | `USD` | No |
+| `VVV-USD` | `VVV` | `USD` | No |
+| `WELL-USD` | `WELL` | `USD` | No |
+| `WIF-USD` | `WIF` | `USD` | No |
+| `WLD-USD` | `WLD` | `USD` | No |
+| `WLFI-USD` | `WLFI` | `USD` | No |
+| `WTIOIL-USD` | `WTIOIL` | `USD` | No |
+| `XAUT.V2-USD` | `XAUT.V2` | `USD` | No |
+| `XLM-USD` | `XLM` | `USD` | No |
+| `XMR-USD` | `XMR` | `USD` | No |
+| `XPL-USD` | `XPL` | `USD` | No |
+| `XRP-USD` | `XRP` | `USD` | Yes |
+| `ZEC-USD` | `ZEC` | `USD` | No |
+| `ZORA-USD` | `ZORA` | `USD` | No |
+| `ZRO-USD` | `ZRO` | `USD` | No |
+
+</Tab>
+<Tab title="Commodities">
+
+| Symbol | Base | Quote | Also on Ostium |
+| --- | --- | --- | --- |
+| `GOLD-USD` | `GOLD` | `USD` | No |
+| `SILVER-USD` | `SILVER` | `USD` | No |
+
+</Tab>
+<Tab title="Stocks">
+
+| Symbol | Base | Quote | Also on Ostium |
+| --- | --- | --- | --- |
+| `CVX-USD` | `CVX` | `USD` | Yes |
+
+</Tab>
+</Tabs>
+
+</Tab>
+<Tab title="Ostium" icon="building-2">
+
+<Tabs sync={false}>
+<Tab title="Crypto">
+
+| Symbol | Base | Quote | Also on GMX |
+| --- | --- | --- | --- |
+| `ADA-USD` | `ADA` | `USD` | Yes |
+| `BNB-USD` | `BNB` | `USD` | Yes |
+| `BTC-USD` | `BTC` | `USD` | Yes |
+| `ETH-USD` | `ETH` | `USD` | Yes |
+| `HYPE-USD` | `HYPE` | `USD` | Yes |
+| `LINK-USD` | `LINK` | `USD` | Yes |
+| `SOL-USD` | `SOL` | `USD` | Yes |
+| `TRX-USD` | `TRX` | `USD` | Yes |
+| `XRP-USD` | `XRP` | `USD` | Yes |
+
+</Tab>
+<Tab title="Stocks and ETFs">
+
+| Symbol | Base | Quote | Also on GMX |
+| --- | --- | --- | --- |
+| `AAPL-USD` | `AAPL` | `USD` | No |
+| `AMD-USD` | `AMD` | `USD` | No |
+| `AMZN-USD` | `AMZN` | `USD` | No |
+| `ARM-USD` | `ARM` | `USD` | No |
+| `ASML-USD` | `ASML` | `USD` | No |
+| `AVGO-USD` | `AVGO` | `USD` | No |
+| `BMNR-USD` | `BMNR` | `USD` | No |
+| `CAT-USD` | `CAT` | `USD` | No |
+| `COIN-USD` | `COIN` | `USD` | No |
+| `COST-USD` | `COST` | `USD` | No |
+| `CRCL-USD` | `CRCL` | `USD` | No |
+| `CVX-USD` | `CVX` | `USD` | Yes |
+| `GEV-USD` | `GEV` | `USD` | No |
+| `GLXY-USD` | `GLXY` | `USD` | No |
+| `GOOG-USD` | `GOOG` | `USD` | No |
+| `HOOD-USD` | `HOOD` | `USD` | No |
+| `HYG-USD` | `HYG` | `USD` | No |
+| `INTC-USD` | `INTC` | `USD` | No |
+| `KR2550-USD` | `KR2550` | `USD` | No |
+| `META-USD` | `META` | `USD` | No |
+| `MSFT-USD` | `MSFT` | `USD` | No |
+| `MSTR-USD` | `MSTR` | `USD` | No |
+| `MU-USD` | `MU` | `USD` | No |
+| `NFLX-USD` | `NFLX` | `USD` | No |
+| `NVDA-USD` | `NVDA` | `USD` | No |
+| `ORCL-USD` | `ORCL` | `USD` | No |
+| `PLTR-USD` | `PLTR` | `USD` | No |
+| `RIVN-USD` | `RIVN` | `USD` | No |
+| `SBET-USD` | `SBET` | `USD` | No |
+| `SHEL-USD` | `SHEL` | `USD` | No |
+| `SMCI-USD` | `SMCI` | `USD` | No |
+| `SNDK-USD` | `SNDK` | `USD` | No |
+| `TLT-USD` | `TLT` | `USD` | No |
+| `TSLA-USD` | `TSLA` | `USD` | No |
+| `TSM-USD` | `TSM` | `USD` | No |
+| `UNG-USD` | `UNG` | `USD` | No |
+| `URA-USD` | `URA` | `USD` | No |
+| `XLE-USD` | `XLE` | `USD` | No |
+| `XOM-USD` | `XOM` | `USD` | No |
+
+</Tab>
+<Tab title="Commodities">
+
+| Symbol | Base | Quote | Also on GMX |
+| --- | --- | --- | --- |
+| `BRENT-USD` | `BRENT` | `USD` | No |
+| `CL-USD` | `CL` | `USD` | No |
+| `HG-USD` | `HG` | `USD` | No |
+| `XAG-USD` | `XAG` | `USD` | No |
+| `XAU-USD` | `XAU` | `USD` | No |
+| `XPD-USD` | `XPD` | `USD` | No |
+| `XPT-USD` | `XPT` | `USD` | No |
+
+</Tab>
+<Tab title="Currencies">
+
+| Symbol | Base | Quote | Also on GMX |
+| --- | --- | --- | --- |
+| `AUD-USD` | `AUD` | `USD` | No |
+| `EUR-USD` | `EUR` | `USD` | No |
+| `GBP-USD` | `GBP` | `USD` | No |
+| `NZD-USD` | `NZD` | `USD` | No |
+| `USD-CAD` | `USD` | `CAD` | No |
+| `USD-CHF` | `USD` | `CHF` | No |
+| `USD-JPY` | `USD` | `JPY` | No |
+| `USD-KRW` | `USD` | `KRW` | No |
+| `USD-MXN` | `USD` | `MXN` | No |
+
+</Tab>
+<Tab title="Indices">
+
+| Symbol | Base | Quote | Also on GMX |
+| --- | --- | --- | --- |
+| `DAX-EUR` | `DAX` | `EUR` | No |
+| `DJI-USD` | `DJI` | `USD` | No |
+| `FTSE-GBP` | `FTSE` | `GBP` | No |
+| `HSI-HKD` | `HSI` | `HKD` | No |
+| `NDX-USD` | `NDX` | `USD` | No |
+| `NIK-JPY` | `NIK` | `JPY` | No |
+| `SPX-USD` | `SPX` | `USD` | No |
+
+</Tab>
+</Tabs>
+
+</Tab>
+</Tabs>
 
 <Info>
-  Market availability can change by venue. Check the terminal before relying on a specific instrument list.
+  Market availability can change. This page mirrors the live oracle feed, but the terminal and your account configuration remain the final source of truth for what you can trade.
 </Info>
 
 ## Before you trade
