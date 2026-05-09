@@ -6,100 +6,105 @@ icon: "route"
 
 This page explains how users move through DojiFunded from account setup to funded trading and payouts.
 
-## Lifecycle stages
+<Steps>
+  <Step title={<span style={{color: "#B7FF00"}}>Landing page</span>}>
+    Users start on the DojiFunded landing page.
 
-### 1. Entry and sign-up
+    <CardGroup cols={1}>
+      <Card icon="eye">Understand how DojiFunded works</Card>
+      <Card icon="scale-balanced">Review available account types</Card>
+      <Card icon="arrow-right">Begin the onboarding process</Card>
+    </CardGroup>
 
-Users can discover DojiFunded through the website, referral links, or direct links into the app.
+    The landing page routes users into the sign-up flow.
+  </Step>
 
-The root app path routes users to the trading terminal on `/trade`.
+  <Step title={<span style={{color: "#B7FF00"}}>Sign up and login</span>}>
+    Users can create an account using:
 
-From there, users can:
+    <CardGroup cols={3}>
+      <Card icon="envelope" title="Email">Sign up with your email address</Card>
+      <Card icon="wallet" title="Wallet">Connect an existing wallet</Card>
+      <Card icon="share-nodes" title="Social handle">Optional social login</Card>
+    </CardGroup>
 
-- sign up
-- review account options
-- move into the trading workflow
+    Each user is associated with a single trading identity. A connected wallet is mandatory and is used for:
 
-### 2. Sign up and login
+    <CardGroup cols={1}>
+      <Card icon="chart-line">Trade execution</Card>
+      <Card icon="shield-check">Account verification</Card>
+      <Card icon="hand-holding-dollar">Payouts</Card>
+    </CardGroup>
+  </Step>
 
-Users can create an account with:
+  <Step title={<span style={{color: "#B7FF00"}}>Account selection</span>}>
+    After logging in, users select one of the following account types:
 
-- email
-- wallet connection
+    <CardGroup cols={3}>
+      <Card icon="bolt" title="Instant">Instant-funded account, no evaluation required</Card>
+      <Card icon="1" title="1-Step Evaluation">Single-phase evaluation to qualify for funding</Card>
+      <Card icon="2" title="2-Step Evaluation">Two-phase evaluation with structured targets</Card>
+    </CardGroup>
 
-Each user has one trading identity.
+    Users also select their preferred execution partner, which determines supported trading pairs, fee structure, and execution environment.
 
-During signup, DojiFunded creates an embedded wallet for the account.
+    Each account type has fixed parameters defined in advance — profit targets, drawdown limits, payout conditions, and trading restrictions. Optional add-ons may adjust certain parameters such as profit split or hedging permissions.
+  </Step>
 
-The connected wallet and embedded wallet support flows such as:
+  <Step title={<span style={{color: "#B7FF00"}}>Payment</span>}>
+    Users pay a one-time fee based on the selected account type.
 
-- login and verification
-- payments and settlement
-- payouts
+    <CardGroup cols={2}>
+      <Card icon="bitcoin-sign" title="Crypto">Pay using supported cryptocurrency</Card>
+      <Card icon="credit-card" title="Card">Pay with debit or credit card</Card>
+    </CardGroup>
 
-### 3. Account selection
+    Once payment is confirmed, the account is activated and the user gains access to the trading platform. There are no recurring fees for evaluations.
+  </Step>
 
-After login, users choose an account type and an execution venue.
+  <Step title={<span style={{color: "#B7FF00"}}>Trading</span>}>
+    All trading takes place inside the DojiFunded platform, with trading pairs sourced from the user's selected partner protocol on the terminal.
 
-These choices determine:
+    Each account is assigned a virtual allocation (for example, $10,000):
 
-- supported trading pairs
-- fee structure and funding costs
-- execution environment and liquidity source
-- payout conditions
-- trading restrictions
+    <CardGroup cols={1}>
+      <Card icon="lock">The balance is not withdrawable</Card>
+      <Card icon="calculator">Exists only for internal accounting and risk logic</Card>
+      <Card icon="globe">Trading behaviour mirrors real market conditions</Card>
+    </CardGroup>
 
-Optional add-ons can modify some parameters, such as profit split and hedging rules.
+    All trades must be executed using the connected wallet. Off-platform trading is not permitted.
+  </Step>
 
-### 4. Payment
+  <Step title={<span style={{color: "#B7FF00"}}>Monitoring and verification</span>}>
+    While trading, the platform tracks everything in real time:
 
-Users pay a one-time fee for the selected account.
+    <CardGroup cols={2}>
+      <Card icon="chart-bar" title="Positions & PnL">Live position tracking and profit/loss monitoring</Card>
+      <Card icon="triangle-exclamation" title="Drawdowns">Continuous drawdown usage monitoring</Card>
+      <Card icon="nfc" title="On-chain NFTs">Trade positions recorded on-chain with full position metadata</Card>
+      <Card icon="shield-halved" title="Rule compliance">Checked continuously throughout trading</Card>
+    </CardGroup>
 
-Supported payment methods:
+    Performance data is visible in the dashboard and the trade NFT Explorer.
 
-- crypto
-- card
+    <Warning>
+      Any attempt to bypass platform rules — including wash trading, prohibited strategies, or external execution — invalidates the account.
+    </Warning>
+  </Step>
 
-After payment confirmation:
+  <Step title={<span style={{color: "#B7FF00"}}>Payouts</span>}>
+    When payout conditions are met:
 
-- the account is activated
-- the user gains access to the trading platform
+    <CardGroup cols={1}>
+      <Card icon="hand-pointer">The trader requests a withdrawal from the dashboard</Card>
+      <Card icon="link">Performance is verified on-chain</Card>
+      <Card icon="wallet">Funds are sent directly to the trader's wallet</Card>
+    </CardGroup>
 
-### 5. Trading
-
-All trading happens inside the Doji platform.
-
-Each account is assigned a virtual allocation used for internal accounting and risk logic.
-
-That balance is not directly withdrawable.
-
-Trading behavior is designed to mirror real market conditions.
-
-Off-platform trading is not permitted.
-
-### 6. Monitoring and verification
-
-While trading, the platform tracks:
-
-- positions
-- PnL
-- drawdowns
-- rule compliance
-- account status
-
-Trade positions are recorded on-chain as NFTs with position metadata.
-
-Performance data is visible in the dashboard and connected to the live NFT Explorer experience.
-
-### 7. Payouts
-
-When payout conditions are met, traders request payouts from the dashboard.
-
-Performance is verified through platform infrastructure and payouts settle on-chain.
-
-<Warning>
-  Attempts to bypass platform rules, such as wash trading, prohibited strategies, or external execution, can invalidate the account.
-</Warning>
+    Payout percentages depend on the account type and any selected add-ons.
+  </Step>
+</Steps>
 
 ## Next steps
 

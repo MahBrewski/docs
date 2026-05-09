@@ -8,35 +8,52 @@ Create your DojiFunded account and start trading in under a minute.
 
 ## Before you start
 
-You need:
-
-- an email address or wallet connection
-- a username for your trading identity
-- enough balance to pay your one-time account or evaluation fee
+<CardGroup cols={3}>
+  <Card icon="envelope" title="Email or wallet">An email address or wallet connection to sign up</Card>
+  <Card icon="user" title="Trading identity">A username for your public trader profile</Card>
+  <Card icon="coins" title="Account fee">Enough balance to cover your one-time evaluation or activation fee</Card>
+</CardGroup>
 
 ## Create your account
 
 <Steps>
-  <Step title="Sign up">
+  <Step title={<span style={{color: "#B7FF00"}}>Sign up</span>}>
     Create your account with email or wallet connection.
 
-    During signup, DojiFunded creates a dedicated embedded wallet for your account.
+    During signup, DojiFunded automatically creates a dedicated embedded wallet for your account.
   </Step>
-  <Step title="Set up your trading identity">
+
+  <Step title={<span style={{color: "#B7FF00"}}>Set up your trading identity</span>}>
     Choose your username and profile avatar.
 
     Your trading identity is used across the dashboard, leaderboard, and trading analytics.
   </Step>
-  <Step title="Select your account type">
-    Choose from `Degen (Instant Funding)`, `1-Step`, `2-Step Elite`, or `2-Step Classic`.
+
+  <Step title={<span style={{color: "#B7FF00"}}>Select your account type</span>}>
+    <CardGroup cols={2}>
+      <Card icon="bolt" title="Degen (Instant Funding)">Skip the evaluation — get funded immediately</Card>
+      <Card icon="1" title="1-Step">Single evaluation phase to qualify for funding</Card>
+      <Card icon="2" title="2-Step Elite">Two-phase evaluation with 6% static drawdown</Card>
+      <Card icon="2" title="2-Step Classic">Two-phase evaluation with 8% static drawdown</Card>
+    </CardGroup>
   </Step>
-  <Step title="Choose an execution venue">
+
+  <Step title={<span style={{color: "#B7FF00"}}>Choose an execution venue</span>}>
     Select the execution venue or execution partner for your account.
+
+    <CardGroup cols={2}>
+      <Card icon="chart-candlestick" title="GMX">Crypto and commodities perpetual markets</Card>
+      <Card icon="building-2" title="Ostium">Stocks, ETFs, forex, indices, commodities, and crypto</Card>
+    </CardGroup>
 
     Supported markets, liquidity conditions, and fees can vary by venue.
   </Step>
-  <Step title="Complete payment">
-    Pay the one-time account or evaluation fee with crypto or card.
+
+  <Step title={<span style={{color: "#B7FF00"}}>Complete payment</span>}>
+    <CardGroup cols={2}>
+      <Card icon="bitcoin-sign" title="Crypto">Pay using supported cryptocurrency</Card>
+      <Card icon="credit-card" title="Card">Pay with debit or credit card</Card>
+    </CardGroup>
 
     After payment confirmation, your account is activated and you can access the platform.
   </Step>
@@ -56,11 +73,10 @@ You need:
 
 ## Your Doji wallet
 
-Every DojiFunded account includes an embedded wallet.
-
-- You do not need a browser extension to start using the platform.
-- The wallet is used for payments, trading infrastructure, and payout settlement.
-- Eligible payouts are processed to your embedded wallet through on-chain settlement.
+<CardGroup cols={1}>
+  <Card icon="plug-circle-xmark" title="No external wallet required">No browser extension or third-party wallet setup needed. Your embedded wallet is built directly into the platform.</Card>
+  <Card icon="link" title="On-chain settlement">All eligible payouts are processed directly to your embedded wallet through on-chain settlement infrastructure.</Card>
+</CardGroup>
 
 ## Next steps
 

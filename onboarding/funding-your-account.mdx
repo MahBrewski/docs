@@ -8,34 +8,29 @@ Before you can purchase an account, your embedded wallet must hold enough `USDC`
 
 ## Supported funding methods
 
-You can fund your Doji wallet with:
-
-- card payments
-- crypto deposits
-
-Card payments let you buy USDC inside the platform.
-
-Crypto deposits let you transfer USDC from:
-
-- centralized exchanges
-- DeFi wallets
-- on-chain bridges
-
-Supported wallets include MetaMask, Rabby, Coinbase Wallet, and other EVM-compatible wallets.
+<CardGroup cols={2}>
+  <Card icon="credit-card" title="Card payments">Use a debit or credit card to instantly top up your DojiFunded wallet with USDC directly inside the platform</Card>
+  <Card icon="bitcoin-sign" title="Crypto deposits">Send USDC from centralised exchanges, DeFi wallets, or on-chain bridges. Supported wallets include MetaMask, Rabby, Coinbase Wallet, and other EVM-compatible wallets</Card>
+</CardGroup>
 
 ## Fund your wallet
 
 <Steps>
-  <Step title="Open the wallet flow">
+  <Step title={<span style={{color: "#B7FF00"}}>Open the wallet flow</span>}>
     Open the wallet section from the dashboard or continue through the account checkout flow.
   </Step>
-  <Step title="Add USDC">
-    Choose either a crypto deposit or a card payment.
 
-    Card payments deposit USDC into your Doji wallet after payment confirmation.
+  <Step title={<span style={{color: "#B7FF00"}}>Add USDC</span>}>
+    Choose your preferred funding method:
+
+    <CardGroup cols={2}>
+      <Card icon="credit-card" title="Card payment">Purchase USDC instantly — deposited into your Doji wallet after payment confirmation</Card>
+      <Card icon="arrow-right-arrow-left" title="Crypto deposit">Send USDC over the supported network directly to your DojiFunded wallet address</Card>
+    </CardGroup>
   </Step>
-  <Step title="Confirm your balance">
-    Once your balance updates, you can purchase your account and begin trading.
+
+  <Step title={<span style={{color: "#B7FF00"}}>Start trading</span>}>
+    Once your balance is confirmed, purchase your account and begin trading immediately.
   </Step>
 </Steps>
 
@@ -50,7 +45,7 @@ Supported wallets include MetaMask, Rabby, Coinbase Wallet, and other EVM-compat
 | Token | USDC |
 | Network | Supported EVM networks |
 | Confirmation time | Typically under 30 seconds |
-| Minimum deposit | No minimum, as long as it covers your account fee |
+| Minimum deposit | No minimum — deposit enough to cover your account fee |
 
 ## Next steps
 
