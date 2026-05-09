@@ -1,77 +1,56 @@
 ---
 title: "Terminal"
-description: "Use the DojiFunded terminal to trade, monitor positions, and stay within account rules."
+description: "The DojiFunded terminal is a multi-asset trading environment for funded traders across crypto, forex, commodities, equities, and more."
 icon: "chart-line"
 ---
 
-The terminal is the main trading surface in DojiFunded.
+The DojiFunded terminal is a multi-asset trading environment designed for funded traders across crypto, forex, commodities, equities, and additional supported markets.
 
-It is where you place trades, manage positions, and monitor account state in real time.
+All trades are routed through integrated on-chain execution venues including [GMX](https://gmx.io) and [Ostium](https://ostium.io). Execution is simulated against live market conditions, liquidity, spreads, and venue-specific pricing models.
 
-## What you can do in the terminal
+The terminal includes full charting, position management, real-time PnL tracking, and integrated risk monitoring.
 
-- select markets and execution venues
-- view chart data and current pricing
-- submit market, limit, and managed orders where supported
-- monitor open positions, orders, fills, and funding history
-- track risk alerts and trading availability
+## Order Types
 
-## Core terminal areas
+| Order Type   | Trigger               | Execution                          |
+| :----------: | :-------------------: | :--------------------------------: |
+| Market       | Immediate             | Executes against available liquidity |
+| Limit        | Price reaches limit   | Executes at limit price or better  |
+| Stop Market  | Trigger price reached | Converts into market order         |
+| Stop Limit   | Trigger price reached | Places a limit order               |
 
-The terminal is built around a few dense working areas:
+Market conditions, liquidity, and execution impact may affect final fill prices depending on venue conditions and order size.
 
-- a charting area for market context
-- an order entry panel for trade execution
-- account-aware market and account selection
-- bottom panels for positions, orders, trade history, position history, and funding history
-- rule and market-status notices that can affect order entry
+## Margin Modes
 
-## What the terminal is tied to
+| Setting      | Options       |
+| :----------: | :-----------: |
+| Margin Mode  | Isolated      |
+| Cross Margin | Coming Soon   |
 
-The terminal is not a detached trading screen.
+Each position currently operates using isolated margin. Maximum leverage varies by market and execution venue, with supported leverage displayed directly next to each trading pair inside the terminal.
 
-It is tied to:
+## Market Data
 
-- your selected or active challenge account
-- the execution venue behind that account
-- the product's rule and risk model
-- market availability and trading status
+DojiFunded streams live market data directly from integrated execution venues. Real-time pricing is used for order execution, PnL calculations, drawdown monitoring, and funding or rollover calculations.
 
-## How the terminal fits the account model
+Execution conditions dynamically account for liquidity, volatility, and position size to simulate realistic trading environments. Additional funding fees may accrue hourly on supported perpetual markets.
 
-The terminal is tied to your active account and account rules.
+## Risk Overlay
 
-That means the platform can enforce:
+The terminal includes a live risk overlay displaying:
 
-- drawdown limits
-- risk-per-trade rules
-- minimum trade duration
-- account-specific restrictions
+- current drawdown
+- daily loss usage
+- margin utilization
+- unrealized PnL
+- funding and holding costs
 
-Trading availability can change based on asset class, market status, and account-specific constraints.
+Risk metrics update continuously while positions remain open.
 
-## What you can monitor while trading
+## PnL Share Cards
 
-Inside the terminal, users should expect visibility into:
-
-- current positions
-- open orders
-- trade history
-- position history
-- funding events
-- market-level pricing and book context
-- account health and risk state
-
-## What to expect while trading
-
-- account status updates in real time
-- performance and positions sync into the dashboard
-- rule compliance is checked continuously
-- off-platform execution is not part of the funded workflow
-
-<Info>
-  The terminal is the default destination in the product. It is the center of the trading workflow, not an optional advanced page.
-</Info>
+Generate and share visual trading performance cards directly from the dashboard. PnL cards include profit and loss metrics, trading statistics, account performance, and payout information designed for public profiles and social sharing.
 
 ## Next steps
 

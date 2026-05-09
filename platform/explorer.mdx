@@ -1,45 +1,52 @@
 ---
 title: "Explorer"
-description: "Track trade NFTs and inspect funded-phase position records on-chain."
+description: "Public, verifiable transparency for all evaluation and funded trading activity on DojiFunded."
 icon: "fingerprint"
 ---
 
-The DojiFunded Explorer helps you inspect trade positions that are recorded on-chain as NFTs.
+The DojiFunded Explorer provides public, verifiable transparency for all evaluation and funded trading activity on the platform.
 
-It connects funded-phase trading activity to a verifiable on-chain record.
+Unlike traditional prop firms that operate in closed systems, every trade on DojiFunded can be independently verified through on-chain records.
 
-## What the Explorer shows
+## What each trade page shows
 
-Users should expect Explorer views to surface:
+- execution prices
+- realized PnL
+- fees and funding costs
+- leverage and position size
+- trade duration
+- account rule tracking
+- on-chain verification data
 
-- trade NFT identifiers
-- position metadata such as symbol, side, size, and leverage
-- timestamps for opened and closed positions
-- account or challenge references where available
-- links out to the relevant chain explorer
+## Execution transparency
 
-## How it fits the platform
+The Explorer displays both the requested execution price and the actual execution price, giving traders full visibility into:
 
-The `NFT Explorer` is connected to your authenticated account.
+- slippage
+- market impact
+- execution quality
+- volatility during execution
 
-It is designed to help you:
+## On-chain verification
 
-- confirm ownership of trade NFTs
-- inspect funded-phase position history
-- cross-check trade records against on-chain data
+Every trade includes verifiable identifiers:
 
-## What to expect today
+- contract address
+- position ID
+- trade ID
+- token ID
+- blockchain proof
 
-The live app currently exposes an authenticated Explorer flow rather than a public browse-all directory.
+Users can independently verify activity through supported explorers like [Arbiscan](https://arbiscan.io).
 
-Users sign in, review their trade NFT inventory, and open position details from there.
+## How Explorer and Terminal work together
 
-<Info>
-  Explorer coverage should stay aligned with the live `/explore` product route and the on-chain records available for each account.
-</Info>
+Alongside the Explorer, the DojiFunded Terminal provides a real-time interface for monitoring positions, funding, fees, account metrics, and trade activity.
+
+Together, the Explorer and Terminal create a transparent trading infrastructure where users can verify activity directly instead of relying on opaque internal reporting.
 
 ## Next steps
 
-- Learn how the [dashboard](/platform/dashboard) tracks account performance.
+- Learn how the [terminal](/platform/terminal) works.
 - Learn how [payouts](/platform/payouts) connect to on-chain settlement.
 - Review [rules and risk parameters](/resources/rules-risk-parameters).

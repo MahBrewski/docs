@@ -1,58 +1,94 @@
 ---
 title: "Dashboard"
-description: "Use the dashboard to track account progress, performance, payouts, and funded status."
+description: "Track, monitor, and analyze your performance across all DojiFunded accounts."
 icon: "layout-dashboard"
 ---
 
-The dashboard is the control center for your DojiFunded account.
+The dashboard is the central hub for managing assessments, funded accounts, payouts, and trading analytics.
 
-## What the dashboard shows
+Real-time account data is continuously updated to provide a live view of account performance, drawdown usage, open positions, and payout eligibility.
 
-- active and completed accounts
-- payout history and payout eligibility
-- performance metrics
-- PnL and account analytics
-- risk statistics
-- account progress across evaluation and funded stages
+The dashboard includes equity tracking, account analytics, risk monitoring, payout history, and performance insights across all supported execution venues.
 
-## Typical dashboard sections
+## Account Overview
 
-The current product direction suggests the dashboard brings together:
+Each account includes a live overview of:
 
-- account overview
-- challenge or funded account progress
-- performance metrics and analytics
-- payout state and payout history
-- wallet-linked actions
-- account history across evaluations and funded accounts
+- current equity
+- remaining daily loss allowance
+- remaining maximum drawdown
+- profit target progress
+- payout eligibility
 
-## How traders use the dashboard
+Drawdown calculations are equity-based and include floating PnL from open positions.
 
-Use the dashboard to:
+The dashboard also displays account phase, active plan, account size, and current trading status.
 
-- monitor your current account state
-- review funded account progress
-- manage wallet and payout actions
-- access the trading terminal
+## Performance Analytics
 
-## How the dashboard fits the lifecycle
+Performance data can be viewed across:
 
-The dashboard is where the user can step back from live order entry and review the broader account picture.
+- 1D
+- 1W
+- 1M
+- All Time
 
-That includes:
+Charts display:
 
-- whether an account is still inside its rules
-- whether a funded account is approaching payout eligibility
-- how performance has changed over time
-- which accounts are active, completed, or funded
+- Equity
+- Balance
+- Profit target
+- Daily drawdown
+- Maximum drawdown
 
-## How the dashboard connects to the rest of the platform
+Trading activity is also available in calendar format for reviewing day-by-day performance.
 
-Trading happens in the terminal, but the dashboard is where you review the broader account picture.
+## Trading Statistics
 
-This is also where user-facing payout actions and account history come together.
+Each account includes lifetime trading statistics and performance metrics.
 
-Performance data is also part of the wider on-chain trading record, including trade-position NFT tracking.
+| Metric                  | Description                                   |
+| :---------------------: | :-------------------------------------------: |
+| Total Trades            | Total completed trades                        |
+| Win Rate                | Percentage of profitable trades               |
+| Total Volume            | Total trading volume                          |
+| Average Trade Size      | Average position size per trade               |
+| Profit Target Remaining | Remaining amount required to pass             |
+| Current Payout          | Current eligible payout amount                |
+
+Statistics update automatically as positions are opened and closed.
+
+## Open Positions & Trade History
+
+Active positions display live market data including:
+
+- position size
+- entry price
+- current price
+- unrealized PnL
+- ROE percentage
+- trade duration
+
+Completed trades are stored in the position history section with full execution details, realized PnL, timestamps, and trade verification records.
+
+## Risk Monitoring
+
+The dashboard continuously tracks drawdown usage, margin utilization, active exposure, and breach proximity in real time.
+
+All risk calculations are based on live equity and update dynamically as market conditions change.
+
+## Payout Tracking
+
+Eligible funded traders can monitor payout availability directly from the dashboard.
+
+The payout section displays:
+
+- current payout eligibility
+- withdrawal history
+- settlement records
+- payout progress across funded accounts
+
+All payouts are processed directly to the user's embedded wallet.
 
 ## Next steps
 
