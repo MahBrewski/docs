@@ -38,15 +38,15 @@ Execution conditions dynamically account for liquidity, volatility, and position
 
 ## Risk Overlay
 
-The terminal includes a live risk overlay displaying:
+The terminal includes a live risk overlay. Risk metrics update continuously while positions remain open.
 
-- current drawdown
-- daily loss usage
-- margin utilization
-- unrealized PnL
-- funding and holding costs
-
-Risk metrics update continuously while positions remain open.
+<CardGroup cols={2}>
+  <Card icon="triangle-exclamation" title="Current drawdown">Live drawdown usage against your account limit</Card>
+  <Card icon="calendar-day" title="Daily loss usage">How much of your daily loss allowance has been used</Card>
+  <Card icon="percent" title="Margin utilization">Current margin usage across open positions</Card>
+  <Card icon="chart-line" title="Unrealized PnL">Live profit and loss on open positions</Card>
+  <Card icon="coins" title="Funding and holding costs">Accrued funding fees on perpetual positions</Card>
+</CardGroup>
 
 ## PnL Share Cards
 

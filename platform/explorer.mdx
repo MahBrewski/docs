@@ -10,34 +10,38 @@ Unlike traditional prop firms that operate in closed systems, every trade on Doj
 
 ## What each trade page shows
 
-- execution prices
-- realized PnL
-- fees and funding costs
-- leverage and position size
-- trade duration
-- account rule tracking
-- on-chain verification data
+<CardGroup cols={2}>
+  <Card icon="dollar-sign" title="Execution prices">Requested and actual execution price for every trade</Card>
+  <Card icon="chart-bar" title="Realized PnL">Final profit or loss on closed positions</Card>
+  <Card icon="coins" title="Fees and funding costs">Full breakdown of trading and funding fees</Card>
+  <Card icon="sliders" title="Leverage and position size">Exact leverage used and position sizing</Card>
+  <Card icon="clock" title="Trade duration">Open and close timestamps for every position</Card>
+  <Card icon="shield-check" title="Account rule tracking">Whether the trade stayed within account rules</Card>
+  <Card icon="link" title="On-chain verification data">Blockchain proof tied to every trade record</Card>
+</CardGroup>
 
 ## Execution transparency
 
 The Explorer displays both the requested execution price and the actual execution price, giving traders full visibility into:
 
-- slippage
-- market impact
-- execution quality
-- volatility during execution
+<CardGroup cols={2}>
+  <Card icon="arrow-right-arrow-left" title="Slippage">Difference between requested and filled price</Card>
+  <Card icon="wave-square" title="Market impact">How position size affected the execution price</Card>
+  <Card icon="circle-check" title="Execution quality">How closely the fill matched the intended order</Card>
+  <Card icon="bolt" title="Volatility during execution">Market conditions at the moment of fill</Card>
+</CardGroup>
 
 ## On-chain verification
 
-Every trade includes verifiable identifiers:
+Every trade includes verifiable identifiers that can be independently checked:
 
-- contract address
-- position ID
-- trade ID
-- token ID
-- blockchain proof
-
-Users can independently verify activity through supported explorers like [Arbiscan](https://arbiscan.io).
+<CardGroup cols={2}>
+  <Card icon="file-contract" title="Contract address">The smart contract that processed the trade</Card>
+  <Card icon="hashtag" title="Position ID">Unique identifier for the position</Card>
+  <Card icon="fingerprint" title="Trade ID">Unique identifier for the specific trade event</Card>
+  <Card icon="nfc" title="Token ID">NFT token ID tied to the trade record</Card>
+  <Card icon="cube" title="Blockchain proof">On-chain proof verifiable via [Arbiscan](https://arbiscan.io)</Card>
+</CardGroup>
 
 ## How Explorer and Terminal work together
 

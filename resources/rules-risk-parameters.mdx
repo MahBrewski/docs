@@ -10,100 +10,74 @@ These rules define how evaluations, funded accounts, payout eligibility, and acc
 
 ## Core risk areas
 
-Depending on account type, users should expect rules around:
-
-- profit targets
-- max drawdown
-- daily drawdown
-- leverage
-- risk per trade
-- activity requirements
-- hedging permissions
-- copy trading restrictions
-- minimum trade duration
-- account arbitrage restrictions
+<CardGroup cols={2}>
+  <Card icon="flag-checkered" title="Profit targets">Required balance growth to pass each evaluation phase</Card>
+  <Card icon="triangle-exclamation" title="Max drawdown">Absolute equity floor — breaching it closes the account</Card>
+  <Card icon="calendar-day" title="Daily drawdown">Maximum equity loss permitted within a single trading day</Card>
+  <Card icon="sliders" title="Leverage limits">Maximum leverage per asset class and execution venue</Card>
+  <Card icon="percent" title="Risk per trade">Maximum 1% risk per trade unless add-on is enabled</Card>
+  <Card icon="clock" title="Activity requirement">At least one trade every 30 days to stay active</Card>
+  <Card icon="arrows-left-right" title="Hedging rules">Hedging on the same currency is off by default</Card>
+  <Card icon="ban" title="Copy trading">Copy trading between different users is not permitted</Card>
+  <Card icon="stopwatch" title="Minimum trade duration">All trades must be open for at least 60 seconds</Card>
+  <Card icon="circle-xmark" title="Account arbitrage">Cross-account arbitrage strategies are not allowed</Card>
+</CardGroup>
 
 ## Account state and breaches
 
-Accounts can be breached if the active drawdown threshold is exceeded or if platform rules are violated.
+A breach occurs when the active drawdown threshold is exceeded or platform rules are violated.
 
-When an account is breached, users should expect consequences such as:
-
-- trading access being revoked
-- payout eligibility being removed
-- the account becoming inactive
-- open positions being managed by platform controls where required
+<CardGroup cols={2}>
+  <Card icon="lock" title="Trading access revoked">All order entry is blocked immediately upon breach</Card>
+  <Card icon="circle-xmark" title="Payout eligibility removed">Breached accounts lose all payout rights</Card>
+  <Card icon="power-off" title="Account becomes inactive">Breached accounts cannot be restored</Card>
+  <Card icon="right-from-bracket" title="Positions managed">Open positions may be closed automatically at breach</Card>
+</CardGroup>
 
 ## Trading requirements
 
-The current product materials position DojiFunded as:
-
-- having no consistency rule
-- having no minimum trading days requirement
-- allowing evaluation completion in a single trade if all rules are respected
-- requiring at least one trade every 30 days to keep an account active
-
-The supported style set is broad and includes discretionary trading, algorithmic trading, and autonomous strategies, provided the account remains within platform rules.
+<CardGroup cols={2}>
+  <Card icon="circle-check" title="No consistency rule">No daily profit caps or restrictions on single-trade profits</Card>
+  <Card icon="calendar-xmark" title="No minimum trading days">Evaluations can be passed in a single trade if all rules are respected</Card>
+  <Card icon="rotate" title="30-day activity">At least one trade every 30 days to keep the account active</Card>
+  <Card icon="robot" title="Autonomous strategies">Algorithmic and AI-driven strategies are permitted</Card>
+</CardGroup>
 
 ## Restricted behavior
 
-The user-facing rule set prohibits behavior intended to bypass account rules or distort platform outcomes.
+<CardGroup cols={2}>
+  <Card icon="arrows-left-right" title="Cross-account hedging">Opposing positions across multiple accounts to guarantee profit on one</Card>
+  <Card icon="copy" title="Copy trading between users">Mirroring positions or using shared signal groups across accounts</Card>
+  <Card icon="user-slash" title="Account sharing">Sharing login credentials or trading another user's account</Card>
+  <Card icon="bolt" title="Latency or pricing exploits">Exploiting execution delays, desync, or oracle pricing errors</Card>
+  <Card icon="arrows-rotate" title="Artificial volume">Wash trading, self-matching, or meaningless trade loops</Card>
+  <Card icon="chart-line" title="Market manipulation">Spoofing, coordinated attacks, or intentional liquidity disruption</Card>
+</CardGroup>
 
-This includes categories such as:
-
-- cross-account hedging
-- copy trading between different users
-- account sharing
-- latency or pricing exploit attempts
-- artificial volume generation
-- market manipulation
-- strategies designed purely to exploit evaluation mechanics
-
-## Why these rules matter
-
-The platform uses these parameters to:
-
-- evaluate trader performance
-- enforce funded account eligibility
-- determine whether an account remains in good standing
+<Warning>
+  Violations may result in immediate account termination, payout cancellation, and permanent platform bans.
+</Warning>
 
 ## Platform enforcement
 
-Rule compliance is checked continuously.
-
-Users should assume that drawdowns, trade activity, and account state are monitored in real time.
+Rule compliance is checked continuously. Drawdowns, trade activity, and account state are monitored in real time.
 
 <Warning>
-  Attempts to bypass platform rules, including wash trading, exploit attempts, prohibited coordination, or external execution, can invalidate the account.
+  Attempts to bypass platform rules — including wash trading, exploit attempts, prohibited coordination, or external execution — can invalidate the account.
 </Warning>
 
 ## Payout rule concepts
 
-Payout eligibility depends on account state, rule compliance, and the conditions for the selected account type.
-
-The shared source material also states that:
-
-- funded accounts do not carry new profit targets after qualification
-- payout requests are made from the dashboard
-- eligible payouts settle on-chain to the embedded wallet
-- add-ons can affect the profit split
-
-## Venue and fee dependencies
-
-Some rule outcomes depend on the selected execution venue and market.
-
-Users should confirm:
-
-- the available market set for the venue
-- leverage and position constraints
-- trading fees
-- any venue-level funding or rollover costs
+<CardGroup cols={1}>
+  <Card icon="flag-checkered">Funded accounts do not carry new profit targets after qualification</Card>
+  <Card icon="layout-dashboard">Payout requests are made from the dashboard</Card>
+  <Card icon="link">Eligible payouts settle on-chain to the embedded wallet</Card>
+  <Card icon="sliders">Add-ons can affect the profit split percentage</Card>
+</CardGroup>
 
 ## Where to find account-specific rules
 
 For account-specific values, start with [Doji accounts](/doji-accounts).
-
-Use this page as the shared reference for cross-account rule concepts and definitions.
 
 ## Next steps
 

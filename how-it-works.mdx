@@ -9,27 +9,27 @@ DojiFunded uses a transparent funded trading model from onboarding to payout.
 ## The funded trading flow
 
 <Steps>
-  <Step title="Start an evaluation or instant funding account">
+  <Step title={<span style={{color: "#B7FF00"}}>Start an evaluation or instant funding account</span>}>
     Choose your account type, account size, and execution venue.
 
     You trade within predefined risk parameters and work toward the required target for your plan.
   </Step>
-  <Step title="Trade under platform rules">
+  <Step title={<span style={{color: "#B7FF00"}}>Trade under platform rules</span>}>
     Use the trading terminal to manage positions, monitor PnL, and stay within drawdown and rule limits.
 
     Rule compliance is monitored continuously while you trade.
   </Step>
-  <Step title="Get funded">
+  <Step title={<span style={{color: "#B7FF00"}}>Get funded</span>}>
     After you meet the conditions for your account type, you move into the funded stage.
 
     Funded accounts continue to operate under defined risk parameters.
   </Step>
-  <Step title="Request payouts">
+  <Step title={<span style={{color: "#B7FF00"}}>Request payouts</span>}>
     When your account becomes eligible, request payouts from the dashboard.
 
     Payouts are verified and settled through on-chain infrastructure.
   </Step>
-  <Step title="Scale your capital">
+  <Step title={<span style={{color: "#B7FF00"}}>Scale your capital</span>}>
     Consistent performance can unlock larger account sizes, better payout terms, and future capital allocation opportunities.
   </Step>
 </Steps>
@@ -44,21 +44,23 @@ You continue trading while staying inside the active risk parameters for your ac
 
 Before you start trading, you choose:
 
-- your account type
-- your account size
-- your execution venue
-- any optional add-ons that modify account parameters
+<CardGroup cols={2}>
+  <Card icon="scale-balanced" title="Account type">Degen, 1-Step, 2-Step Elite, or 2-Step Classic</Card>
+  <Card icon="dollar-sign" title="Account size">From $1K to $100K depending on your plan</Card>
+  <Card icon="building-2" title="Execution venue">GMX or Ostium — determines your markets and fees</Card>
+  <Card icon="sliders" title="Add-ons">Optional modifications to profit split, risk limits, and hedging</Card>
+</CardGroup>
 
 These choices define the risk model, payout conditions, and trading rules that apply to your account.
 
 ## What DojiFunded verifies
 
-DojiFunded verifies:
-
-- account performance
-- drawdown and risk rule compliance
-- payout eligibility
-- trade activity through platform infrastructure
+<CardGroup cols={2}>
+  <Card icon="chart-bar" title="Account performance">PnL and progress tracked against account targets</Card>
+  <Card icon="shield-alert" title="Rule compliance">Drawdown and risk rules checked continuously</Card>
+  <Card icon="hand-holding-dollar" title="Payout eligibility">Verified on-chain before any settlement is processed</Card>
+  <Card icon="link" title="Trade activity">All trades verified through platform infrastructure</Card>
+</CardGroup>
 
 <Info>
   The platform is built for transparent, rule-based funded trading. If you need the specific parameters for each plan, compare the available account types before you purchase.

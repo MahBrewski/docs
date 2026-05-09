@@ -9,35 +9,28 @@ Eligible payouts are requested from the dashboard and settled through on-chain i
 ## How payouts work
 
 <Steps>
-  <Step title="Trade an eligible account">
+  <Step title={<span style={{color: "#B7FF00"}}>Trade an eligible account</span>}>
     Trade your funded account while staying within the applicable account rules and payout conditions.
   </Step>
-  <Step title="Reach payout eligibility">
+  <Step title={<span style={{color: "#B7FF00"}}>Reach payout eligibility</span>}>
     Eligibility depends on your account type and any selected add-ons.
   </Step>
-  <Step title="Request payout from the dashboard">
+  <Step title={<span style={{color: "#B7FF00"}}>Request payout from the dashboard</span>}>
     When the account becomes eligible, submit the payout request from the dashboard.
   </Step>
-  <Step title="Receive settlement">
+  <Step title={<span style={{color: "#B7FF00"}}>Receive settlement</span>}>
     The platform verifies performance and sends funds to your wallet through its settlement flow.
   </Step>
 </Steps>
 
 ## What payouts depend on
 
-Payout percentages depend on:
-
-- your account type
-- your selected add-ons
-
-Payout access also depends on remaining in good standing under the account's rules.
-
-## What affects payout eligibility
-
-- your account type
-- your account's rule compliance
-- any selected add-ons
-- the funded stage conditions attached to the account
+<CardGroup cols={2}>
+  <Card icon="scale-balanced" title="Account type">Each account type has its own profit split and withdrawal conditions</Card>
+  <Card icon="sliders" title="Selected add-ons">Add-ons such as 80% or 90% profit split affect your payout percentage</Card>
+  <Card icon="shield-check" title="Rule compliance">Account must remain in good standing under all active rules</Card>
+  <Card icon="circle-check" title="Funded stage conditions">Conditions attached to your specific account must be met</Card>
+</CardGroup>
 
 ## Withdrawal conditions
 
@@ -54,15 +47,15 @@ Payout settlement goes to the embedded wallet created for your DojiFunded accoun
 
 Payouts are a direct user-facing part of the funded trading journey, not a separate manual back-office process.
 
-## What users should confirm before requesting a payout
+## Before requesting a payout, confirm
 
-Before requesting a payout, confirm:
-
-- the account is in an eligible funded state
-- account rules have not been breached
-- the wallet destination is correct
-- any account-specific payout thresholds have been met
-- the selected add-on configuration still matches the expected profit split
+<CardGroup cols={1}>
+  <Card icon="circle-check">The account is in an eligible funded state</Card>
+  <Card icon="shield-alert">Account rules have not been breached</Card>
+  <Card icon="wallet">The wallet destination is correct</Card>
+  <Card icon="chart-line">Account-specific payout thresholds have been met</Card>
+  <Card icon="sliders">The selected add-on configuration matches the expected profit split</Card>
+</CardGroup>
 
 <Info>
   Payouts are designed to be instant and on-chain. If payout timing or destination rules change, update this page with the current platform behavior.
