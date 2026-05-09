@@ -6,15 +6,30 @@ icon: "shield-alert"
 
 This page defines the trading, payout, risk, and compliance framework governing all DojiFunded evaluation and funded accounts. By purchasing or activating a DojiFunded account, you agree to these rules in full.
 
+## Jump to section
+
 <CardGroup cols={3}>
-  <Card icon="cube" title="Core">Platform overview, account types, and definitions</Card>
-  <Card icon="triangle-exclamation" title="Risk management">Drawdown rules, loss limits, breach conditions, and profit targets</Card>
-  <Card icon="chart-line" title="Trading rules">Trading conditions, leverage limits, requirements, and payouts</Card>
-  <Card icon="shield-check" title="Compliance">Restricted behaviour and account limitations</Card>
-  <Card icon="building-2" title="Infrastructure">Fees, execution venues, and risk disclosure</Card>
+  <Card title="01 · Platform Overview" href="#platform-overview" icon="cube" />
+  <Card title="02 · Account Types" href="#account-types" icon="scale-balanced" />
+  <Card title="03 · Definitions" href="#definitions" icon="book" />
+  <Card title="04 · Drawdown Rules" href="#drawdown-rules" icon="triangle-exclamation" />
+  <Card title="05 · Daily Loss Limits" href="#daily-loss-limits" icon="calendar-day" />
+  <Card title="06 · Breach Conditions" href="#breach-conditions" icon="circle-xmark" />
+  <Card title="07 · Profit Targets" href="#profit-targets" icon="flag-checkered" />
+  <Card title="08 · Trading Conditions" href="#trading-conditions" icon="chart-line" />
+  <Card title="09 · Leverage Limits" href="#leverage-limits" icon="sliders" />
+  <Card title="10 · Trading Requirements" href="#trading-requirements" icon="circle-check" />
+  <Card title="11 · Payouts" href="#payouts" icon="hand-holding-dollar" />
+  <Card title="12 · Restricted Behaviour" href="#restricted-behaviour" icon="ban" />
+  <Card title="13 · Account Limitations" href="#account-limitations" icon="shield-alert" />
+  <Card title="14 · Fees" href="#fees" icon="badge-dollar-sign" />
+  <Card title="15 · Execution Venues" href="#execution-venues" icon="building-2" />
+  <Card title="16 · Risk Disclosure" href="#risk-disclosure" icon="exclamation" />
 </CardGroup>
 
 ---
+
+<a id="platform-overview" />
 
 ## <span style={{color: "#B7FF00"}}>01</span> · Platform Overview
 
@@ -31,6 +46,8 @@ DojiFunded is an on-chain funded trading infrastructure designed for traders, sy
 
 ---
 
+<a id="account-types" />
+
 ## <span style={{color: "#B7FF00"}}>02</span> · Account Types
 
 Supported account sizes range from `$1,000` to `$100,000`.
@@ -43,6 +60,8 @@ Supported account sizes range from `$1,000` to `$100,000`.
 | 2-Step Classic | Two-Phase Evaluation |
 
 ---
+
+<a id="definitions" />
 
 ## <span style={{color: "#B7FF00"}}>03</span> · Definitions
 
@@ -57,6 +76,8 @@ Supported account sizes range from `$1,000` to `$100,000`.
 
 ---
 
+<a id="drawdown-rules" />
+
 ## <span style={{color: "#B7FF00"}}>04</span> · Drawdown Rules
 
 All drawdown calculations are equity-based and include floating PnL from open positions.
@@ -70,6 +91,8 @@ All drawdown calculations are equity-based and include floating PnL from open po
 
 ---
 
+<a id="daily-loss-limits" />
+
 ## <span style={{color: "#B7FF00"}}>05</span> · Daily Loss Limits
 
 Daily drawdown limits reset every 24 hours based on account equity snapshots. If account equity reaches or falls below the active drawdown threshold, the account is automatically breached.
@@ -79,6 +102,8 @@ Daily drawdown limits reset every 24 hours based on account equity snapshots. If
 </Warning>
 
 ---
+
+<a id="breach-conditions" />
 
 ## <span style={{color: "#B7FF00"}}>06</span> · Breach Conditions
 
@@ -95,6 +120,8 @@ Upon breach:
 
 ---
 
+<a id="profit-targets" />
+
 ## <span style={{color: "#B7FF00"}}>07</span> · Profit Targets
 
 | Account Type | Profit Target |
@@ -107,6 +134,8 @@ Upon breach:
 Funded accounts do not require additional profit targets after qualification.
 
 ---
+
+<a id="trading-conditions" />
 
 ## <span style={{color: "#B7FF00"}}>08</span> · Trading Conditions
 
@@ -121,6 +150,8 @@ Funded accounts do not require additional profit targets after qualification.
 
 ---
 
+<a id="leverage-limits" />
+
 ## <span style={{color: "#B7FF00"}}>09</span> · Leverage and Position Limits
 
 | Asset Class | Maximum Leverage |
@@ -132,6 +163,8 @@ Funded accounts do not require additional profit targets after qualification.
 Position limits vary depending on execution venue, market liquidity, asset volatility, and account type.
 
 ---
+
+<a id="trading-requirements" />
 
 ## <span style={{color: "#B7FF00"}}>10</span> · Trading Requirements
 
@@ -159,6 +192,8 @@ At least one trade must be executed every 30 days to keep the account active.
 
 ---
 
+<a id="payouts" />
+
 ## <span style={{color: "#B7FF00"}}>11</span> · Payouts
 
 <CardGroup cols={2}>
@@ -176,6 +211,8 @@ At least one trade must be executed every 30 days to keep the account active.
 | 2-Step Classic | Minimum 1% account profit |
 
 ---
+
+<a id="restricted-behaviour" />
 
 ## <span style={{color: "#B7FF00"}}>12</span> · Restricted Behaviour
 
@@ -263,6 +300,8 @@ To maintain fair trading conditions and protect platform integrity, certain beha
 
 ---
 
+<a id="account-limitations" />
+
 ## <span style={{color: "#B7FF00"}}>13</span> · Account Limitations
 
 <CardGroup cols={2}>
@@ -274,6 +313,8 @@ To maintain fair trading conditions and protect platform integrity, certain beha
 
 ---
 
+<a id="fees" />
+
 ## <span style={{color: "#B7FF00"}}>14</span> · Fees and Trading Costs
 
 Trading costs depend on execution venue and market type and may include opening and closing fees and funding fees. All trading conditions simulate realistic market execution environments.
@@ -281,6 +322,8 @@ Trading costs depend on execution venue and market type and may include opening 
 For the full fee schedule see [Fees](/resources/fees).
 
 ---
+
+<a id="execution-venues" />
 
 ## <span style={{color: "#B7FF00"}}>15</span> · Execution Venues
 
@@ -292,6 +335,8 @@ For the full fee schedule see [Fees](/resources/fees).
 All funded trades are routed through supported on-chain execution infrastructure. Prediction market integrations and additional execution venues are planned.
 
 ---
+
+<a id="risk-disclosure" />
 
 ## <span style={{color: "#B7FF00"}}>16</span> · Risk Disclosure
 
