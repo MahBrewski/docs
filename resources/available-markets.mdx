@@ -14,7 +14,7 @@ DojiFunded is built for multi-asset market access from one trading platform.
 
 ## Market categories
 
-This page reflects the current live market inventory returned by `https://oracle.dojifunded.com/v1/markets` as of May 9, 2026.
+This page reflects the go-live market set defined in the launch spreadsheet as of May 9, 2026.
 
 ## How this page is divided
 
@@ -23,7 +23,7 @@ This market reference is divided two ways:
 - by asset class
 - by execution venue
 
-DojiFunded currently exposes market identity and venue availability from the live oracle feed. Leverage limits, margin rules, and live position caps can change, so check the terminal and your account configuration before you trade.
+The tables below show only the pairs included in the go-live spreadsheet. If a pair exists elsewhere in internal tooling or the oracle feed but is not listed here, treat it as not part of the launch market set.
 
 ## Why markets depend on venue
 
@@ -45,7 +45,7 @@ DojiFunded currently uses two execution venues:
 | GMX | Crypto and commodities |
 | Ostium | Stocks, ETFs, commodities, indices, currencies, and selected crypto |
 
-Markets available on both venues today: `ADA-USD`, `BNB-USD`, `BTC-USD`, `CVX-USD`, `ETH-USD`, `HYPE-USD`, `LINK-USD`, `SOL-USD`, `TRX-USD`, `XRP-USD`
+Markets available on both venues in the go-live sheet: `ADA-USD`, `BNB-USD`, `BTC-USD`, `CVX-USD`, `ETH-USD`, `HYPE-USD`, `LINK-USD`, `SOL-USD`, `TRX-USD`, `XRP-USD`
 
 <Tabs sync={false} borderBottom>
 <Tab title="GMX" icon="chart-candlestick">
@@ -53,134 +53,80 @@ Markets available on both venues today: `ADA-USD`, `BNB-USD`, `BTC-USD`, `CVX-US
 <Tabs sync={false}>
 <Tab title="Crypto">
 
-| Symbol | Base | Quote | Also on Ostium |
+| Name | Ticker | Max leverage | Max position size |
 | --- | --- | --- | --- |
-| `0G-USD` | `0G` | `USD` | No |
-| `AAVE-USD` | `AAVE` | `USD` | No |
-| `ADA-USD` | `ADA` | `USD` | Yes |
-| `AERO-USD` | `AERO` | `USD` | No |
-| `AI16Z-USD` | `AI16Z` | `USD` | No |
-| `AIXBT-USD` | `AIXBT` | `USD` | No |
-| `ALGO-USD` | `ALGO` | `USD` | No |
-| `ANIME-USD` | `ANIME` | `USD` | No |
-| `APE-USD` | `APE` | `USD` | No |
-| `APT-USD` | `APT` | `USD` | No |
-| `AR-USD` | `AR` | `USD` | No |
-| `ARB-USD` | `ARB` | `USD` | No |
-| `ASTER-USD` | `ASTER` | `USD` | No |
-| `ATOM-USD` | `ATOM` | `USD` | No |
-| `AVAX-USD` | `AVAX` | `USD` | No |
-| `AVNT-USD` | `AVNT` | `USD` | No |
-| `BCH-USD` | `BCH` | `USD` | No |
-| `BERA-USD` | `BERA` | `USD` | No |
-| `BNB-USD` | `BNB` | `USD` | Yes |
-| `BOME-USD` | `BOME` | `USD` | No |
-| `BONK-USD` | `BONK` | `USD` | No |
-| `BRENTOIL-USD` | `BRENTOIL` | `USD` | No |
-| `BRETT-USD` | `BRETT` | `USD` | No |
-| `BTC-USD` | `BTC` | `USD` | Yes |
-| `CAKE-USD` | `CAKE` | `USD` | No |
-| `CC-USD` | `CC` | `USD` | No |
-| `CHZ-USD` | `CHZ` | `USD` | No |
-| `CRO-USD` | `CRO` | `USD` | No |
-| `CRV-USD` | `CRV` | `USD` | No |
-| `DASH-USD` | `DASH` | `USD` | No |
-| `DOGE-USD` | `DOGE` | `USD` | No |
-| `DOLO-USD` | `DOLO` | `USD` | No |
-| `DOT-USD` | `DOT` | `USD` | No |
-| `DYDX-USD` | `DYDX` | `USD` | No |
-| `EIGEN-USD` | `EIGEN` | `USD` | No |
-| `ENA-USD` | `ENA` | `USD` | No |
-| `ETH-USD` | `ETH` | `USD` | Yes |
-| `FARTCOIN-USD` | `FARTCOIN` | `USD` | No |
-| `FET-USD` | `FET` | `USD` | No |
-| `FIL-USD` | `FIL` | `USD` | No |
-| `FLOKI-USD` | `FLOKI` | `USD` | No |
-| `GMX-USD` | `GMX` | `USD` | No |
-| `HBAR-USD` | `HBAR` | `USD` | No |
-| `HYPE-USD` | `HYPE` | `USD` | Yes |
-| `ICP-USD` | `ICP` | `USD` | No |
-| `INJ-USD` | `INJ` | `USD` | No |
-| `IP-USD` | `IP` | `USD` | No |
-| `JTO-USD` | `JTO` | `USD` | No |
-| `JUP-USD` | `JUP` | `USD` | No |
-| `KAS-USD` | `KAS` | `USD` | No |
-| `KTA-USD` | `KTA` | `USD` | No |
-| `LDO-USD` | `LDO` | `USD` | No |
-| `LINEA-USD` | `LINEA` | `USD` | No |
-| `LINK-USD` | `LINK` | `USD` | Yes |
-| `LIT-USD` | `LIT` | `USD` | No |
-| `LTC-USD` | `LTC` | `USD` | No |
-| `MEGA-USD` | `MEGA` | `USD` | No |
-| `MELANIA-USD` | `MELANIA` | `USD` | No |
-| `MEME-USD` | `MEME` | `USD` | No |
-| `MET-USD` | `MET` | `USD` | No |
-| `MEW-USD` | `MEW` | `USD` | No |
-| `MKR-USD` | `MKR` | `USD` | No |
-| `MNT-USD` | `MNT` | `USD` | No |
-| `MON-USD` | `MON` | `USD` | No |
-| `MOODENG-USD` | `MOODENG` | `USD` | No |
-| `MORPHO-USD` | `MORPHO` | `USD` | No |
-| `NATGAS-USD` | `NATGAS` | `USD` | No |
-| `NEAR-USD` | `NEAR` | `USD` | No |
-| `OKB-USD` | `OKB` | `USD` | No |
-| `OM-USD` | `OM` | `USD` | No |
-| `ONDO-USD` | `ONDO` | `USD` | No |
-| `OP-USD` | `OP` | `USD` | No |
-| `ORDI-USD` | `ORDI` | `USD` | No |
-| `PENDLE-USD` | `PENDLE` | `USD` | No |
-| `PENGU-USD` | `PENGU` | `USD` | No |
-| `PEPE-USD` | `PEPE` | `USD` | No |
-| `PI-USD` | `PI` | `USD` | No |
-| `POL-USD` | `POL` | `USD` | No |
-| `PUMP-USD` | `PUMP` | `USD` | No |
-| `RENDER-USD` | `RENDER` | `USD` | No |
-| `S-USD` | `S` | `USD` | No |
-| `SATS-USD` | `SATS` | `USD` | No |
-| `SEI-USD` | `SEI` | `USD` | No |
-| `SHIB-USD` | `SHIB` | `USD` | No |
-| `SKY-USD` | `SKY` | `USD` | No |
-| `SOL-USD` | `SOL` | `USD` | Yes |
-| `SPX6900-USD` | `SPX6900` | `USD` | No |
-| `STX-USD` | `STX` | `USD` | No |
-| `SUI-USD` | `SUI` | `USD` | No |
-| `SYRUP-USD` | `SYRUP` | `USD` | No |
-| `TAO-USD` | `TAO` | `USD` | No |
-| `TIA-USD` | `TIA` | `USD` | No |
-| `TON-USD` | `TON` | `USD` | No |
-| `TRUMP-USD` | `TRUMP` | `USD` | No |
-| `TRX-USD` | `TRX` | `USD` | Yes |
-| `UNI-USD` | `UNI` | `USD` | No |
-| `VIRTUAL-USD` | `VIRTUAL` | `USD` | No |
-| `VVV-USD` | `VVV` | `USD` | No |
-| `WELL-USD` | `WELL` | `USD` | No |
-| `WIF-USD` | `WIF` | `USD` | No |
-| `WLD-USD` | `WLD` | `USD` | No |
-| `WLFI-USD` | `WLFI` | `USD` | No |
-| `WTIOIL-USD` | `WTIOIL` | `USD` | No |
-| `XAUT.V2-USD` | `XAUT.V2` | `USD` | No |
-| `XLM-USD` | `XLM` | `USD` | No |
-| `XMR-USD` | `XMR` | `USD` | No |
-| `XPL-USD` | `XPL` | `USD` | No |
-| `XRP-USD` | `XRP` | `USD` | Yes |
-| `ZEC-USD` | `ZEC` | `USD` | No |
-| `ZORA-USD` | `ZORA` | `USD` | No |
-| `ZRO-USD` | `ZRO` | `USD` | No |
+| Bitcoin | `BTCUSD` | `5x` | `$1,000,000` |
+| Ethereum | `ETHUSD` | `5x` | `$1,000,000` |
+| Solana | `SOLUSD` | `3x` | `$300,000` |
+| Binance Coin | `BNBUSD` | `2x` | `$100,000` |
+| Ripple | `XRPUSD` | `3x` | `$300,000` |
+| Litecoin | `LTCUSD` | `2x` | `$50,000` |
+| Cardano | `ADAUSD` | `2x` | `$100,000` |
+| Dogecoin | `DOGEUSD` | `2x` | `$100,000` |
+| Chainlink | `LINKUSD` | `2x` | `$100,000` |
+| Avalanche | `AVAXUSD` | `2x` | `$100,000` |
+| NEAR Protocol | `NEARUSD` | `2x` | `$100,000` |
+| Pepe | `kPEPEUSD` | `3x` | `$300,000` |
+| Shiba Inu | `kSHIBUSD` | `2x` | `$50,000` |
+| Hyperliquid | `HYPEUSD` | `3x` | `$300,000` |
+| Sui | `SUIUSD` | `2x` | `$100,000` |
+| Arbitrum | `ARBUSD` | `2x` | `$50,000` |
+| Optimism | `OPUSD` | `2x` | `$50,000` |
+| Uniswap | `UNIUSD` | `2x` | `$50,000` |
+| Aave | `AAVEUSD` | `2x` | `$100,000` |
+| Curve DAO | `CRVUSD` | `2x` | `$50,000` |
+| GMX | `GMXUSD` | `2x` | `$50,000` |
+| TRON | `TRXUSD` | `2x` | `$50,000` |
+| Bittensor | `TAOUSD` | `3x` | `$300,000` |
+| Pendle | `PENDLEUSD` | `2x` | `$50,000` |
+| Sei | `SEIUSD` | `2x` | `$100,000` |
+| Render | `RENDERUSD` | `2x` | `$50,000` |
+| Ondo | `ONDOUSD` | `2x` | `$50,000` |
+| Aerodrome Finance | `AEROUSD` | `2x` | `$50,000` |
+| Convex Finance | `CVXUSD` | `2x` | `$50,000` |
+| dYdX | `DYDXUSD` | `2x` | `$50,000` |
+| Jupiter | `JUPUSD` | `2x` | `$50,000` |
+| PancakeSwap | `CAKEUSD` | `2x` | `$50,000` |
+| Toncoin | `TONUSD` | `2x` | `$50,000` |
+| Cosmos | `ATOMUSD` | `2x` | `$50,000` |
+| Polkadot | `DOTUSD` | `2x` | `$50,000` |
+| Filecoin | `FILUSD` | `2x` | `$50,000` |
+| Internet Computer | `ICPUSD` | `2x` | `$50,000` |
+| Aptos | `APTUSD` | `2x` | `$50,000` |
+| Virtuals Protocol | `VIRTUALUSD` | `2x` | `$50,000` |
+| Polygon | `POLUSD` | `2x` | `$50,000` |
+| dogwifhat | `WIFUSD` | `2x` | `$50,000` |
+| Fartcoin | `FARTCOINUSD` | `3x` | `$300,000` |
+| Official Trump | `TRUMPUSD` | `2x` | `$50,000` |
+| Pudgy Penguins | `PENGUUSD` | `2x` | `$50,000` |
+| Bitcoin Cash | `BCHUSD` | `2x` | `$100,000` |
+| Mantle | `MNTUSD` | `2x` | `$50,000` |
+| Berachain | `BERAUSD` | `2x` | `$50,000` |
+| LayerZero | `ZROUSD` | `2x` | `$100,000` |
+| Algorand | `ALGOUSD` | `2x` | `$100,000` |
+| Cronos | `CROUSD` | `2x` | `$50,000` |
+| Aster | `ASTERUSD` | `2x` | `$50,000` |
+| Sky | `SKYUSD` | `2x` | `$50,000` |
+| Monad | `MONUSD` | `2x` | `$100,000` |
+| Maple Syrup | `SYRUPUSD` | `2x` | `$50,000` |
+| Lighter | `LITUSD` | `2x` | `$100,000` |
+| Tether Gold | `XAUTUSD` | `2x` | `$50,000` |
+| Dash | `DASHUSD` | `2x` | `$50,000` |
+| Monero | `XMRUSD` | `2x` | `$100,000` |
+| Zcash | `ZECUSD` | `3x` | `$300,000` |
+| Venice Token | `VVVUSD` | `2x` | `$100,000` |
+| MEGA | `MEGAUSD` | `2x` | `$50,000` |
 
 </Tab>
 <Tab title="Commodities">
 
-| Symbol | Base | Quote | Also on Ostium |
+| Name | Ticker | Max leverage | Max position size |
 | --- | --- | --- | --- |
-| `GOLD-USD` | `GOLD` | `USD` | No |
-| `SILVER-USD` | `SILVER` | `USD` | No |
-
-</Tab>
-<Tab title="Stocks">
-
-| Symbol | Base | Quote | Also on Ostium |
-| --- | --- | --- | --- |
-| `CVX-USD` | `CVX` | `USD` | Yes |
+| WTI Crude Oil | `WTIOILUSD` | `8x` | `$1,000,000` |
+| Brent Crude Oil | `BRENTOILUSD` | `8x` | `$1,000,000` |
+| Gold | `GOLDUSD` | `10x` | `$1,000,000` |
+| Silver | `SILVERUSD` | `8x` | `$700,000` |
+| Natural Gas | `NATGASUSD` | `5x` | `$1,000,000` |
 
 </Tab>
 </Tabs>
@@ -191,103 +137,109 @@ Markets available on both venues today: `ADA-USD`, `BNB-USD`, `BTC-USD`, `CVX-US
 <Tabs sync={false}>
 <Tab title="Crypto">
 
-| Symbol | Base | Quote | Also on GMX |
-| --- | --- | --- | --- |
-| `ADA-USD` | `ADA` | `USD` | Yes |
-| `BNB-USD` | `BNB` | `USD` | Yes |
-| `BTC-USD` | `BTC` | `USD` | Yes |
-| `ETH-USD` | `ETH` | `USD` | Yes |
-| `HYPE-USD` | `HYPE` | `USD` | Yes |
-| `LINK-USD` | `LINK` | `USD` | Yes |
-| `SOL-USD` | `SOL` | `USD` | Yes |
-| `TRX-USD` | `TRX` | `USD` | Yes |
-| `XRP-USD` | `XRP` | `USD` | Yes |
+| Ticker | Max leverage | Max position size |
+| --- | --- | --- |
+| `BTC/USD` | `5x` | `$1,000,000` |
+| `ETH/USD` | `5x` | `$1,000,000` |
+| `SOL/USD` | `3x` | `$300,000` |
+| `XRP/USD` | `3x` | `$300,000` |
+| `BNB/USD` | `2x` | `$100,000` |
+| `ADA/USD` | `2x` | `$50,000` |
+| `LINK/USD` | `2x` | `$100,000` |
+| `TRX/USD` | `2x` | `$50,000` |
+| `HYPE/USD` | `3x` | `$300,000` |
 
 </Tab>
-<Tab title="Stocks and ETFs">
+<Tab title="Stocks">
 
-| Symbol | Base | Quote | Also on GMX |
-| --- | --- | --- | --- |
-| `AAPL-USD` | `AAPL` | `USD` | No |
-| `AMD-USD` | `AMD` | `USD` | No |
-| `AMZN-USD` | `AMZN` | `USD` | No |
-| `ARM-USD` | `ARM` | `USD` | No |
-| `ASML-USD` | `ASML` | `USD` | No |
-| `AVGO-USD` | `AVGO` | `USD` | No |
-| `BMNR-USD` | `BMNR` | `USD` | No |
-| `CAT-USD` | `CAT` | `USD` | No |
-| `COIN-USD` | `COIN` | `USD` | No |
-| `COST-USD` | `COST` | `USD` | No |
-| `CRCL-USD` | `CRCL` | `USD` | No |
-| `CVX-USD` | `CVX` | `USD` | Yes |
-| `GEV-USD` | `GEV` | `USD` | No |
-| `GLXY-USD` | `GLXY` | `USD` | No |
-| `GOOG-USD` | `GOOG` | `USD` | No |
-| `HOOD-USD` | `HOOD` | `USD` | No |
-| `HYG-USD` | `HYG` | `USD` | No |
-| `INTC-USD` | `INTC` | `USD` | No |
-| `KR2550-USD` | `KR2550` | `USD` | No |
-| `META-USD` | `META` | `USD` | No |
-| `MSFT-USD` | `MSFT` | `USD` | No |
-| `MSTR-USD` | `MSTR` | `USD` | No |
-| `MU-USD` | `MU` | `USD` | No |
-| `NFLX-USD` | `NFLX` | `USD` | No |
-| `NVDA-USD` | `NVDA` | `USD` | No |
-| `ORCL-USD` | `ORCL` | `USD` | No |
-| `PLTR-USD` | `PLTR` | `USD` | No |
-| `RIVN-USD` | `RIVN` | `USD` | No |
-| `SBET-USD` | `SBET` | `USD` | No |
-| `SHEL-USD` | `SHEL` | `USD` | No |
-| `SMCI-USD` | `SMCI` | `USD` | No |
-| `SNDK-USD` | `SNDK` | `USD` | No |
-| `TLT-USD` | `TLT` | `USD` | No |
-| `TSLA-USD` | `TSLA` | `USD` | No |
-| `TSM-USD` | `TSM` | `USD` | No |
-| `UNG-USD` | `UNG` | `USD` | No |
-| `URA-USD` | `URA` | `USD` | No |
-| `XLE-USD` | `XLE` | `USD` | No |
-| `XOM-USD` | `XOM` | `USD` | No |
+| Ticker | Max leverage | Max position size |
+| --- | --- | --- |
+| `AAPL/USD` | `20x` | `$1,000,000` |
+| `AMD/USD` | `20x` | `$500,000` |
+| `AMZN/USD` | `20x` | `$1,000,000` |
+| `ARM/USD` | `20x` | `$400,000` |
+| `ASML/USD` | `20x` | `$600,000` |
+| `AVGO/USD` | `20x` | `$400,000` |
+| `BMNR/USD` | `20x` | `$300,000` |
+| `CAT/USD` | `20x` | `$400,000` |
+| `COIN/USD` | `20x` | `$300,000` |
+| `COST/USD` | `20x` | `$600,000` |
+| `CRCL/USD` | `20x` | `$300,000` |
+| `CVX/USD` | `20x` | `$300,000` |
+| `GEV/USD` | `20x` | `$300,000` |
+| `GLXY/USD` | `20x` | `$300,000` |
+| `GOOG/USD` | `20x` | `$1,000,000` |
+| `HOOD/USD` | `20x` | `$300,000` |
+| `INTC/USD` | `20x` | `$300,000` |
+| `META/USD` | `20x` | `$1,000,000` |
+| `MSFT/USD` | `20x` | `$1,000,000` |
+| `MSTR/USD` | `20x` | `$300,000` |
+| `MU/USD` | `20x` | `$300,000` |
+| `NFLX/USD` | `20x` | `$600,000` |
+| `NVDA/USD` | `20x` | `$1,000,000` |
+| `ORCL/USD` | `20x` | `$600,000` |
+| `PLTR/USD` | `20x` | `$300,000` |
+| `RIVN/USD` | `20x` | `$300,000` |
+| `SBET/USD` | `20x` | `$200,000` |
+| `SHEL/USD` | `20x` | `$300,000` |
+| `SMCI/USD` | `20x` | `$300,000` |
+| `SNDK/USD` | `20x` | `$300,000` |
+| `TSLA/USD` | `20x` | `$600,000` |
+| `TSM/USD` | `20x` | `$400,000` |
+| `XOM/USD` | `20x` | `$300,000` |
+
+</Tab>
+<Tab title="ETFs">
+
+| Ticker | Max leverage | Max position size |
+| --- | --- | --- |
+| `HYG/USD` | `20x` | `$500,000` |
+| `KR2550/USD` | `20x` | `$300,000` |
+| `TLT/USD` | `20x` | `$750,000` |
+| `UNG/USD` | `20x` | `$300,000` |
+| `URA/USD` | `20x` | `$300,000` |
+| `XLE/USD` | `20x` | `$750,000` |
 
 </Tab>
 <Tab title="Commodities">
 
-| Symbol | Base | Quote | Also on GMX |
-| --- | --- | --- | --- |
-| `BRENT-USD` | `BRENT` | `USD` | No |
-| `CL-USD` | `CL` | `USD` | No |
-| `HG-USD` | `HG` | `USD` | No |
-| `XAG-USD` | `XAG` | `USD` | No |
-| `XAU-USD` | `XAU` | `USD` | No |
-| `XPD-USD` | `XPD` | `USD` | No |
-| `XPT-USD` | `XPT` | `USD` | No |
+| Ticker | Max leverage | Max position size |
+| --- | --- | --- |
+| `XAU/USD (Gold)` | `10x` | `$1,000,000` |
+| `WTI/USD (Crude Oil)` | `8x` | `$1,000,000` |
+| `BRENT/USD` | `8x` | `$1,000,000` |
+| `XCU/USD (Copper Spot)` | `6x` | `$500,000` |
+| `XAG/USD (Silver)` | `8x` | `$700,000` |
+| `XPT/USD (Platinum)` | `5x` | `$300,000` |
+| `XPD/USD (Palladium)` | `5x` | `$300,000` |
 
 </Tab>
-<Tab title="Currencies">
+<Tab title="Forex">
 
-| Symbol | Base | Quote | Also on GMX |
-| --- | --- | --- | --- |
-| `AUD-USD` | `AUD` | `USD` | No |
-| `EUR-USD` | `EUR` | `USD` | No |
-| `GBP-USD` | `GBP` | `USD` | No |
-| `NZD-USD` | `NZD` | `USD` | No |
-| `USD-CAD` | `USD` | `CAD` | No |
-| `USD-CHF` | `USD` | `CHF` | No |
-| `USD-JPY` | `USD` | `JPY` | No |
-| `USD-KRW` | `USD` | `KRW` | No |
-| `USD-MXN` | `USD` | `MXN` | No |
+| Ticker | Max leverage | Max position size |
+| --- | --- | --- |
+| `AUD/USD` | `50x` | `$1,000,000` |
+| `EUR/USD` | `50x` | `$2,000,000` |
+| `GBP/USD` | `50x` | `$1,500,000` |
+| `NZD/USD` | `50x` | `$1,000,000` |
+| `USD/CAD` | `50x` | `$1,000,000` |
+| `USD/CHF` | `50x` | `$1,000,000` |
+| `USD/JPY` | `50x` | `$1,500,000` |
+| `USD/MXN` | `50x` | `$500,000` |
+| `USD/KRW` | `50x` | `$500,000` |
 
 </Tab>
 <Tab title="Indices">
 
-| Symbol | Base | Quote | Also on GMX |
-| --- | --- | --- | --- |
-| `DAX-EUR` | `DAX` | `EUR` | No |
-| `DJI-USD` | `DJI` | `USD` | No |
-| `FTSE-GBP` | `FTSE` | `GBP` | No |
-| `HSI-HKD` | `HSI` | `HKD` | No |
-| `NDX-USD` | `NDX` | `USD` | No |
-| `NIK-JPY` | `NIK` | `JPY` | No |
-| `SPX-USD` | `SPX` | `USD` | No |
+| Ticker | Max leverage | Max position size |
+| --- | --- | --- |
+| `US500/USD (US 500)` | `20x` | `$1,000,000` |
+| `US100/USD (US Tech 100)` | `20x` | `$1,000,000` |
+| `US30/USD (US Wall Street 30)` | `20x` | `$1,000,000` |
+| `GER40/EUR (Germany 40)` | `20x` | `$500,000` |
+| `UK100/GBP (UK 100)` | `20x` | `$500,000` |
+| `JP225/JPY (Japan 225)` | `20x` | `$300,000` |
+| `HK50/HKD (Hong Kong 50)` | `20x` | `$300,000` |
 
 </Tab>
 </Tabs>
@@ -296,7 +248,7 @@ Markets available on both venues today: `ADA-USD`, `BNB-USD`, `BTC-USD`, `CVX-US
 </Tabs>
 
 <Info>
-  Market availability can change. This page mirrors the live oracle feed, but the terminal and your account configuration remain the final source of truth for what you can trade.
+  Market availability can change before launch. Use this page as the current go-live market set, and verify the terminal before trading once the markets are enabled.
 </Info>
 
 ## Before you trade
