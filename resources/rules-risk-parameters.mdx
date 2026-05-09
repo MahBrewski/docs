@@ -85,7 +85,7 @@ DojiFunded currently offers four account models. Supported account sizes range f
   <Card icon="scale-balanced" title="Balance">Closed account value excluding unrealized PnL</Card>
   <Card icon="chart-line" title="Equity">Real-time account value including floating PnL</Card>
   <Card icon="calendar-day" title="Daily Drawdown">Maximum equity loss allowed within a single trading day</Card>
-  <Card icon="triangle-exclamation" title="Maximum Drawdown">Absolute equity floor for the account</Card>
+  <Card icon="triangle-exclamation" title="Maximum Drawdown">Absolute equity floor for the account to breach</Card>
   <Card icon="circle-xmark" title="Breach">Automatic account termination triggered when account equity violates platform risk limits</Card>
   <Card icon="flag-checkered" title="Profit Target">Required balance growth needed to pass an evaluation phase</Card>
 </CardGroup>
@@ -173,7 +173,7 @@ All drawdown calculations are equity-based and include floating PnL from open po
 
 ## <span style={{color: "#B7FF00"}}>05</span> · Daily Loss Limits
 
-Daily drawdown limits reset every 24 hours based on account equity snapshots.
+Daily drawdown limits reset every 24 hours based on account equity or balance (whichever is higher).
 
 If account equity reaches or falls below the active drawdown threshold, the account is automatically breached.
 
@@ -230,10 +230,6 @@ Funded accounts do not require additional profit targets after qualification.
 - No exploiting platform latency or pricing errors
 - No cross-user copy trading
 
-### Hedging
-
-Hedging on the same currency pair is prohibited unless the hedging add-on is enabled.
-
 ### Risk per trade
 
 Maximum risk per trade is limited to `1%` unless the risk-limit add-on is enabled.
@@ -247,8 +243,9 @@ Maximum risk per trade is limited to `1%` unless the risk-limit add-on is enable
 | Asset Class | Maximum Leverage |
 | --- | --- |
 | Crypto | Up to 5x |
-| Commodities | Up to 4x |
-| Forex | Up to 4x |
+| Indices, Stocks, Commodities | Up to 10x |
+| ETFs | Up to 20x |
+| Forex | Up to 25x |
 
 Position limits vary depending on:
 
