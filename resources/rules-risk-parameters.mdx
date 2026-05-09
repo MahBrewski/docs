@@ -1,83 +1,314 @@
 ---
 title: "Rules and risk parameters"
-description: "Review the account rules and risk concepts that define how DojiFunded accounts operate."
+description: "The complete trading, risk, payout, and compliance framework governing all DojiFunded accounts."
 icon: "shield-alert"
 ---
 
-DojiFunded accounts operate under predefined rules and risk parameters.
+This page defines the trading, payout, risk, and compliance framework governing all DojiFunded evaluation and funded accounts. By purchasing or activating a DojiFunded account, you agree to these rules in full.
 
-These rules define how evaluations, funded accounts, payout eligibility, and account breaches are handled.
-
-## Core risk areas
-
-<CardGroup cols={2}>
-  <Card icon="flag-checkered" title="Profit targets">Required balance growth to pass each evaluation phase</Card>
-  <Card icon="triangle-exclamation" title="Max drawdown">Absolute equity floor — breaching it closes the account</Card>
-  <Card icon="calendar-day" title="Daily drawdown">Maximum equity loss permitted within a single trading day</Card>
-  <Card icon="sliders" title="Leverage limits">Maximum leverage per asset class and execution venue</Card>
-  <Card icon="percent" title="Risk per trade">Maximum 1% risk per trade unless add-on is enabled</Card>
-  <Card icon="clock" title="Activity requirement">At least one trade every 30 days to stay active</Card>
-  <Card icon="arrows-left-right" title="Hedging rules">Hedging on the same currency is off by default</Card>
-  <Card icon="ban" title="Copy trading">Copy trading between different users is not permitted</Card>
-  <Card icon="stopwatch" title="Minimum trade duration">All trades must be open for at least 60 seconds</Card>
-  <Card icon="circle-xmark" title="Account arbitrage">Cross-account arbitrage strategies are not allowed</Card>
+<CardGroup cols={3}>
+  <Card icon="cube" title="Core">Platform overview, account types, and definitions</Card>
+  <Card icon="triangle-exclamation" title="Risk management">Drawdown rules, loss limits, breach conditions, and profit targets</Card>
+  <Card icon="chart-line" title="Trading rules">Trading conditions, leverage limits, requirements, and payouts</Card>
+  <Card icon="shield-check" title="Compliance">Restricted behaviour and account limitations</Card>
+  <Card icon="building-2" title="Infrastructure">Fees, execution venues, and risk disclosure</Card>
 </CardGroup>
 
-## Account state and breaches
+---
 
-A breach occurs when the active drawdown threshold is exceeded or platform rules are violated.
+## <span style={{color: "#B7FF00"}}>01</span> · Platform Overview
 
-<CardGroup cols={2}>
-  <Card icon="lock" title="Trading access revoked">All order entry is blocked immediately upon breach</Card>
-  <Card icon="circle-xmark" title="Payout eligibility removed">Breached accounts lose all payout rights</Card>
-  <Card icon="power-off" title="Account becomes inactive">Breached accounts cannot be restored</Card>
-  <Card icon="right-from-bracket" title="Positions managed">Open positions may be closed automatically at breach</Card>
+DojiFunded is an on-chain funded trading infrastructure designed for traders, systematic strategies, and autonomous agents. All funded trades are routed through [GMX](https://gmx.io) and [Ostium](https://ostium.io).
+
+<CardGroup cols={3}>
+  <Card icon="flag-checkered" title="Evaluation accounts">Pass an evaluation to access platform-provided capital</Card>
+  <Card icon="bolt" title="Instant funding">Skip the evaluation with the Degen account model</Card>
+  <Card icon="globe" title="Multi-asset access">Crypto, forex, commodities, stocks, indices, and ETFs</Card>
+  <Card icon="link" title="On-chain payouts">All eligible payouts verified and settled on-chain</Card>
+  <Card icon="shield-halved" title="Automated risk enforcement">Drawdown limits and rules enforced in real time</Card>
+  <Card icon="chart-bar" title="Realistic execution">Simulated against live market conditions and liquidity</Card>
 </CardGroup>
 
-## Trading requirements
+---
+
+## <span style={{color: "#B7FF00"}}>02</span> · Account Types
+
+Supported account sizes range from `$1,000` to `$100,000`.
+
+| Account Type | Model |
+| --- | --- |
+| Degen | Instant Funding |
+| 1-Step | Single Evaluation |
+| 2-Step Elite | Two-Phase Evaluation |
+| 2-Step Classic | Two-Phase Evaluation |
+
+---
+
+## <span style={{color: "#B7FF00"}}>03</span> · Definitions
 
 <CardGroup cols={2}>
-  <Card icon="circle-check" title="No consistency rule">No daily profit caps or restrictions on single-trade profits</Card>
-  <Card icon="calendar-xmark" title="No minimum trading days">Evaluations can be passed in a single trade if all rules are respected</Card>
-  <Card icon="rotate" title="30-day activity">At least one trade every 30 days to keep the account active</Card>
-  <Card icon="robot" title="Autonomous strategies">Algorithmic and AI-driven strategies are permitted</Card>
+  <Card icon="scale-balanced" title="Balance">Closed account value excluding unrealized PnL</Card>
+  <Card icon="chart-line" title="Equity">Real-time account value including floating PnL</Card>
+  <Card icon="calendar-day" title="Daily Drawdown">Maximum equity loss allowed within a single trading day</Card>
+  <Card icon="triangle-exclamation" title="Maximum Drawdown">Absolute equity floor — breaching it closes the account</Card>
+  <Card icon="circle-xmark" title="Breach">Automatic account termination when equity violates platform risk limits</Card>
+  <Card icon="flag-checkered" title="Profit Target">Required balance growth needed to pass an evaluation phase</Card>
 </CardGroup>
 
-## Restricted behavior
+---
 
-<CardGroup cols={2}>
-  <Card icon="arrows-left-right" title="Cross-account hedging">Opposing positions across multiple accounts to guarantee profit on one</Card>
-  <Card icon="copy" title="Copy trading between users">Mirroring positions or using shared signal groups across accounts</Card>
-  <Card icon="user-slash" title="Account sharing">Sharing login credentials or trading another user's account</Card>
-  <Card icon="bolt" title="Latency or pricing exploits">Exploiting execution delays, desync, or oracle pricing errors</Card>
-  <Card icon="arrows-rotate" title="Artificial volume">Wash trading, self-matching, or meaningless trade loops</Card>
-  <Card icon="chart-line" title="Market manipulation">Spoofing, coordinated attacks, or intentional liquidity disruption</Card>
-</CardGroup>
+## <span style={{color: "#B7FF00"}}>04</span> · Drawdown Rules
+
+All drawdown calculations are equity-based and include floating PnL from open positions.
+
+| Account | Max Drawdown | Daily Drawdown |
+| --- | --- | --- |
+| Degen | 5% trailing | — |
+| 1-Step | 6% smart | 3% |
+| 2-Step Elite | 6% static | 3% |
+| 2-Step Classic | 8% static | 5% |
+
+---
+
+## <span style={{color: "#B7FF00"}}>05</span> · Daily Loss Limits
+
+Daily drawdown limits reset every 24 hours based on account equity snapshots. If account equity reaches or falls below the active drawdown threshold, the account is automatically breached.
 
 <Warning>
-  Violations may result in immediate account termination, payout cancellation, and permanent platform bans.
+  There are no grace periods or manual resets.
 </Warning>
 
-## Platform enforcement
+---
 
-Rule compliance is checked continuously. Drawdowns, trade activity, and account state are monitored in real time.
+## <span style={{color: "#B7FF00"}}>06</span> · Breach Conditions
 
-<Warning>
-  Attempts to bypass platform rules — including wash trading, exploit attempts, prohibited coordination, or external execution — can invalidate the account.
-</Warning>
+A breach occurs when maximum drawdown is exceeded, daily drawdown is exceeded, or platform rules are violated.
 
-## Payout rule concepts
+Upon breach:
 
-<CardGroup cols={1}>
-  <Card icon="flag-checkered">Funded accounts do not carry new profit targets after qualification</Card>
-  <Card icon="layout-dashboard">Payout requests are made from the dashboard</Card>
-  <Card icon="link">Eligible payouts settle on-chain to the embedded wallet</Card>
-  <Card icon="sliders">Add-ons can affect the profit split percentage</Card>
+<CardGroup cols={2}>
+  <Card icon="right-from-bracket" title="Positions closed">Open positions may be closed automatically</Card>
+  <Card icon="lock" title="Trading access revoked">All order entry is blocked immediately</Card>
+  <Card icon="hand-holding-dollar" title="Payout eligibility removed">Breached accounts lose all payout rights</Card>
+  <Card icon="power-off" title="Permanently inactive">Breached accounts cannot be restored</Card>
 </CardGroup>
 
-## Where to find account-specific rules
+---
 
-For account-specific values, start with [Doji accounts](/doji-accounts).
+## <span style={{color: "#B7FF00"}}>07</span> · Profit Targets
+
+| Account Type | Profit Target |
+| --- | --- |
+| Degen | None |
+| 1-Step | 10% |
+| 2-Step Elite | 10% (Step 1), 5% (Step 2) |
+| 2-Step Classic | 10% (Step 1), 5% (Step 2) |
+
+Funded accounts do not require additional profit targets after qualification.
+
+---
+
+## <span style={{color: "#B7FF00"}}>08</span> · Trading Conditions
+
+<CardGroup cols={2}>
+  <Card icon="stopwatch" title="Minimum trade duration">All trades must remain open for at least 60 seconds</Card>
+  <Card icon="ban" title="No account arbitrage">Cross-account arbitrage strategies are prohibited</Card>
+  <Card icon="bolt" title="No latency exploitation">Exploiting platform latency or pricing errors is prohibited</Card>
+  <Card icon="copy" title="No cross-user copy trading">Mirroring positions across different user accounts is not permitted</Card>
+  <Card icon="arrows-left-right" title="Hedging restricted">Hedging on the same currency pair is off by default — enable via add-on</Card>
+  <Card icon="percent" title="1% risk per trade">Maximum risk per trade is 1% unless the risk-limit add-on is enabled</Card>
+</CardGroup>
+
+---
+
+## <span style={{color: "#B7FF00"}}>09</span> · Leverage and Position Limits
+
+| Asset Class | Maximum Leverage |
+| --- | --- |
+| Crypto | Up to 5x |
+| Commodities | Up to 4x |
+| Forex | Up to 4x |
+
+Position limits vary depending on execution venue, market liquidity, asset volatility, and account type.
+
+---
+
+## <span style={{color: "#B7FF00"}}>10</span> · Trading Requirements
+
+DojiFunded does not enforce consistency rules. Traders may pass evaluations in a single trade if all account rules are respected.
+
+<CardGroup cols={2}>
+  <Card icon="circle-check">No daily profit caps</Card>
+  <Card icon="circle-check">No restrictions on single-trade profits</Card>
+  <Card icon="circle-check">No minimum trading days</Card>
+  <Card icon="circle-check">No restrictions on trading style</Card>
+</CardGroup>
+
+At least one trade must be executed every 30 days to keep the account active.
+
+### Allowed trading styles
+
+<CardGroup cols={3}>
+  <Card icon="chart-bar" title="Scalping">Short-duration trades targeting small moves</Card>
+  <Card icon="chart-line" title="Swing trading">Positions held over days or weeks</Card>
+  <Card icon="clock" title="Position trading">Long-term directional exposure</Card>
+  <Card icon="robot" title="Algorithmic trading">Systematic rule-based automated strategies</Card>
+  <Card icon="cpu" title="Autonomous strategies">AI-driven or agent-based trading systems</Card>
+  <Card icon="brain" title="AI-assisted systems">Strategies using AI tooling for analysis and execution</Card>
+</CardGroup>
+
+---
+
+## <span style={{color: "#B7FF00"}}>11</span> · Payouts
+
+<CardGroup cols={2}>
+  <Card icon="link" title="Processed on-chain">All payouts verified and settled through on-chain infrastructure</Card>
+  <Card icon="wallet" title="Embedded wallet">Funds go directly to the user's embedded wallet</Card>
+  <Card icon="sliders" title="Profit split">Split percentage depends on account configuration</Card>
+  <Card icon="plus" title="Enhanced splits">80% or 90% profit splits available through add-ons</Card>
+</CardGroup>
+
+| Account Type | Withdrawal Requirement |
+| --- | --- |
+| Degen | First withdrawal after 5% profit |
+| 1-Step | Minimum 1% account profit |
+| 2-Step Elite | Minimum 1% account profit |
+| 2-Step Classic | Minimum 1% account profit |
+
+---
+
+## <span style={{color: "#B7FF00"}}>12</span> · Restricted Behaviour
+
+To maintain fair trading conditions and protect platform integrity, certain behaviours are prohibited across all accounts.
+
+<Warning>
+  Violations may result in immediate account termination, payout cancellation, permanent platform bans, and removal of all active funded accounts.
+</Warning>
+
+<AccordionGroup>
+  <Accordion title="Cross-account hedging">
+    Opening opposing positions across multiple accounts to artificially guarantee profit on one account while sacrificing another is prohibited.
+
+    **Examples:**
+    - Long BTC on one account while shorting BTC on another
+    - Using external prop firm accounts to offset DojiFunded exposure
+    - Coordinated hedging between multiple users
+
+    Each account must be traded independently with genuine directional exposure.
+  </Accordion>
+  <Accordion title="Multi-account manipulation">
+    Creating or operating multiple accounts to bypass platform rules, increase allocation unfairly, or exploit payout mechanics is prohibited.
+
+    **This includes:**
+    - Using multiple identities
+    - Operating accounts for other users
+    - Rotating risk across accounts
+    - Shared household or device abuse without approval
+  </Accordion>
+  <Accordion title="Copy trading between users">
+    Copy trading or mirroring positions between different users is not permitted.
+
+    **This includes:**
+    - Signal groups
+    - Shared trade execution
+    - Social copy trading
+    - Mirrored automated strategies across multiple users
+
+    Automated trading systems developed and operated solely by the account owner are permitted.
+  </Accordion>
+  <Accordion title="Account sharing">
+    Accounts are personal and non-transferable.
+
+    **You may not:**
+    - Share login credentials
+    - Sell accounts
+    - Allow third parties to trade your account
+    - Operate accounts on behalf of another user
+  </Accordion>
+  <Accordion title="Platform abuse and exploit attempts">
+    Attempting to exploit technical weaknesses, latency issues, execution delays, pricing errors, or platform bugs is strictly prohibited.
+
+    **Examples:**
+    - Latency arbitrage
+    - Oracle manipulation attempts
+    - Execution desync exploitation
+    - Abnormal exploit behaviour
+  </Accordion>
+  <Accordion title="Artificial volume generation">
+    Trades must represent legitimate market activity. Artificially generating volume solely to manipulate metrics, rankings, payouts, or platform analytics is prohibited.
+
+    **Examples:**
+    - Wash trading
+    - Self-matching
+    - Repeated meaningless trade loops
+  </Accordion>
+  <Accordion title="Market manipulation">
+    Users may not engage in behaviour intended to manipulate market conditions or execution environments.
+
+    **This includes:**
+    - Coordinated trading attacks
+    - Spoofing
+    - Manipulative order placement
+    - Intentional liquidity disruption
+  </Accordion>
+  <Accordion title="Strategy exploitation">
+    Strategies designed purely to exploit simulated evaluation mechanics rather than realistic market trading are prohibited.
+
+    **Examples:**
+    - Unrealistic micro-scalping designed around simulation assumptions
+    - Strategies impossible to execute consistently in live markets
+    - Excessive exposure designed to exploit execution edge cases
+  </Accordion>
+</AccordionGroup>
+
+---
+
+## <span style={{color: "#B7FF00"}}>13</span> · Account Limitations
+
+<CardGroup cols={2}>
+  <Card icon="user" title="One account per individual">Multiple accounts under the same identity are prohibited</Card>
+  <Card icon="id-card" title="No multiple identities">Using different identities to hold multiple accounts is not permitted</Card>
+  <Card icon="shield-alert" title="Access restrictions">DojiFunded may restrict access based on internal risk systems</Card>
+  <Card icon="circle-check" title="Additional verification">High-risk accounts may require additional identity verification</Card>
+</CardGroup>
+
+---
+
+## <span style={{color: "#B7FF00"}}>14</span> · Fees and Trading Costs
+
+Trading costs depend on execution venue and market type and may include opening and closing fees and funding fees. All trading conditions simulate realistic market execution environments.
+
+For the full fee schedule see [Fees](/resources/fees).
+
+---
+
+## <span style={{color: "#B7FF00"}}>15</span> · Execution Venues
+
+<CardGroup cols={2}>
+  <Card icon="chart-candlestick" title="GMX" href="https://gmx.io">On-chain crypto and commodity perpetual markets</Card>
+  <Card icon="building-2" title="Ostium" href="https://ostium.io">Multi-asset execution across stocks, ETFs, forex, indices, commodities, and crypto</Card>
+</CardGroup>
+
+All funded trades are routed through supported on-chain execution infrastructure. Prediction market integrations and additional execution venues are planned.
+
+---
+
+## <span style={{color: "#B7FF00"}}>16</span> · Risk Disclosure
+
+Trading leveraged products carries substantial risk. By using DojiFunded, you acknowledge:
+
+<CardGroup cols={3}>
+  <Card icon="triangle-exclamation" title="Evaluation pass rate">Most traders may not pass evaluations</Card>
+  <Card icon="circle-xmark" title="Non-refundable fees">Evaluation fees are non-refundable</Card>
+  <Card icon="bolt" title="Rapid losses">Leveraged trading can result in rapid capital loss</Card>
+  <Card icon="clock" title="Breach risk">Funded accounts can be breached at any time</Card>
+  <Card icon="wave-square" title="Market volatility">Market conditions may significantly impact performance</Card>
+  <Card icon="pen" title="Rule updates">DojiFunded reserves the right to update platform rules prospectively</Card>
+</CardGroup>
+
+Trading performance does not guarantee future results.
+
+---
 
 ## Next steps
 
