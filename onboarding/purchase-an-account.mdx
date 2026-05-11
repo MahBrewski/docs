@@ -4,42 +4,62 @@ description: "Select a DojiFunded account, add any add-ons, and pay in USDC."
 icon: "wallet"
 ---
 
-Select a DojiFunded account, add any add-ons, and pay in USDC — directly from any wallet, by card, or via cross-chain swap.
-
 Once you're inside the terminal, purchasing an account is three steps: pick the account type, select any add-ons, and pay. All purchases settle in USDC on Arbitrum, but you can pay from any wallet, any chain, or with a card — no wallet setup required.
 
 ## Purchase flow
 
-1. Log in to the dashboard
+<Steps>
+  <Step title="Log in to the dashboard">
+    Sign in with the email, wallet, or social account you used at signup. Your embedded Doji wallet loads automatically.
+  </Step>
 
-Sign in with the email, wallet, or social account you used at signup. Your embedded Doji wallet loads automatically.
+  <Step title="Choose your account type">
+    Browse the available plans and pick the one that suits how you trade.
 
-2. Choose your account type
+    <CardGroup cols={2}>
+      <Card title="Instant Funding" icon="bolt" tag="Coming soon">
+        Skip the evaluation and get funded immediately.
+      </Card>
+      <Card title="1-Step" icon="flag-checkered">
+        Single evaluation phase to qualify for funding.
+      </Card>
+      <Card title="2-Step Elite" icon="shield-halved">
+        Two-phase evaluation with a 6% static drawdown.
+      </Card>
+      <Card title="2-Step Classic" icon="shield">
+        Two-phase evaluation with an 8% static drawdown.
+      </Card>
+    </CardGroup>
+  </Step>
 
-Browse the available plans and pick the one that suits how you trade:
+  <Step title="Select add-ons">
+    Review and select any optional add-ons before continuing to payment.
+  </Step>
 
-- `Instant Funding (coming soon)` — skip the evaluation; get funded immediately.
-- `1-Step` — single evaluation phase to qualify for funding.
-- `2-Step Elite` — two-phase evaluation with 6% static drawdown.
-- `2-Step Classic` — two-phase evaluation with 8% static drawdown.
+  <Step title="Pay in USDC">
+    Pick the payment method that's easiest for you. All three settle to your Doji wallet in USDC on Arbitrum.
 
-3. Select any optional add-ons before continuing to payment.
+    <CardGroup cols={3}>
+      <Card title="Crypto wallet" icon="qrcode">
+        Scan the QR code or copy your deposit address to send USDC from any wallet, or authorise a wallet connection to pay in one click.
+      </Card>
+      <Card title="Card" icon="credit-card" tag="Coming soon">
+        Pay with debit or credit card. Your purchase is onramped to USDC and used to activate the account.
+      </Card>
+      <Card title="Cross-chain swap" icon="arrow-right-arrow-left">
+        Use our third-party swap providers to swap any asset on any chain into USDC on Arbitrum.
+      </Card>
+    </CardGroup>
 
-4. Pay in USDC
+    <Warning>
+      Direct crypto payments must be USDC on Arbitrum. Sending other tokens or using unsupported networks can result in lost funds. If you're moving funds from a different chain or asset, use the cross-chain swap option instead.
+    </Warning>
+  </Step>
 
-Pick the payment method that's easiest for you. All three settle to your Doji wallet in USDC on Arbitrum.
-
-- `Crypto wallet` — scan the QR code or copy your deposit address to send USDC from any wallet; or authorise a wallet connection to pay in one click.
-- `Card (coming soon)` — pay with debit or credit card. Your purchase is onramped to USDC and used to activate the account.
-- `Cross-chain swap` — use our third-party swap providers to swap any asset on any chain into USDC on Arbitrum.
-
-5. Start trading
-
-Once payment is confirmed, your account is activated automatically and your evaluation goes live in the terminal.
-
-<Warning>
-  Direct crypto payments must be USDC on Arbitrum. Sending other tokens or using unsupported networks can result in lost funds. If you're moving funds from a different chain or asset, use the cross-chain swap option instead.
-</Warning>
+  <Step title="Start trading">
+    Once payment is confirmed, your account is activated automatically and your evaluation goes live in the terminal.
+  </Step>
+</Steps>
 
 ## Payment details
 
@@ -52,6 +72,14 @@ Once payment is confirmed, your account is activated automatically and your eval
 
 ## Next steps
 
-- Start [creating your account](/onboarding/creating-account) if you haven't already.
-- Understand the [user lifecycle](/onboarding/user-lifecycle).
-- Review [How it works](/how-it-works).
+<CardGroup cols={3}>
+  <Card title="Creating an account" icon="user-plus" href="/onboarding/creating-account">
+    Start here if you haven't signed up yet.
+  </Card>
+  <Card title="User lifecycle" icon="route" href="/onboarding/user-lifecycle">
+    See how you move from onboarding to funded trading and payouts.
+  </Card>
+  <Card title="How it works" icon="circle-info" href="/how-it-works">
+    Understand the full DojiFunded model.
+  </Card>
+</CardGroup>

@@ -4,29 +4,39 @@ description: "Sign up, set up your trading identity, and step into the DojiFunde
 icon: "user-plus"
 ---
 
-Sign up, set up your trading identity, and step into the DojiFunded terminal.
-
 Getting started on DojiFunded takes seconds. Sign up with email, a wallet, or your social account, set how you want to appear on the platform, and you're dropped into the terminal — ready to pick an account and start an evaluation.
 
 ## Sign up
 
-1. Create your account
+<Steps>
+  <Step title="Create your account">
+    Choose whichever sign-up method you prefer.
 
-Sign up using whichever method you prefer:
+    <CardGroup cols={3}>
+      <Card title="Email" icon="envelope">
+        Sign up with your email address. A verification link is sent to your inbox.
+      </Card>
+      <Card title="Wallet" icon="wallet">
+        Connect any supported EVM wallet to sign in without a password.
+      </Card>
+      <Card title="Social" icon="x-twitter">
+        Link your X account for one-click sign-in.
+      </Card>
+    </CardGroup>
+  </Step>
 
-- `Email` — sign up with your email address; verification is sent to your inbox.
-- `Wallet` — connect any supported EVM wallet to sign in without a password.
-- `Social (optional)` — link your X account for one-click sign-in.
+  <Step title="Get your embedded wallet">
+    During signup, DojiFunded automatically creates a dedicated embedded wallet for your account — no external wallet or browser extension required.
+  </Step>
 
-2. During signup, DojiFunded automatically creates a dedicated embedded wallet for your account — no external wallet or browser extension required.
+  <Step title="Set up your trading identity">
+    Choose your username and profile avatar. Your trading identity is used across the dashboard, leaderboard, and trading analytics.
+  </Step>
 
-3. Set up your trading identity
-
-Choose your username and profile avatar. Your trading identity is used across the dashboard, leaderboard, and trading analytics.
-
-4. Enter the terminal
-
-Once your identity is set, you're taken straight into the DojiFunded terminal. From here you can browse account types, purchase an account, and start trading.
+  <Step title="Enter the terminal">
+    Once your identity is set, you're taken straight into the DojiFunded terminal. From here you can browse account types, purchase an account, and start trading.
+  </Step>
+</Steps>
 
 ## What gets linked to your account
 
@@ -42,6 +52,14 @@ Once your identity is set, you're taken straight into the DojiFunded terminal. F
 
 ## Next steps
 
-- Browse plans and [purchase an account](/onboarding/purchase-an-account).
-- Understand the [user lifecycle](/onboarding/user-lifecycle).
-- Review [How it works](/how-it-works).
+<CardGroup cols={3}>
+  <Card title="Purchase an account" icon="cart-shopping" href="/onboarding/purchase-an-account">
+    Browse plans and choose the account that fits how you trade.
+  </Card>
+  <Card title="User lifecycle" icon="route" href="/onboarding/user-lifecycle">
+    See how you move from onboarding to funded trading and payouts.
+  </Card>
+  <Card title="How it works" icon="circle-info" href="/how-it-works">
+    Understand the full DojiFunded model.
+  </Card>
+</CardGroup>
