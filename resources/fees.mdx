@@ -66,6 +66,34 @@ Before trading, confirm:
 - any venue-level funding or rollover costs visible in the platform
 - how those costs appear in PnL and position history
 
+## How the fee model relates to execution
+
+DojiFunded operates a standardized trader-facing fee model designed for funded trading and evaluation infrastructure.
+
+Displayed trading fees are platform-level fees rather than direct passthrough representations of venue-native execution costs. This allows DojiFunded to provide:
+
+- consistent cross-asset pricing
+- simpler challenge accounting
+- transparent trader UX
+- unified reporting and analytics
+
+Venue-native mechanics such as rollover, funding, slippage, and execution conditions remain visible to traders where applicable.
+
+### Onchain execution and risk routing
+
+Onchain execution is handled through an aggregated risk and routing layer rather than direct 1:1 mirroring of every user action.
+
+Trader activity is first recorded within the DojiFunded internal ledger and risk engine. Net exposure is then aggregated and routed onchain to execution venues such as Ostium.
+
+That approach allows DojiFunded to:
+
+- reduce unnecessary transaction load
+- optimize execution efficiency
+- manage exposure dynamically
+- route liquidity intelligently across venues
+
+As trader volume scales, DojiFunded effectively acts as a funded trading and risk orchestration layer that sources execution liquidity from partners such as Ostium.
+
 ## Next steps
 
 - Learn about [execution venues](/resources/execution-venues).
