@@ -18,6 +18,7 @@
     "dark": "#7EAF00"
   },
   "favicon": "/images/doji-logo.png",
+  "css": "/custom.css",
   "navigation": {
     "tabs": [
       {
