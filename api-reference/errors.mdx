@@ -1,0 +1,83 @@
+---
+title: "Errors & operational notes"
+description: "HTTP error codes, risk violation handling, idempotency, and operational guidelines."
+icon: "circle-exclamation"
+---
+
+## HTTP error reference
+
+| Status | Body | Cause |
+|---|---|---|
+| `400` | `{ "error": "invalid_payload", "issues": […] }` | Request body failed schema validation |
+| `401` | `{ "error": "unauthorized" }` | Missing or invalid `X-API-Key` / `X-API-Secret` |
+| `403` | `{ "error": "IP not whitelisted for this API key" }` | Source IP not in `ipWhitelist` |
+| `403` | `{ "error": "permission_denied" }` | Key lacks the required scope (e.g. `READ_ONLY` key calling `POST /order`) |
+| `404` | `{ "error": "not_found" }` | Account, order, or position ID not found |
+| `409` | `{ "error": "conflict", … }` | `client_id` already used for a different order |
+| `422` | `violations: [{ rule, severity, … }]` (in `OrderResponse`) | Order rejected by a risk rule |
+| `429` | `{ "error": "rate_limited" }` | Per-key rate limit exceeded (1,200 req/min) |
+| `500` | `{ "error": "engine_error" }` | Engine fault — retry-safe with the same `client_id` |
+
+---
+
+## Risk violations (`422`)
+
+When an order trips a risk rule, `POST /v1/order` returns HTTP `200` with a non-empty `violations` array — the order is **not placed**.
+
+```json
+{
+  "order":      null,
+  "trades":     [],
+  "violations": [
+    {
+      "rule":     "daily_loss_limit",
+      "severity": "HARD",
+      "message":  "Order would exceed the daily loss limit for this account."
+    }
+  ]
+}
+```
+
+<Warning>
+  Always check `violations` in every order response, even when the HTTP status is `200`.
+</Warning>
+
+Common rule triggers:
+- **Drawdown gate** — equity has fallen below the plan's maximum drawdown threshold.
+- **Daily loss limit** — realized + unrealized loss for the day would exceed the daily limit.
+- **News-event freeze** — trading is locked around a scheduled high-impact event.
+- **Exposure cap** — order would exceed the per-symbol or total exposure limit.
+
+---
+
+## Idempotency
+
+Set a stable `client_id` on every order intent:
+
+```json
+{ "client_id": "my-bot:strategy-A:1234", … }
+```
+
+Retrying with the same `client_id` is always safe — the engine returns the original result rather than placing a duplicate. This means you can retry on network timeouts and `500` errors without risk.
+
+<Note>
+  A `409 Conflict` means the `client_id` was already used for a **different** order body. Use a new `client_id` for a genuinely new order intent.
+</Note>
+
+---
+
+## Rate limits
+
+The per-key limit is **1,200 requests per minute**. When exceeded, the engine returns `429`. Implement exponential backoff — start at 1 second and double up to a maximum of 30 seconds.
+
+---
+
+## Operational notes
+
+**Timestamps** — All timestamps are ISO 8601 UTC. The server clock is NTP-synced.
+
+**Numeric precision** — Quantities and prices use `f64` JSON numbers. For sub-cent precision, use string-encoded decimals where supported (most account-balance fields accept this).
+
+**Pagination** — List endpoints accept `limit` (capped per endpoint) plus `from` / `to` ISO 8601 timestamps. Cursor pagination is not yet exposed.
+
+**Retries** — On `500`, retry with the same `client_id`. On `429`, back off before retrying. Do not retry `400`, `401`, `403`, or `404` — they indicate a problem with the request itself.

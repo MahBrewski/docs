@@ -1,0 +1,233 @@
+---
+title: "Account endpoints"
+description: "Read account state, positions, trade history, funding, risk breaches, and analytics."
+icon: "user"
+---
+
+All account endpoints require [authentication](/api-reference/authentication) and the `READ_ONLY` (or higher) permission scope.
+
+```
+BASE = https://engine.dojifunded.com/v1
+```
+
+---
+
+## Create account
+
+```bash
+POST /v1/accounts
+```
+
+Creates a trading account. One account per plan or challenge.
+
+---
+
+## Get account
+
+```bash
+GET /v1/account/:account_id
+```
+
+Returns the account record: plan ID, state, balances, allowed venues, and risk configuration.
+
+```bash
+curl "$BASE/account/$ACC" \
+  -H "X-API-Key: $KEY" \
+  -H "X-API-Secret: $SECRET"
+```
+
+---
+
+## Account summary
+
+```bash
+GET /v1/account/:account_id/summary
+```
+
+Live snapshot of the account.
+
+```bash
+curl "$BASE/account/$ACC/summary" \
+  -H "X-API-Key: $KEY" \
+  -H "X-API-Secret: $SECRET"
+```
+
+**Response fields**
+
+<ResponseField name="equity" type="number">
+  Current account equity.
+</ResponseField>
+
+<ResponseField name="free_margin" type="number">
+  Margin available for new positions.
+</ResponseField>
+
+<ResponseField name="used_margin" type="number">
+  Margin locked by open positions.
+</ResponseField>
+
+<ResponseField name="unrealized_pnl" type="number">
+  Aggregate unrealized profit/loss across open positions.
+</ResponseField>
+
+<ResponseField name="realized_pnl" type="number">
+  Realized profit/loss for the current trading day.
+</ResponseField>
+
+---
+
+## Open positions
+
+```bash
+GET /v1/account/:account_id/positions
+```
+
+Returns all currently open positions.
+
+```bash
+curl "$BASE/account/$ACC/positions" \
+  -H "X-API-Key: $KEY" \
+  -H "X-API-Secret: $SECRET"
+```
+
+Each row includes: `symbol`, `side`, `quantity`, `entry_price`, `mark_price`, `unrealized_pnl`, `leverage`, `venue`.
+
+---
+
+## Position history
+
+```bash
+GET /v1/account/:account_id/positions/history
+```
+
+Paginated list of closed positions.
+
+```bash
+curl "$BASE/account/$ACC/positions/history?limit=50&from=2025-01-01T00:00:00Z" \
+  -H "X-API-Key: $KEY" \
+  -H "X-API-Secret: $SECRET"
+```
+
+**Query parameters**
+
+<ParamField query="from" type="string">
+  ISO 8601 start timestamp (inclusive).
+</ParamField>
+
+<ParamField query="to" type="string">
+  ISO 8601 end timestamp (inclusive).
+</ParamField>
+
+<ParamField query="limit" type="number">
+  Number of results to return (capped per endpoint).
+</ParamField>
+
+---
+
+## Trade history
+
+```bash
+GET /v1/account/:account_id/trades
+```
+
+Paginated list of trade fills.
+
+```bash
+curl "$BASE/account/$ACC/trades?from=2025-01-01T00:00:00Z&limit=100" \
+  -H "X-API-Key: $KEY" \
+  -H "X-API-Secret: $SECRET"
+```
+
+Accepts the same `from`, `to`, and `limit` query parameters as position history.
+
+---
+
+## Funding payments
+
+```bash
+GET /v1/account/:account_id/funding
+```
+
+Funding payments received and paid, broken down per asset class.
+
+```bash
+curl "$BASE/account/$ACC/funding" \
+  -H "X-API-Key: $KEY" \
+  -H "X-API-Secret: $SECRET"
+```
+
+---
+
+## Breaches
+
+```bash
+GET /v1/account/:account_id/breaches
+```
+
+Risk-rule breaches tracked against your plan — drawdown, daily loss, and similar limits.
+
+```bash
+curl "$BASE/account/$ACC/breaches" \
+  -H "X-API-Key: $KEY" \
+  -H "X-API-Secret: $SECRET"
+```
+
+---
+
+## Violations
+
+```bash
+GET /v1/account/:account_id/violations
+```
+
+Hard violations that trigger account termination.
+
+```bash
+curl "$BASE/account/$ACC/violations" \
+  -H "X-API-Key: $KEY" \
+  -H "X-API-Secret: $SECRET"
+```
+
+---
+
+## Analytics
+
+```bash
+GET /v1/account/:account_id/analytics
+```
+
+Aggregated performance metrics.
+
+```bash
+curl "$BASE/account/$ACC/analytics" \
+  -H "X-API-Key: $KEY" \
+  -H "X-API-Secret: $SECRET"
+```
+
+**Response fields**
+
+<ResponseField name="win_rate" type="number">
+  Percentage of trades closed at a profit.
+</ResponseField>
+
+<ResponseField name="avg_r" type="number">
+  Average R-multiple per trade.
+</ResponseField>
+
+<ResponseField name="profit_factor" type="number">
+  Gross profit divided by gross loss.
+</ResponseField>
+
+<ResponseField name="exposure_breakdown" type="object">
+  Exposure per asset class and venue.
+</ResponseField>
+
+---
+
+## Open orders
+
+```bash
+GET /v1/account/:account_id/orders
+```
+
+Returns all working orders for the account. See [Order endpoints](/api-reference/order-endpoints) for placing and cancelling orders.

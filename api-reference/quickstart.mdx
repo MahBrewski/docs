@@ -1,0 +1,96 @@
+---
+title: "Quickstart"
+description: "Place your first order in under 5 minutes — a working bot in 30 lines of TypeScript."
+icon: "bolt"
+---
+
+## Prerequisites
+
+1. A DojiFunded account with an active plan.
+2. An API key with `TRADE` and `READ_ONLY` permissions — create one at Dashboard → Settings → Developer.
+3. Your `account_id` from the dashboard.
+
+---
+
+## Set environment variables
+
+```bash
+export DOJI_API_KEY="doji_ak_…"
+export DOJI_API_SECRET="doji_sk_…"
+export DOJI_ACCOUNT_ID="5e1c7a40-…"
+```
+
+---
+
+## The bot
+
+```typescript
+const KEY    = process.env.DOJI_API_KEY!;
+const SECRET = process.env.DOJI_API_SECRET!;
+const ACC    = process.env.DOJI_ACCOUNT_ID!;
+const BASE   = 'https://engine.dojifunded.com/v1';
+
+const auth = {
+  'X-API-Key':    KEY,
+  'X-API-Secret': SECRET,
+};
+
+// 1. Read account state
+const summary = await fetch(`${BASE}/account/${ACC}/summary`, {
+  headers: auth,
+}).then(r => r.json());
+
+console.log('equity', summary.equity);
+
+// 2. Place a limit buy
+const res = await fetch(`${BASE}/order`, {
+  method:  'POST',
+  headers: { ...auth, 'Content-Type': 'application/json' },
+  body: JSON.stringify({
+    account_id:  ACC,
+    symbol:      'BTC-USD',
+    side:        'BUY',
+    kind:        'LIMIT',
+    quantity:    0.01,
+    price:       60000,
+    tif:         'GTC',
+    flags:       { post_only: true, reduce_only: false },
+    client_id:   `bot:${Date.now()}`,
+    platform_id: 'GMX',
+  }),
+}).then(r => r.json());
+
+if (res.violations?.length) {
+  console.error('Order rejected:', res.violations);
+} else {
+  console.log('Order placed:', res.order.id);
+}
+```
+
+---
+
+## What just happened
+
+1. **Account summary** — reads live equity and margin state before acting.
+2. **Limit order** — a `post_only` limit buy that will only rest on the book, never take liquidity.
+3. **`client_id`** — a timestamp-based ID that makes the request idempotent. Safe to retry on failure.
+4. **Violation check** — always inspect `violations` before assuming success.
+
+---
+
+## Next steps
+
+<CardGroup cols={2}>
+  <Card title="Order endpoints" icon="arrow-right-arrow-left" href="/api-reference/order-endpoints">
+    Explore all order types: stop, take-profit, reduce-only, and cross-venue.
+  </Card>
+  <Card title="Account endpoints" icon="user" href="/api-reference/account-endpoints">
+    Pull positions, trade history, breaches, and analytics.
+  </Card>
+  <Card title="Webhooks" icon="bell" href="/api-reference/webhooks">
+    Replace polling with real-time push events for fills and position closes.
+  </Card>
+  <Card title="Errors" icon="circle-exclamation" href="/api-reference/errors">
+    Handle risk violations, retries, and rate limits correctly.
+  </Card>
+</CardGroup>

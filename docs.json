@@ -81,10 +81,31 @@
         "tab": "API reference",
         "groups": [
           {
-            "group": "Reference",
+            "group": "Overview",
             "pages": [
               "api-reference/introduction",
-              "api-reference/authentication"
+              "api-reference/quickstart"
+            ]
+          },
+          {
+            "group": "Core",
+            "pages": [
+              "api-reference/authentication",
+              "api-reference/account-endpoints",
+              "api-reference/order-endpoints"
+            ]
+          },
+          {
+            "group": "Market data",
+            "pages": [
+              "api-reference/market-data"
+            ]
+          },
+          {
+            "group": "Reference",
+            "pages": [
+              "api-reference/webhooks",
+              "api-reference/errors"
             ]
           }
         ]

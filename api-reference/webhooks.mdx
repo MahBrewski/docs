@@ -1,0 +1,67 @@
+---
+title: "Webhooks"
+description: "Receive trade lifecycle push events at a URL you register on your API key."
+icon: "bell"
+---
+
+If you set a `webhookUrl` when [creating an API key](/api-reference/authentication#create-a-key), the engine POSTs trade lifecycle events to that URL in real time.
+
+<Note>
+  Webhook delivery and the verification scheme are in active development. The events listed here reflect current intent — the exact payload shapes will be documented as they are finalised.
+</Note>
+
+---
+
+## Setup
+
+Set `webhookUrl` during key creation:
+
+```bash
+curl -X POST https://api.dojifunded.com/api/api-keys \
+  -H "X-User-Id: $USER_ID" \
+  -H "Content-Type: application/json" \
+  -d '{
+    "label":       "my-bot-prod",
+    "permissions": ["TRADE", "READ_ONLY"],
+    "webhookUrl":  "https://my-bot.example.com/hooks/doji"
+  }'
+```
+
+Requirements:
+- The URL **must** use `https://`.
+- The URL must be reachable from the engine — test with a public endpoint before going to production.
+
+---
+
+## Events
+
+The engine sends events for the following lifecycle transitions:
+
+| Event | Trigger |
+|---|---|
+| `order.ack` | Order accepted by the engine |
+| `order.fill` | Order fully or partially filled |
+| `order.cancel` | Order cancelled (by user or risk system) |
+| `position.close` | Position closed |
+| `account.breach` | Risk-rule threshold crossed |
+
+---
+
+## Verification
+
+Sign your endpoint to reject requests that didn't originate from DojiFunded. A full verification scheme (HMAC-SHA256 signatures over the payload + timestamp) will be documented separately once it is live.
+
+As an interim measure, verify that:
+1. The source IP matches the known DojiFunded engine IP range.
+2. Your endpoint returns `2xx` within a reasonable timeout — failed deliveries will be retried.
+
+---
+
+## Roadmap
+
+Webhooks are live for basic order events. Coming soon:
+- Formal HMAC-SHA256 payload signing
+- Retry policy and delivery guarantees documentation
+- Per-event filtering on the key
+
+WebSocket streams for fills, book updates, and account events are also planned as a lower-latency alternative to webhooks. See the [roadmap](/api-reference/introduction#roadmap).

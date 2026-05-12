@@ -1,34 +1,85 @@
 ---
-title: "Introduction"
-description: "Overview of the DojiFunded API reference section."
+title: "API Reference"
+description: "Programmatic access to DojiFunded — place orders, manage positions, and pull account state."
 icon: "code"
 ---
 
-This section is reserved for the DojiFunded API reference.
+The DojiFunded Trading API is a public REST interface for algorithmic trading. Customers generate API keys in the dashboard and use them to place orders, manage positions, and pull account state programmatically.
 
-## Current status
+<Note>
+  The legacy admin API for the copy-engine lives in a separate surface with different auth. This reference covers the **customer-facing trading API only**.
+</Note>
 
-The docs structure keeps an API reference area because the product will need it.
+## At a glance
 
-The detailed endpoint inventory is still being expanded, so this section stays intentionally lightweight for now.
+| | |
+|---|---|
+| **Base URL** | `https://engine.dojifunded.com/v1` |
+| **Auth** | `X-API-Key: doji_ak_…` + `X-API-Secret: doji_sk_…` per request |
+| **Format** | JSON in / JSON out |
+| **Rate limit** | 1,200 req/min per key |
+| **Versioning** | URL prefix `/v1` |
+| **Key creation** | Dashboard → Settings → Developer |
 
-## What should go here
+## Use cases
 
-As the API surface is documented, this section should cover:
+<CardGroup cols={2}>
+  <Card title="Bots & algo traders" icon="robot">
+    Submit market and limit orders, manage TP/SL, react to fills in real time.
+  </Card>
+  <Card title="Portfolio dashboards" icon="chart-line">
+    Read positions, account summary, trade history, and funding payments.
+  </Card>
+  <Card title="Risk monitors" icon="shield">
+    Poll breaches and violations, feed your own alerting and reporting stack.
+  </Card>
+  <Card title="Webhook integrations" icon="webhook">
+    Receive trade lifecycle pushes at a URL you register on the API key.
+  </Card>
+</CardGroup>
 
-- authentication
-- account and user endpoints
-- trading and order endpoints
-- wallet and payout endpoints
-- market and venue endpoints
+## Sections
 
-## Documentation rule
+<CardGroup cols={2}>
+  <Card title="Authentication" icon="key" href="/api-reference/authentication">
+    Mint API keys, understand permission scopes, and authenticate every request.
+  </Card>
+  <Card title="Account endpoints" icon="user" href="/api-reference/account-endpoints">
+    Account state, positions, trades, funding, breaches, and analytics.
+  </Card>
+  <Card title="Order endpoints" icon="arrow-right-arrow-left" href="/api-reference/order-endpoints">
+    Place, cancel, and close orders across all order types and venues.
+  </Card>
+  <Card title="Market data" icon="chart-bar" href="/api-reference/market-data">
+    Public price, orderbook, trades, tickers, and symbol metadata — no auth needed.
+  </Card>
+  <Card title="Webhooks" icon="bell" href="/api-reference/webhooks">
+    Receive push notifications for order fills, position closes, and breaches.
+  </Card>
+  <Card title="Errors" icon="circle-exclamation" href="/api-reference/errors">
+    HTTP error codes, risk violations, and operational guidelines.
+  </Card>
+</CardGroup>
 
-Before adding endpoint details, confirm the actual API contract from the source of truth.
+## Quick start
 
-Do not infer request or response schemas without confirmed API definitions.
+Jump straight to a working 30-line Node bot:
 
-## Next steps
+<Card title="Quickstart — bot in 30 lines" icon="bolt" href="/api-reference/quickstart">
+  Place your first limit order in under 5 minutes.
+</Card>
 
-- Review [authentication](/api-reference/authentication).
-- Return to the main [introduction](/).
+## Code locations
+
+| Component | Path |
+|---|---|
+| API-key controller | `doji-auth-backend/apps/wallet-service/src/apikeys/apikeys.controller.ts` |
+| API-key service | `doji-auth-backend/apps/wallet-service/src/apikeys/apikeys.service.ts` |
+| API-key DB schema | `doji-auth-backend/apps/wallet-service/src/common/schema/apikeys.ts` |
+| Trading routes (Rust/Axum) | `doji-perp-engine/src/api/http.rs` |
+| Order handlers | `doji-perp-engine/src/api/http/orders.rs` |
+| Account handlers | `doji-perp-engine/src/api/http/accounts.rs` |
+| Market data handlers | `doji-perp-engine/src/api/http/market_data.rs` |
+| Order/Side/TIF enums | `doji-perp-engine/src/domain/order.rs` |
+| Frontend Developer page | `doji-interface/src/components/settings/sections/DeveloperSection.tsx` |
+| Frontend API-keys client | `doji-interface/src/lib/api-keys-client.ts` + `src/hooks/useApiKeys.ts` |

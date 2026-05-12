@@ -1,30 +1,171 @@
 ---
 title: "Authentication"
-description: "High-level guidance for documenting DojiFunded API authentication."
+description: "Create and manage API keys, understand permission scopes, and authenticate every trading request."
 icon: "key"
 ---
 
-This page is the placeholder for DojiFunded API authentication documentation.
+API keys are minted through the **wallet-service** (`doji-auth-backend/apps/wallet-service`). You can create them from the dashboard's Developer page or directly over HTTP.
 
-## Current status
+## Key format
 
-The broader product uses multiple services and different auth flows, including session-based auth and wallet-related flows.
+```
+doji_ak_a3f2b1c9d8e7…   ← public key  →  sent in X-API-Key header
+doji_sk_5b2a8f4c1e9d…   ← secret      →  sent in X-API-Secret header (never logged)
+```
 
-The exact public API authentication contract still needs to be documented from the backend source of truth.
+Both values are SHA-256 hashed at rest. The raw secret is returned **only once** at creation — save it immediately or revoke and regenerate.
 
-## What to document here later
+---
 
-- supported auth methods
-- token or session model
-- required headers
-- environment-specific base URLs
-- example authenticated requests
+## Endpoints
 
-## Documentation rule
+These endpoints use the wallet-service base URL, not the trading engine.
 
-Only publish authentication details that are confirmed by the live API contract or approved backend documentation.
+### List keys
 
-## Next steps
+```bash
+GET https://api.dojifunded.com/api/api-keys
+```
 
-- Return to the [API reference introduction](/api-reference/introduction).
-- Review the [platform overview](/platform/overview).
+```bash
+curl https://api.dojifunded.com/api/api-keys \
+  -H "X-User-Id: $USER_ID"
+```
+
+Returns all active keys for the user (without secrets).
+
+---
+
+### Create a key
+
+```bash
+POST https://api.dojifunded.com/api/api-keys
+```
+
+```bash
+curl -X POST https://api.dojifunded.com/api/api-keys \
+  -H "X-User-Id: $USER_ID" \
+  -H "Content-Type: application/json" \
+  -d '{
+    "label":       "my-bot-prod",
+    "permissions": ["TRADE", "READ_ONLY"],
+    "ipWhitelist": ["203.0.113.42"],
+    "webhookUrl":  "https://my-bot.example.com/hooks/doji",
+    "expiresAt":   "2027-01-01T00:00:00Z"
+  }'
+```
+
+<ParamField body="label" type="string" required>
+  Human-readable name for the key.
+</ParamField>
+
+<ParamField body="permissions" type="string[]" required>
+  One or more permission scopes. See [Permission scopes](#permission-scopes) below.
+</ParamField>
+
+<ParamField body="ipWhitelist" type="string[]">
+  Optional list of allowed source IPs. Requests from other IPs return `403`.
+</ParamField>
+
+<ParamField body="webhookUrl" type="string">
+  Optional HTTPS URL to receive trade lifecycle events. Must start with `https://`.
+</ParamField>
+
+<ParamField body="expiresAt" type="string">
+  Optional ISO 8601 expiry timestamp (must be in the future).
+</ParamField>
+
+**Response**
+
+```json
+{
+  "apiKey": {
+    "id":          "…",
+    "keyPrefix":   "doji_ak_a3f2b1c9",
+    "permissions": ["TRADE", "READ_ONLY"]
+  },
+  "key":    "doji_ak_<48-char hex>",
+  "secret": "doji_sk_<48-char hex>"
+}
+```
+
+<Warning>
+  The `secret` field appears **once** in this response and never again. Copy it to a secrets manager before the request completes.
+</Warning>
+
+**Constraints**
+
+- Maximum **10 active keys** per user — revoke before creating an 11th.
+- `webhookUrl` must use `https://`.
+- `expiresAt` must be an ISO 8601 timestamp in the future.
+
+---
+
+### Revoke a key
+
+```bash
+DELETE https://api.dojifunded.com/api/api-keys/:id
+```
+
+```bash
+curl -X DELETE https://api.dojifunded.com/api/api-keys/<keyId> \
+  -H "X-User-Id: $USER_ID"
+```
+
+Revocation is immediate and unrecoverable.
+
+---
+
+## Permission scopes
+
+| Scope | Grants access to |
+|---|---|
+| `READ_ONLY` | All `GET` endpoints — account, positions, market data |
+| `TRADE` | `POST /v1/order`, close-position |
+| `MANAGE_ORDERS` | Cancel orders, modify TP/SL, full order management |
+
+You can grant multiple scopes on a single key: `["TRADE", "READ_ONLY"]`.
+
+---
+
+## Authenticating requests
+
+Send both headers on every `/v1/*` call:
+
+```http
+X-API-Key:    doji_ak_a3f2b1c9d8e7…
+X-API-Secret: doji_sk_5b2a8f4c1e9d…
+Content-Type: application/json
+```
+
+The engine validates each request by calling `POST /api/api-keys/validate` against the wallet-service. Validation checks:
+
+- Key exists and is active
+- Secret hash matches
+- Key has not expired
+- Source IP is in `ipWhitelist` (if configured)
+- Key permissions cover the endpoint being called
+
+<Note>
+  **Testnet caveat:** current testnet endpoints accept calls without headers while enforcement is being wired at the gateway. Build your client with headers attached from day one — production will return `401` without them.
+</Note>
+
+---
+
+## Environment variables (recommended)
+
+Store credentials as environment variables rather than hardcoding them:
+
+```bash
+export DOJI_API_KEY="doji_ak_…"
+export DOJI_API_SECRET="doji_sk_…"
+export DOJI_ACCOUNT_ID="5e1c7a40-…"
+```
+
+Then reference them in requests:
+
+```bash
+curl "$BASE/account/$DOJI_ACCOUNT_ID/summary" \
+  -H "X-API-Key: $DOJI_API_KEY" \
+  -H "X-API-Secret: $DOJI_API_SECRET"
+```
