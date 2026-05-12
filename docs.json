@@ -4,7 +4,14 @@
   "name": "DojiFunded",
   "appearance": {
     "default": "dark",
-    "strict": true
+    "strict": false
+  },
+  "background": {
+    "decoration": "gradient",
+    "color": {
+      "light": "#f9fbf0",
+      "dark": "#060a06"
+    }
   },
   "fonts": {
     "family": "Space Grotesk",
@@ -29,7 +36,8 @@
             "pages": [
               "index",
               "how-it-works",
-              "doji-accounts"
+              "doji-accounts",
+              "getting-started/faq"
             ]
           },
           {
@@ -123,7 +131,7 @@
     }
   },
   "logo": {
-    "light": "/logo/doji-funded-logo.png",
+    "light": "/logo/Doji_Logo_PNG_lightmode.png",
     "dark": "/logo/doji-funded-logo.png"
   },
   "navbar": {
@@ -147,7 +155,8 @@
   },
   "footer": {
     "socials": {
-      "x": "https://x.com/DojiFunded"
+      "x": "https://x.com/DojiFunded",
+      "discord": "https://discord.gg/dojifunded"
     }
   }
 }
