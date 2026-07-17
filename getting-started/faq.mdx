@@ -8,41 +8,18 @@ icon: "circle-question"
 
 <AccordionGroup>
   <Accordion title="What is DojiFunded?">
-    An on-chain prop trading platform where we fund skilled traders with up to $100k in capital and they keep up to 90% of profits.
+    DojiFunded is an on-chain prop trading platform where we fund skilled traders with upto $100k in capital and they keep upto 90% in profits. Trade crypto, forex, commodities, indices, and selected equities with transparent rules and instant on-chain payouts, with every rule transparent and on-chain.
   </Accordion>
   <Accordion title="How is DojiFunded different from traditional prop firms?">
-    DojiFunded prioritizes full transparency — every position is logged on-chain, eliminating hidden violations or manual decision-making. Unlike traditional prop firms, there are no opaque reviews or arbitrary account closures.
+    Transparency is our key focus - With every position being logged on-chain.
 
-    - Every trade is verifiable on-chain via the DojiFunded Explorer
-    - No hidden rules or manual interventions
-    - Non-custodial — you keep control of your wallet
-    - Instant payouts directly to your wallet
+    No hidden violations or manual decision-making.
   </Accordion>
   <Accordion title="What markets can I trade?">
-    DojiFunded supports trading across a wide range of markets:
-
-    - Crypto
-    - Forex
-    - Commodities
-    - Indices
-    - Selected equities
-
-    Additional markets may be added in future platform updates.
+    DojiFunded supports trading across crypto, forex, commodities, indices, and selected equities. Available markets may expand over time.
   </Accordion>
   <Accordion title="How to buy an account?">
-    Accounts are purchased using USDC on the Arbitrum network. Additional payment methods are coming soon.
-
-    1. Connect your EVM wallet (MetaMask, Rabby, Coinbase Wallet, etc.)
-    2. Select your preferred evaluation challenge and any add-ons
-    3. Pay with USDC on Arbitrum
-    4. Begin trading immediately after purchase
-  </Accordion>
-  <Accordion title="Who can I contact for support?">
-    Support is available through our community channels and direct contact:
-
-    - **Email:** support@dojifunded.com
-    - **Business:** business@dojifunded.com
-    - **Live chat:** Coming soon
+    Accounts can be purchased via USDC on arbitrum network. New payment modes such as multiple assets and card payments will be added.
   </Accordion>
 </AccordionGroup>
 
@@ -52,88 +29,60 @@ icon: "circle-question"
 
 <AccordionGroup>
   <Accordion title="How do evaluations work?">
-    Traders purchase their preferred evaluation challenge with any desired add-ons from the dashboard and begin trading immediately. There is no waiting period.
-
-    1. Choose a challenge size and plan type
-    2. Optionally add add-ons (e.g. 90% profit split)
-    3. Pay with USDC on Arbitrum and start trading
-    4. Hit the profit target while staying within drawdown and rule limits
-    5. Pass and become eligible for a funded account
-  </Accordion>
-  <Accordion title="What is Trailing Drawdown?">
-    Trailing drawdown follows your account's highest equity value and moves up as you make profits — it never moves back down. This makes it progressively harder to lose back gains.
-
-    **Example:**
-    - Start: $10,000 — trailing amount: $600
-    - Account hits $11,500 → drawdown floor moves to $10,900
-    - Lose $300 → balance $11,200, still safe
-    - Lose further → floor does not drop back down
+    Traders can purchase their preferred evaluation challenge with preferred add-ons directly from the dashboard and begin trading immediately.
   </Accordion>
   <Accordion title="What is Static Drawdown?">
-    Static drawdown stays fixed from your starting balance and never moves — even if your account grows. This gives you more room to take risks early since profits don't tighten the floor.
+    Static drawdown stays fixed from the starting balance, it does not move higher when your account grows.
 
-    **Example:**
-    - Start: $10,000 — drawdown floor: $9,200
-    - After profit: balance $11,000 — floor still $9,200
-    - After loss: balance $9,500 — still safe (above $9,200)
+    **Example**
 
-    Note: daily drawdown still updates each day based on the high-water mark.
-  </Accordion>
-  <Accordion title="What is Smart Drawdown?">
-    Smart Drawdown is a hybrid model combining static and trailing systems. It starts at -6% and automatically trails to 0% once you achieve a 6% gain on your account balance.
+    You start with a $100,000 account and a 6% drawdown.
 
-    **Initial Phase**
+    Your minimum equity is: $94,000
 
-    Your account begins with a -6% drawdown from the starting balance. No time limits — trade at your own pace.
-    - Starting balance: $10,000
-    - Initial drawdown limit: $9,400
-
-    **Profit Phase**
-
-    Once you hit a 6% gain, the drawdown adjusts to 0% of starting balance and locks permanently there.
-    - After 10% gain: balance $11,000 → drawdown locks at $10,000
-    - That $10,000 limit stays fixed regardless of future profits
-
-    **Key Benefits**
-    - Clear, predictable drawdown levels
-    - No time limits
-    - Faster progression to larger accounts
+    Even if you grow the account to $120,000, the limit stays the same.
   </Accordion>
   <Accordion title="Are drawdowns equity-based?">
-    Drawdowns are based on **realised account balance**, not floating PnL. Open positions do not count toward drawdown until they are closed.
+    No, the drawdowns are based on realised account balance, not floating PnL. Open trades do not affect drawdown calculations until positions are closed.
 
-    Daily drawdown uses a high-water mark calculation — it resets at 23:00 UTC each day based on whichever is higher between your balance and equity at that moment.
-  </Accordion>
-  <Accordion title="How Daily Loss is calculated?">
-    Each account type has its own daily loss limit, recalculated at 23:00 UTC every day.
+    Daily drawdown is calculated using a high-water mark (HWM), while maximum drawdown depends on your account type.
 
-    | Account Type | Daily Loss Limit |
-    |---|---|
-    | One Phase | 3% |
-    | Two Phase Classic | 3% |
-    | Two Phase Elite | 5% |
+    **Example of Daily Drawdown (HWM)**
 
-    **Balance vs Equity**
+    You start the day with an account balance of: $100,000
 
-    The higher value between Balance and Equity at 23:00 UTC is used to set the daily floor.
+    Your daily loss limit is 5% of account size. This means your maximum daily loss is: $5,000
 
-    - Balance at reset: $10,200 — Equity at reset: $10,350
-    - $10,350 is used → 3% of $10,000 = $300 → floor set at $9,700 equity
+    During the day, your balance reaches: $105,000
+
+    Your daily drawdown floor now becomes: $100,000 ($105,000 − $5,000)
+
+    You later close losing trades and your balance drops to: $99,500
+
+    The account fails because the realised balance fell below the daily drawdown limit.
+
+    **Another example makes it even clearer:**
+
+    If the account reaches: $110,000
+
+    Your daily floor becomes: $105,000 ($110,000 − $5,000)
+
+    So the formula is always:
+
+    Daily HWM Floor = Highest Balance of the Day − (Daily Loss % × Initial Account Size)
   </Accordion>
   <Accordion title="What happens if I break a rule?">
-    If your account breaches a daily or maximum drawdown limit, it fails automatically. There is no manual review — the system is fully automated and on-chain.
+    If your account breaches a daily or maximum drawdown limit, it fails automatically.
 
-    For certain rule violations (like HFT), the first two instances result in a warning and profit deduction. A third instance leads to an account breach.
-
-    After a breach, you can purchase a new account or, if eligible, use a reset code. Program and reset rates may change over time.
+    There's no manual review.
   </Accordion>
   <Accordion title="Is there a time limit?">
-    Most evaluations do not have a deadline — trade at your own pace. However, accounts that are inactive for 30 or more days may be paused.
-  </Accordion>
-  <Accordion title="Can I retry my account?">
-    Yes. If you fail a challenge, you can reset your evaluation at a special rate. If you lose a funded account, we automatically send you a code to help you restart.
+    Most evaluations do not have a deadline. You can pass in a day or take your time.
 
-    Note that program and reset rates may change over time.
+    Accounts with 30 days of inactivity may be paused.
+  </Accordion>
+  <Accordion title="Can I have multiple accounts?">
+    Yes, You can run multiple evaluations within platform limits as there is no cap on how many accounts a user can trade with.
   </Accordion>
 </AccordionGroup>
 
@@ -142,84 +91,31 @@ icon: "circle-question"
 ## Trading & Execution
 
 <AccordionGroup>
-  <Accordion title="Are trades executed on live markets?">
-    During the evaluation phase, trading is conducted in a professional virtual environment using real-time market data — accurate price movements, spreads, and market depth that match actual markets.
+  <Accordion title="Is slippage included?">
+    No, slippage is not included and a user will be subjected to only opening/closing fees and funding fees.
 
-    After reaching the funded phase, trades are executed on real markets, which you can verify on-chain through the DojiFunded Explorer (for eligible accounts).
+    On moving to the funded phase, the Doji internal risk engine absorbs slippage fee when being executed on real execution venues.
   </Accordion>
   <Accordion title="What order types are supported?">
-    DojiFunded supports the following order types:
-
-    - Market orders
-    - Limit orders
-    - Stop market orders
-    - Stop limit orders
+    Dojifunded supports market orders, limit orders, stop market and stop limit orders.
   </Accordion>
   <Accordion title="Are there trading fees?">
-    Possible fees include:
+    Depending on the market, trades may include:
 
     - Opening fees
     - Closing fees
     - Funding fees
     - Rollover fees
 
-    All fees are visible before you place a trade — no hidden charges.
+    Fees are visible before placing a trade.
   </Accordion>
-  <Accordion title="Are trading bots allowed?">
-    DojiFunded supports algorithmic and automated trading strategies. You are free to use your own custom bots and EAs.
+  <Accordion title="Are Trading bots allowed?">
+    Yes, Dojifunded has provisions to support Algorithmic and automated trading strategies.
 
-    However, exploitative tactics are prohibited and may result in an account ban.
+    Strategies that abuse latency, pricing errors, or platform mechanics are not allowed and are subjected to account bans.
   </Accordion>
-  <Accordion title="Is News Trading allowed?">
-    Yes, news trading is allowed on our platform.
-  </Accordion>
-  <Accordion title="Is high frequency trading (HFT) allowed?">
-    High frequency trading is not permitted. HFT strategies can create unfair advantages that go against our commitment to fair trading.
-
-    **What counts as HFT?**
-    - Trades held for 60 seconds or less
-    - An unusually high number of trades per hour
-
-    **How violations are handled**
-    - 1st & 2nd instance: Warning + deduction of net profits from HFT trades
-    - 3rd instance: Account breach
-
-    Only profitable trades held for 60 seconds or less trigger violations. Losses within 60 seconds do not result in warnings.
-  </Accordion>
-  <Accordion title="Are there any prohibited trading practices?">
-    To ensure fairness and platform integrity, the following are not allowed:
-
-    **Unethical Trading**
-    - **Latency Arbitrage:** Exploiting data update delays for unfair advantage
-    - **Tick Scalping:** Profiting from minimal price fluctuations at unsustainable speeds
-    - **Account Arbitrage:** Using multiple accounts to exploit differences in conditions or risk limits
-
-    **Reverse Trading & Group Hedging**
-    - **Reverse Trading:** Taking opposing positions on the same asset across accounts
-    - **Group Hedging:** Coordinating positions across multiple traders to hedge risk
-
-    **Group Copying & Account Management**
-    - No copying trades between accounts using identical EA settings
-    - No trading on behalf of others (violates KYC/AML rules)
-
-    **Third Party EAs**
-
-    Publicly available third-party Expert Advisors, algorithms, or bots are not permitted. Only first-party automated tools are supported.
-  </Accordion>
-  <Accordion title="Is copy trading allowed?">
-    You may copy trades from your own personal accounts at other prop firms or brokers to your DojiFunded account — as long as all accounts are owned by you.
-
-    **Restrictions**
-    - Same owner accounts only — no copying from friends, relatives, or others
-    - No coordinated trading between separate traders (same IP address included)
-    - No reverse trading or collusion strategies
-
-    Accounts found in violation will be breached without refund.
-  </Accordion>
-  <Accordion title="Am I able to take hedging positions on multiple accounts?">
-    No. Taking opposite positions on multiple accounts is considered cheating and is strictly prohibited. Accounts found doing this will be closed without a refund.
-
-    **Example:** Opening a long on BTCUSD on one account and a short on BTCUSD on another account constitutes prohibited opposite positioning.
+  <Accordion title="Are they any timelimits per trade?">
+    Every trade/position opened on Dojifunded has to be held for a minimum of 60 seconds before it can be closed to prevent gaming and HFT strategies being run on the platform.
   </Accordion>
 </AccordionGroup>
 
@@ -229,92 +125,13 @@ icon: "circle-question"
 
 <AccordionGroup>
   <Accordion title="What happens after I pass?">
-    You become eligible for a funded account and profit sharing. Consistent traders may receive larger capital allocations and potential access to retail capital over time.
-
-    **What you unlock:**
-    - Funded account with real capital
-    - Up to 90% profit split
-    - Instant withdrawal to your wallet
-    - Potential scaling to larger allocations
+    You become eligible for a funded account and profit sharing. Traders with strong consistency may qualify for larger allocations over time.
   </Accordion>
   <Accordion title="How do payouts work?">
-    Once payout requirements are met, profits can be withdrawn instantly into your wallet. There is no waiting period or manual approval required.
-
-    1. Ensure all trades are closed
-    2. Meet the minimum profit threshold for your plan
-    3. Request payout from the dashboard
-    4. Funds arrive in your wallet within 1–6 hours
-  </Accordion>
-  <Accordion title="How can I withdraw profits from Instant withdraw?">
-    Request your payout as soon as your balance is above 1% of account size for 1-step and 2-step plans, and 5% for Instant.
-
-    We offer direct crypto withdrawals.
-
-    **How to Request a Withdrawal**
-    1. Ensure all trades are closed
-    2. Choose the amount
-    3. Request payout from the dashboard
-
-    **Processing Times:** Standard processing is 1 hour to 6 hours.
-  </Accordion>
-  <Accordion title="Are payouts secure and transparent?">
-    Yes. Your profits are fully secured and payouts are transparent and verifiable on-chain:
-
-    - Track all crypto payouts directly on-chain: Arbiscan, Etherscan
-    - View payout confirmations from successful traders in our Discord community
+    Once payout requirements are met, profits can be withdrawn instantly into your wallet.
   </Accordion>
   <Accordion title="Can funded accounts scale?">
-    Yes. Consistent and disciplined traders may receive larger capital allocations over time, as well as potential access to retail capital. Performance is tracked on-chain, giving a transparent basis for scaling decisions.
-  </Accordion>
-  <Accordion title="Do I need to pay taxes on my earnings?">
-    Yes, you are responsible for paying taxes on your trading profits in accordance with the tax laws of your country. For tailored guidance, consult a qualified tax professional familiar with your local laws.
-  </Accordion>
-  <Accordion title="How many accounts can I have?">
-    There is no cap on the number of accounts. You can hold as many as you like, subject to the combined balance limits per program:
-
-    - **Challenge accounts:** up to $400,000 combined starting balance
-    - **Instant Funding:** up to $100,000 combined starting balance
-
-    **Examples:**
-    - 16 × $25,000 accounts = $400,000 ✓
-    - 40 × $10,000 accounts = $400,000 ✓
-    - 20 × $25,000 = $500,000 → not allowed ✗
-  </Accordion>
-</AccordionGroup>
-
----
-
-## AI & Analytics
-
-<AccordionGroup>
-  <Accordion title="What AI features does DojiFunded offer?">
-    DojiFunded includes a suite of AI-powered tools built directly into the platform:
-
-    - AI-powered analytics and performance tracking
-    - Behavioral insights and pattern detection
-    - Automated risk monitoring
-    - Trade consistency scoring
-  </Accordion>
-  <Accordion title="Can AI analyze my trading behavior?">
-    Yes. The AI can identify patterns in your trading history including:
-
-    - Overtrading
-    - Inconsistent position sizing
-    - Excessive risk exposure
-    - Emotional trading patterns
-
-    These insights are surfaced in your dashboard so you can identify and correct bad habits before they affect your account.
-  </Accordion>
-  <Accordion title="Will AI help improve my trading?">
-    The AI tools are designed to support improving consistency, discipline, and long-term risk management. Rather than giving trade signals, they surface data-driven feedback on your performance patterns to help you trade smarter over time.
-  </Accordion>
-  <Accordion title="How to show good risk management?">
-    Before receiving a funded account, traders who reach their profit target undergo a risk management review.
-
-    **What we look for:**
-    - Consistent position sizing across multiple trades
-    - Responsible use of leverage
-    - Systematic, disciplined decision-making patterns
+    Yes, Consistent traders may receive larger account allocations and a shot at retail capital.
   </Accordion>
 </AccordionGroup>
 
@@ -324,38 +141,15 @@ icon: "circle-question"
 
 <AccordionGroup>
   <Accordion title="What wallet do I need?">
-    Any supported EVM wallet works, including:
-
-    - MetaMask
-    - Rabby
-    - Binance Wallet
-    - Coinbase Wallet
-    - Trust Wallet
-    - Any other EVM-compatible wallet
+    Any supported EVM wallet works, including MetaMask, Rabby, binance wallet, coinbase wallet, Trust wallet etc.
   </Accordion>
   <Accordion title="Is trading activity verifiable?">
-    Yes. All trading activity and execution history can be viewed through the DojiFunded Explorer. Every position is logged on-chain, making it fully transparent and independently verifiable by anyone.
+    Yes, all Trading activity and execution history can be viewed through the DojiFunded Explorer.
   </Accordion>
   <Accordion title="Is DojiFunded custodial?">
-    DojiFunded is non-custodial. You keep full control of your wallet at all times. We never hold your private keys or have custody of your funds.
+    Dojifunded is non-custodial. User keeps control of their wallet.
   </Accordion>
-  <Accordion title="Key terms explained">
-    **Account Values**
-
-    - **Balance:** The total value of completed trades, deposits, and withdrawals. Does not include open position PnL.
-    - **Equity:** Real-time account value — balance plus unrealized PnL from open positions.
-
-    **Risk Management**
-
-    - **Max Drawdown:** A hard limit on total account losses. If equity drops below this level, trading is suspended.
-    - **Daily Drawdown:** A per-day loss limit measured from the high-water mark at 23:00 UTC.
-    - **Smart Drawdown:** Starts at -6% and trails to 0% once a 6% gain is achieved. Then locks permanently.
-    - **Breach:** When a trading rule is violated, leading to automatic account deactivation.
-  </Accordion>
-  <Accordion title="Where can I leave a customer review?">
-    We would greatly appreciate it if you could take a moment to share your experience by posting a review on our Trustpilot page. Your reviews help us improve and guide potential customers in making informed decisions.
-  </Accordion>
-  <Accordion title="Do we have any monthly fees?">
-    No. Our programs require only a one-time payment, with no recurring monthly charges.
+  <Accordion title="Where can I get additional support?">
+    Additional Support is available through our community channels.
   </Accordion>
 </AccordionGroup>
