@@ -59,3 +59,43 @@ header + p,
   color: rgba(255, 255, 255, 0.45) !important;
   font-weight: 400 !important;
 }
+
+/* API playground: Try it button in brand green instead of Mintlify blue */
+[class*="3064E3"] {
+  background-color: #B7FF00 !important;
+  color: #060a06 !important;
+}
+
+[class*="3064E3"]:hover {
+  background-color: #D4FF66 !important;
+}
+
+[class*="3064E3"] span {
+  color: #060a06 !important;
+}
+
+[class*="3064E3"] .icon {
+  background-color: #060a06 !important;
+}
+
+/* Dark text on green primary buttons (navbar CTA and friends): white on light green is unreadable */
+a:has(> span[class*="bg-primary"]) span,
+a:has(> span[class*="bg-primary"]) svg,
+button:has(> span[class*="bg-primary"]) span {
+  color: #060a06 !important;
+}
+
+a:has(> span[class*="bg-primary"]) [class*="text-white"],
+button:has(> span[class*="bg-primary"]) [class*="text-white"] {
+  color: #060a06 !important;
+}
+
+/* API method pills (GET badges etc.): brand green instead of blue */
+[class*="bg-blue-400"] {
+  background-color: rgba(183, 255, 0, 0.16) !important;
+  color: #7EAF00 !important;
+}
+
+.dark [class*="bg-blue-400"] {
+  color: #B7FF00 !important;
+}
