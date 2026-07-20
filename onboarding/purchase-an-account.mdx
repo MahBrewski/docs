@@ -4,82 +4,68 @@ description: "Select a DojiFunded account, add any add-ons, and pay in USDC."
 icon: "wallet"
 ---
 
-Once you're inside the terminal, purchasing an account is three steps: pick the account type, select any add-ons, and pay. All purchases settle in USDC on Arbitrum, but you can pay from any wallet, any chain, or with a card — no wallet setup required.
-
-## Purchase flow
+Inside the terminal, buying an account takes three steps. Everything settles in **USDC on Arbitrum**, though you can pay from any wallet, any chain, or by card.
 
 <Steps>
-  <Step title="Log in to the dashboard">
-    Sign in with the email, wallet, or social account you used at signup. Your embedded Doji wallet loads automatically.
+  <Step title="Select the type">
+    Log in with the method you used at signup. Your embedded wallet loads automatically. Choose your account type.
   </Step>
 
-  <Step title="Choose your account type">
-    Browse the available plans and pick the one that suits how you trade.
-
-    <CardGroup cols={2}>
-      <Card title="Instant Funding" icon="bolt" tag="Coming soon">
-        Skip the evaluation and get funded immediately.
-      </Card>
-      <Card title="1-Step" icon="flag-checkered">
-        Single evaluation phase to qualify for funding.
-      </Card>
-      <Card title="2-Step Elite" icon="shield-halved">
-        Two-phase evaluation with a 6% static drawdown.
-      </Card>
-      <Card title="2-Step Classic" icon="shield">
-        Two-phase evaluation with an 8% static drawdown.
-      </Card>
-    </CardGroup>
+  <Step title="Choose any add-ons">
+    Adjust your profit split or risk limits at checkout.
   </Step>
 
-  <Step title="Select add-ons">
-    Review and select any optional add-ons before continuing to payment.
-  </Step>
-
-  <Step title="Pay in USDC">
-    Pick the payment method that's easiest for you. All three settle to your Doji wallet in USDC on Arbitrum.
-
-    <CardGroup cols={3}>
-      <Card title="Crypto wallet" icon="qrcode">
-        Scan the QR code or copy your deposit address to send USDC from any wallet, or authorise a wallet connection to pay in one click.
-      </Card>
-      <Card title="Card" icon="credit-card" tag="Coming soon">
-        Pay with debit or credit card. Your purchase is onramped to USDC and used to activate the account.
-      </Card>
-      <Card title="Cross-chain swap" icon="arrow-right-arrow-left">
-        Use our third-party swap providers to swap any asset on any chain into USDC on Arbitrum.
-      </Card>
-    </CardGroup>
-
-    <Warning>
-      Direct crypto payments must be USDC on Arbitrum. Sending other tokens or using unsupported networks can result in lost funds. If you're moving funds from a different chain or asset, use the cross-chain swap option instead.
-    </Warning>
-  </Step>
-
-  <Step title="Start trading">
-    Once payment is confirmed, your account is activated automatically and your evaluation goes live in the terminal.
+  <Step title="Pay">
+    Pay in USDC using whichever method is easiest. All three settle to your wallet as USDC on Arbitrum.
   </Step>
 </Steps>
 
+## Account types
+
+| Type                       | Description                                    |
+| -------------------------- | ---------------------------------------------- |
+| **Instant Funding** *(soon)* | Skip the evaluation and get funded immediately |
+| **1-Step**                 | Single evaluation to qualify                   |
+| **2-Step Classic**         | Two-phase evaluation, 6% static drawdown       |
+| **2-Step Elite**           | Two-phase evaluation, 8% static drawdown       |
+
+## Payment methods
+
+| Method               | How it works                                                                          |
+| -------------------- | ------------------------------------------------------------------------------------- |
+| **Crypto wallet**    | Scan the QR or copy your deposit address to send USDC, or connect a wallet for one-click pay. |
+| **Card** *(soon)*    | Pay by debit or credit card; the purchase is on-ramped to USDC to activate the account. |
+| **Cross-chain swap** | Convert any asset on any chain into USDC on Arbitrum via a swap provider.              |
+
+<Warning>
+  Direct crypto payments must be **USDC on Arbitrum**. Sending other tokens or using an unsupported network can result in lost funds. Moving funds from a different chain or asset? Use the cross-chain swap option instead.
+</Warning>
+
+Once your payment confirms, the account activates automatically and your evaluation goes live.
+
 ## Payment details
 
-| Detail | Value |
-| --- | --- |
-| Token | USDC |
-| Network | Arbitrum |
-| Confirmation time | Typically under 30 seconds |
-| Minimum amount | Enough to cover your selected account and add-on fees |
+| Detail                | Value                                    |
+| --------------------- | ---------------------------------------- |
+| **Token**             | USDC                                     |
+| **Network**           | Arbitrum                                 |
+| **Confirmation time** | Typically under 30 seconds               |
+| **Minimum amount**    | Enough to cover the account and add-ons  |
+
+{/* DIAGRAM: payment-method comparison, three icons (wallet, card, swap) converging on a single USDC-on-Arbitrum endpoint. */}
 
 ## Next steps
 
 <CardGroup cols={3}>
-  <Card title="Creating an account" icon="user-plus" href="/onboarding/creating-account">
-    Start here if you haven't signed up yet.
+  <Card title="Create an account" icon="user-plus" href="/onboarding/creating-account">
+    If you haven't signed up.
   </Card>
+
   <Card title="User lifecycle" icon="route" href="/onboarding/user-lifecycle">
-    See how you move from onboarding to funded trading and payouts.
+    From onboarding to payout.
   </Card>
-  <Card title="How it works" icon="circle-info" href="/how-it-works">
-    Understand the full DojiFunded model.
+
+  <Card title="How it works" icon="diagram-project" href="/how-it-works">
+    The full flow.
   </Card>
 </CardGroup>

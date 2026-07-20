@@ -4,70 +4,54 @@ description: "Learn what execution venues are and how they affect your trading e
 icon: "diagram-project"
 ---
 
-An execution venue is the trading environment or partner protocol behind your account.
+An execution venue is the trading environment behind your account. You select it during account setup.
 
-You choose your execution venue during account setup.
+## What the venue determines
 
-## What the venue affects
+Your venue determines:
 
-Your venue can determine:
-
-- supported trading pairs
-- liquidity conditions
-- fee structure
-- funding costs
-- execution environment
+* Which pairs you can trade
+* The liquidity
+* The fees
+* The funding costs
+* The execution environment
 
 ## Current venues
 
-DojiFunded currently supports:
+<CardGroup cols={2}>
+  <Card title="GMX" icon="chart-bar" href="https://gmx.io">
+    On-chain crypto and commodity perpetuals.
+  </Card>
 
-- `GMX`
-- `Ostium`
+  <Card title="Ostium" icon="building-columns" href="https://ostium.io">
+    Stocks, ETFs, commodities, indices, forex, and selected crypto.
+  </Card>
+</CardGroup>
 
-All funded trades are described as routing through supported on-chain execution infrastructure.
+All funded trades route through supported on-chain execution.
 
-## Why venue selection matters
-
-Venue selection is part of the account setup flow, not an afterthought.
-
-It can change the practical trading experience for the same account type.
+Venue selection is part of account setup, not an afterthought. The same account type can trade quite differently depending on the venue you choose.
 
 ## Venue summary
 
-### GMX
+**GMX.** On-chain crypto and commodities. Examples: BTCUSD, ETHUSD, SOLUSD, XRPUSD, HYPEUSD, GOLDUSD, WTIOILUSD, BRENTOILUSD, SILVERUSD, NATGASUSD.
 
-`GMX` supports on-chain crypto and commodity execution.
+**Ostium.** Broader and multi-asset:
 
-Examples listed there include:
+* **Stocks** such as AAPL/USD, GOOG/USD, META/USD, MSFT/USD, NVDA/USD
+* **ETFs** such as TLT/USD, XLE/USD, HYG/USD
+* **Indices** such as US500/USD, US100/USD, GER40/EUR
+* **Forex** such as EUR/USD, GBP/USD, AUD/USD
+* **Crypto** such as BTC/USD, ETH/USD, SOL/USD
 
-- crypto perpetual markets such as `BTCUSD`, `ETHUSD`, `SOLUSD`, `XRPUSD`, and `HYPEUSD`
-- commodity markets such as `GOLDUSD`, `WTIOILUSD`, `BRENTOILUSD`, `SILVERUSD`, and `NATGASUSD`
-
-### Ostium
-
-`Ostium` supports broader multi-asset execution.
-
-Examples listed there include:
-
-- stocks such as `AAPL/USD`, `GOOG/USD`, `META/USD`, `MSFT/USD`, and `NVDA/USD`
-- ETFs such as `TLT/USD`, `XLE/USD`, `HYG/USD`, `UNG/USD`, and `URA/USD`
-- indices such as `US500/USD`, `US100/USD`, `US30/USD`, `GER40/EUR`, and `UK100/GBP`
-- forex such as `EUR/USD`, `GBP/USD`, `USD/JPY`, `AUD/USD`, and `USD/CAD`
-- selected crypto such as `BTC/USD`, `ETH/USD`, `SOL/USD`, `XRP/USD`, and `HYPE/USD`
-
-## What is still future-facing
-
-Prediction markets and additional execution venues are planned.
-
-Do not present them as live until the product surface confirms them.
-
-## Availability note
-
-Market coverage and venue limits can change over time. Confirm the terminal market list before relying on a specific pair or limit.
+<Note>
+  Prediction markets and additional venues are planned, and should not be treated as live until confirmed. Coverage and limits change over time, so verify the terminal market list before relying on a specific pair or limit.
+</Note>
 
 ## Next steps
 
-- Review [available markets](/resources/available-markets).
-- Review [fees](/resources/fees).
-- Continue [creating an account](/onboarding/creating-account).
+<CardGroup cols={3}>
+  <Card title="Available markets" icon="list" href="/resources/available-markets" />
+  <Card title="Fees" icon="receipt" href="/resources/fees" />
+  <Card title="Create an account" icon="user-plus" href="/onboarding/creating-account" />
+</CardGroup>

@@ -4,98 +4,50 @@ description: "Understand the account fee model and the fee areas users should re
 icon: "dollar-sign"
 ---
 
-DojiFunded uses a one-time account or evaluation fee during onboarding and a standardized trading fee model across supported asset classes.
+One account fee at onboarding, then a standardized trading fee across every asset class. Nothing recurring.
 
-## Account and evaluation fees
+## Account fee
 
-Users pay a one-time fee based on:
-
-- account type
-- account configuration
-- selected add-ons
-
-There are no recurring fees for evaluations.
+Paid once, based on your account type, configuration, and any add-ons. There is no recurring evaluation fee.
 
 ## Trading fees
 
-DojiFunded uses a standardized open-and-close fee model across asset classes:
+A single open-and-close model, applied evenly across asset classes.
 
-| Asset class | Opening fee | Closing fee | Total round trip |
-| --- | --- | --- | --- |
-| Stocks | 0.010% | 0.010% | 0.020% |
-| ETFs | 0.010% | 0.010% | 0.020% |
-| Commodities | 0.006% | 0.006% | 0.012% |
-| Indices | 0.007% | 0.007% | 0.014% |
-| Forex | 0.005% | 0.005% | 0.010% |
-| Crypto | 0.020% | 0.020% | 0.040% |
+| Asset class     | Opening fee | Closing fee | Round trip |
+| --------------- | ----------- | ----------- | ---------- |
+| **Stocks**      | 0.010%      | 0.010%      | 0.020%     |
+| **ETFs**        | 0.010%      | 0.010%      | 0.020%     |
+| **Commodities** | 0.006%      | 0.006%      | 0.012%     |
+| **Indices**     | 0.007%      | 0.007%      | 0.014%     |
+| **Forex**       | 0.005%      | 0.005%      | 0.010%     |
+| **Crypto**      | 0.020%      | 0.020%      | 0.040%     |
 
-## Why fees are standardized
+The venues price execution differently beneath the surface. DojiFunded standardizes that into one trader-facing schedule, so execution stays transparent, strategy analysis stays clean, and costs stay comparable across assets.
 
-DojiFunded standardizes trading fees even when the underlying execution venues use different pricing mechanics.
+## Venue costs that still vary
 
-That approach is intended to improve:
+Some costs are set by the venue, not the platform, and move with the asset and the market. GMX can add funding fees; Ostium can add rollover fees. Both are shown in the platform where they apply.
 
-- execution transparency
-- strategy analysis
-- challenge evaluation clarity
-- cross-asset fee comparison
+## Before trading, confirm
 
-## Venue-level costs that can still vary
+* The account price at checkout
+* The trading fee for your asset class
+* Any venue funding or rollover cost shown in the platform
+* How those costs land in your PnL and history
 
-Trading conditions can still vary by execution venue.
+## How execution and routing work
 
-That can include:
+<Note>
+  This is the most important point on the page. DojiFunded does not mirror every order on-chain one to one. Your activity is recorded first in the DojiFunded **internal ledger and risk engine**, and the net exposure across traders is then aggregated and routed on-chain to venues such as Ostium. As volume scales, DojiFunded operates as a funded trading and risk orchestration layer that sources execution liquidity from its partners. Your PnL is tracked identically whichever way a trade is handled. We state this plainly here, and again in the rulebook, so you always know exactly what your fills represent.
+</Note>
 
-- fee structure
-- funding costs
-- execution conditions
-
-DojiFunded also notes:
-
-- GMX can introduce funding fees
-- Ostium can introduce rollover fees
-
-These venue-level costs are not described as fixed by DojiFunded itself. They can fluctuate by asset and market conditions.
-
-## What users should check before trading
-
-Before trading, confirm:
-
-- the account price at checkout
-- the asset-class trading fee
-- any venue-level funding or rollover costs visible in the platform
-- how those costs appear in PnL and position history
-
-## How the fee model relates to execution
-
-DojiFunded operates a standardized trader-facing fee model designed for funded trading and evaluation infrastructure.
-
-Displayed trading fees are platform-level fees rather than direct passthrough representations of venue-native execution costs. This allows DojiFunded to provide:
-
-- consistent cross-asset pricing
-- simpler challenge accounting
-- transparent trader UX
-- unified reporting and analytics
-
-Venue-native mechanics such as rollover, funding, slippage, and execution conditions remain visible to traders where applicable.
-
-### Onchain execution and risk routing
-
-Onchain execution is handled through an aggregated risk and routing layer rather than direct 1:1 mirroring of every user action.
-
-Trader activity is first recorded within the DojiFunded internal ledger and risk engine. Net exposure is then aggregated and routed onchain to execution venues such as Ostium.
-
-That approach allows DojiFunded to:
-
-- reduce unnecessary transaction load
-- optimize execution efficiency
-- manage exposure dynamically
-- route liquidity intelligently across venues
-
-As trader volume scales, DojiFunded effectively acts as a funded trading and risk orchestration layer that sources execution liquidity from partners such as Ostium.
+{/* DIAGRAM: routing flow, trader order → internal ledger and risk engine → net exposure aggregated → on-chain venue. Carries the single most important structural fact in the docs. */}
 
 ## Next steps
 
-- Learn about [execution venues](/resources/execution-venues).
-- Review [available markets](/resources/available-markets).
-- Review [rules and risk parameters](/resources/rules-risk-parameters).
+<CardGroup cols={3}>
+  <Card title="Execution venues" icon="building-columns" href="/resources/execution-venues" />
+  <Card title="Available markets" icon="list" href="/resources/available-markets" />
+  <Card title="Rules & risk" icon="shield-check" href="/resources/rules-risk-parameters" />
+</CardGroup>

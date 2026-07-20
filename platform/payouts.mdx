@@ -4,65 +4,62 @@ description: "Understand payout eligibility, payout requests, and on-chain settl
 icon: "hand-holding-dollar"
 ---
 
-Eligible payouts are requested from the dashboard and settled through on-chain infrastructure.
+Payouts are requested from the dashboard and settled on-chain, directly to your embedded wallet.
 
 ## How payouts work
 
 <Steps>
-  <Step title={<span style={{color: "#B7FF00"}}>Trade an eligible account</span>}>
-    Trade your funded account while staying within the applicable account rules and payout conditions.
+  <Step title="Trade an eligible account">
+    Stay within your rules and payout conditions.
   </Step>
-  <Step title={<span style={{color: "#B7FF00"}}>Reach payout eligibility</span>}>
-    Eligibility depends on your account type and any selected add-ons.
+
+  <Step title="Reach eligibility">
+    Eligibility depends on your account type and any add-ons.
   </Step>
-  <Step title={<span style={{color: "#B7FF00"}}>Request payout from the dashboard</span>}>
-    When the account becomes eligible, submit the payout request from the dashboard.
+
+  <Step title="Request the payout">
+    Submit the request from the dashboard.
   </Step>
-  <Step title={<span style={{color: "#B7FF00"}}>Receive settlement</span>}>
-    The platform verifies performance and sends funds to your wallet through its settlement flow.
+
+  <Step title="Settled">
+    The platform verifies your performance and settles the funds to your wallet.
   </Step>
 </Steps>
 
+{/* DIAGRAM: 4-step payout strip, Trade → Eligible → Request → Settled, matched to the How It Works strip. */}
+
 ## What payouts depend on
 
-<CardGroup cols={2}>
-  <Card icon="scale-balanced" title="Account type">Each account type has its own profit split and withdrawal conditions</Card>
-  <Card icon="sliders" title="Selected add-ons">Add-ons such as 80% or 90% profit split affect your payout percentage</Card>
-  <Card icon="shield-check" title="Rule compliance">Account must remain in good standing under all active rules</Card>
-  <Card icon="circle-check" title="Funded stage conditions">Conditions attached to your specific account must be met</Card>
-</CardGroup>
+| Factor              | Why it matters                                |
+| ------------------- | --------------------------------------------- |
+| **Account type**    | Each type has its own split and conditions    |
+| **Add-ons**         | The 80% or 90% split changes your percentage  |
+| **Rule compliance** | The account must remain in good standing      |
+| **Funded conditions**| Your account's specific conditions must be met |
 
 ## Withdrawal conditions
 
-| Account type | Withdrawal requirement |
-| --- | --- |
-| Instant Funding (coming soon) | First withdrawal after 5% profit |
-| 1-Step | Minimum 1% account profit |
-| 2-Step Elite | Minimum 1% account profit |
-| 2-Step Classic | Minimum 1% account profit |
+| Account type               | Requirement                      |
+| -------------------------- | -------------------------------- |
+| **Instant Funding** *(soon)* | First withdrawal after 5% profit |
+| **1-Step**                 | At least 1% account profit       |
+| **2-Step Elite**           | At least 1% account profit       |
+| **2-Step Classic**         | At least 1% account profit       |
 
-## Wallet destination
+## Before requesting, confirm
 
-Payout settlement goes to the embedded wallet created for your DojiFunded account.
+* The account is eligible and funded.
+* No rules have been breached.
+* The wallet destination is correct.
+* Your profit threshold is met.
+* Your add-on configuration matches the split you expect.
 
-Payouts are a direct user-facing part of the funded trading journey, not a separate manual back-office process.
-
-## Before requesting a payout, confirm
-
-<CardGroup cols={1}>
-  <Card icon="circle-check">The account is in an eligible funded state</Card>
-  <Card icon="shield-halved">Account rules have not been breached</Card>
-  <Card icon="wallet">The wallet destination is correct</Card>
-  <Card icon="chart-line">Account-specific payout thresholds have been met</Card>
-  <Card icon="sliders">The selected add-on configuration matches the expected profit split</Card>
-</CardGroup>
-
-<Info>
-  Payouts are designed to be instant and on-chain. If payout timing or destination rules change, update this page with the current platform behavior.
-</Info>
+{/* CONFIRM: payout timing, docs state payouts are "designed to be instant". Specify the real expected window and whether any review step occurs before funds release. */}
 
 ## Next steps
 
-- Review the [dashboard](/platform/dashboard).
-- Learn the full [user lifecycle](/onboarding/user-lifecycle).
-- Compare [Doji accounts](/doji-accounts).
+<CardGroup cols={3}>
+  <Card title="Dashboard" icon="gauge" href="/platform/dashboard" />
+  <Card title="User lifecycle" icon="route" href="/onboarding/user-lifecycle" />
+  <Card title="Doji accounts" icon="scale-balanced" href="/doji-accounts" />
+</CardGroup>

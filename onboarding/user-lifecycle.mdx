@@ -4,104 +4,70 @@ description: "See how users move from onboarding to funded trading and payouts o
 icon: "route"
 ---
 
-This page explains how you move through DojiFunded from account setup to funded trading and payouts.
+Your full path, from the landing page to your first payout.
 
 <Steps>
-  <Step title="Landing page">
-    You start on the DojiFunded landing page where you can understand how DojiFunded works, review available account types, and begin the onboarding process.
+  <Step title="Landing">
+    See how DojiFunded works and which account types are available before you begin.
   </Step>
 
-  <Step title="Sign up and log in">
-    Create an account using one of three methods.
-
-    <CardGroup cols={3}>
-      <Card title="Email" icon="envelope">
-        Sign up with your email address.
-      </Card>
-      <Card title="Wallet" icon="wallet">
-        Connect an existing EVM wallet.
-      </Card>
-      <Card title="Social" icon="x-twitter">
-        Optional social login via X.
-      </Card>
-    </CardGroup>
-
-    Each user is associated with a single trading identity. A connected wallet is mandatory and is used for trade execution, account verification, and payouts.
+  <Step title="Sign up and login">
+    Sign up with email or wallet. Each user has a single trading identity, so a connected wallet is mandatory and handles execution, verification, and payouts.
   </Step>
 
   <Step title="Account selection">
-    After logging in, select one of the following account types. Each has fixed parameters defined in advance: profit targets, drawdown limits, payout conditions, and trading restrictions. Optional add-ons may adjust certain parameters such as profit split or hedging permissions.
-
-    <CardGroup cols={3}>
-      <Card title="Instant" icon="bolt">
-        Instant-funded account — no evaluation required.
-      </Card>
-      <Card title="1-Step Evaluation" icon="flag-checkered">
-        Single-phase evaluation to qualify for funding.
-      </Card>
-      <Card title="2-Step Evaluation" icon="shield-halved">
-        Two-phase evaluation with structured targets.
-      </Card>
-    </CardGroup>
+    Each type carries fixed parameters set in advance: profit targets, drawdown limits, payout conditions, and trading restrictions. Add-ons can adjust some parameters, such as your profit split.
   </Step>
 
   <Step title="Payment">
-    Pay a one-time fee based on the selected account type. Once payment is confirmed, the account is activated and you gain access to the trading platform. There are no recurring fees for evaluations.
-
-    <CardGroup cols={2}>
-      <Card title="Crypto" icon="coins">
-        Pay in USDC on Arbitrum.
-      </Card>
-      <Card title="Card" icon="credit-card" tag="Coming soon">
-        Pay with debit or credit card.
-      </Card>
-    </CardGroup>
+    A single fee based on the account type. As soon as it confirms, the account activates. No recurring fees.
   </Step>
 
   <Step title="Trading">
-    All trading takes place inside the DojiFunded platform. Each account is assigned a virtual allocation (for example, `$10,000`):
-
-    - The balance is not withdrawable
-    - It exists only for internal accounting and risk logic
-    - Trading behaviour mirrors real market conditions
-
-    All trades must be executed using the connected wallet. Off-platform trading is not permitted.
+    All trading happens inside the platform. Each account gets a virtual allocation, for example $10,000.
   </Step>
 
-  <Step title="Monitoring and verification">
-    While trading, the platform tracks everything in real time.
-
-    | Signal | What's tracked |
-    | --- | --- |
-    | Positions & PnL | Live position tracking and profit/loss monitoring |
-    | Drawdowns | Continuous drawdown usage monitoring |
-    | On-chain NFTs | Trade positions recorded on-chain with full position metadata |
-    | Rule compliance | Checked continuously throughout trading |
-
-    Performance data is visible in the dashboard and the trade NFT Explorer. Any attempt to bypass platform rules — including wash trading, prohibited strategies, or external execution — invalidates the account.
+  <Step title="Monitoring">
+    The platform tracks positions, drawdown, on-chain records, and rule compliance in real time.
   </Step>
 
   <Step title="Payouts">
-    When payout conditions are met:
-
-    1. Request a withdrawal from the dashboard.
-    2. Performance is verified on-chain.
-    3. Funds are sent directly to your wallet.
-
-    Payout percentages depend on the account type and any selected add-ons.
+    Meet the conditions, request a withdrawal, get verified on-chain, and receive funds directly to your wallet. Your payout percentage depends on account type and add-ons.
   </Step>
 </Steps>
+
+## What the virtual balance is and isn't
+
+* The balance is **not withdrawable**.
+* It exists only for internal accounting and risk logic.
+* Trading behaviour mirrors real market conditions.
+* All trades execute through your connected wallet. Off-platform trading is not permitted.
+
+## What's tracked while you trade
+
+| Signal              | What is tracked                                             |
+| ------------------- | ---------------------------------------------------------- |
+| **Positions & PnL** | Live position and profit or loss monitoring                |
+| **Drawdowns**       | Drawdown usage, measured on realised balance               |
+| **On-chain records**| Positions recorded on-chain as trade NFTs with full metadata |
+| **Rule compliance** | Checked continuously throughout trading                    |
+
+All of it is visible in the dashboard and the Explorer. Any attempt to bypass the rules, such as wash trading or off-platform execution, invalidates the account.
+
+{/* DIAGRAM: full lifecycle timeline, seven nodes from Landing to Payout. The big-picture map, worth making the most polished diagram in the docs. */}
 
 ## Next steps
 
 <CardGroup cols={3}>
   <Card title="Platform overview" icon="grid-2" href="/platform/overview">
-    Learn what's inside the trading platform.
+    The product surfaces.
   </Card>
+
   <Card title="Payouts" icon="hand-holding-dollar" href="/platform/payouts">
-    Understand how payouts work.
+    How payouts settle.
   </Card>
-  <Card title="Doji accounts" icon="layer-group" href="/doji-accounts">
-    Compare account types side by side.
+
+  <Card title="Doji accounts" icon="scale-balanced" href="/doji-accounts">
+    Compare account types.
   </Card>
 </CardGroup>

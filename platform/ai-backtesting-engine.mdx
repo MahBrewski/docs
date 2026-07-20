@@ -4,47 +4,40 @@ description: "Understand the backtesting surface for strategy research and histo
 icon: "flask-vial"
 ---
 
-<div className="product-card">
-  <img src="/images/AIBacktest.png" alt="DojiFunded AI backtesting engine showing backtest sessions and strategy research workspace" />
-  <div className="product-card-caption">
-    <span className="product-card-label">AI Backtesting Engine</span>
-    <p className="product-card-desc">Research and test trading strategies against historical market data before deploying them in live evaluations.</p>
-  </div>
-</div>
+<Note>
+  **Coming soon.**
+</Note>
 
-The AI backtesting engine is the strategy research surface in DojiFunded.
+DojiFunded's strategy research surface. Test your ideas against historical market data before putting them into a live evaluation.
 
-It is designed to help traders and autonomous strategy builders test ideas before live use.
+{/* DIAGRAM: labeled screenshot of the backtesting workspace (asset: /images/AIBacktest.png), session list and session setup fields. */}
 
-## What the feature is for
+<Frame>
+  <img src="/images/AIBacktest.png" alt="DojiFunded backtesting workspace" />
+</Frame>
 
-- testing strategy logic against historical data
-- reviewing strategy behavior before deployment
-- supporting AI-native trading workflows
+## What it's for
 
-## Current live workflow
+* Test your strategy logic against historical data.
+* Review how a strategy behaves before deploying it.
+* Support AI-native workflows more broadly.
 
-The live app exposes a backtesting workspace built around user-created sessions.
+## Current workflow
 
-Users can currently:
+The live app exposes a backtesting workspace built around **saved sessions**. You can:
 
-- create a new backtesting session
-- name the session
-- choose a starting balance
-- choose a historical date range
-- open a session workspace for deeper analysis
+* Create a new session and name it.
+* Choose a starting balance.
+* Choose a historical date range.
+* Open the session workspace for deeper analysis.
 
-The current route also presents backtesting as a persistent list of sessions rather than a one-off calculator.
+Backtesting is a persistent list of sessions, not a one-off calculator.
 
-## Current product state
-
-This feature is part of the platform's AI-native tooling.
-
-Backtesting is already a user-facing surface, even if the full workflow still needs deeper documentation.
-
-Detailed strategy inputs, result interpretation, and execution assumptions should be expanded as the live product surface matures.
+{/* CONFIRM: backtesting detail, strategy inputs, result interpretation, and execution assumptions are not documented yet. Expand as the surface matures. */}
 
 ## Next steps
 
-- Read the [platform overview](/platform/overview).
-- Explore the [AI copilot](/platform/ai-copilot).
+<CardGroup cols={2}>
+  <Card title="Platform overview" icon="grid-2" href="/platform/overview" />
+  <Card title="AI copilot" icon="terminal" href="/platform/ai-copilot" />
+</CardGroup>

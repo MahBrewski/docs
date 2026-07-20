@@ -4,100 +4,74 @@ description: "Track, monitor, and analyze your performance across all DojiFunded
 icon: "gauge"
 ---
 
-<div className="product-card">
-  <img src="/images/Dashboard.png" alt="DojiFunded dashboard showing account metrics, analytics, and payout tracking" />
-  <div className="product-card-caption">
-    <span className="product-card-label">Dashboard</span>
-    <p className="product-card-desc">Live account equity, drawdown usage, open positions, performance analytics, and payout eligibility — updated in real time.</p>
-  </div>
-</div>
+The central hub for your evaluations, funded accounts, payouts, and analytics, updated in real time.
 
-The dashboard is the central hub for managing assessments, funded accounts, payouts, and trading analytics.
+{/* DIAGRAM: labeled screenshot of the dashboard (asset: /images/Dashboard.png), equity, remaining drawdown, target progress, payout eligibility. */}
 
-Real-time account data is continuously updated to provide a live view of account performance, drawdown usage, open positions, and payout eligibility.
+<Frame>
+  <img src="/images/Dashboard.png" alt="DojiFunded dashboard" />
+</Frame>
 
-## Account Overview
+## Account overview
 
-Each account includes a live overview of key metrics. Drawdown calculations are equity-based and include floating PnL from open positions.
+Each account shows its key metrics live. Equity displays in real time including open positions, but since drawdown limits are measured on **realised balance**, open positions do not count against your drawdown until you close them.
 
-<CardGroup cols={2}>
-  <Card icon="dollar-sign" title="Current equity">Real-time account value including floating PnL</Card>
-  <Card icon="calendar-day" title="Remaining daily loss">How much of your daily loss allowance is left</Card>
-  <Card icon="triangle-exclamation" title="Remaining max drawdown">Distance to your account's drawdown floor</Card>
-  <Card icon="flag-checkered" title="Profit target progress">How close you are to hitting your target</Card>
-  <Card icon="hand-holding-dollar" title="Payout eligibility">Whether your account qualifies for a withdrawal</Card>
-  <Card icon="circle-info" title="Account status">Phase, active plan, account size, and trading status</Card>
-</CardGroup>
+| Metric                    | What it shows                                |
+| ------------------------- | -------------------------------------------- |
+| **Current equity**        | Account value now, including open positions  |
+| **Remaining daily loss**  | Portion of today's daily loss allowance left |
+| **Remaining max drawdown**| Distance from realised balance to the floor  |
+| **Profit target progress**| How close you are to passing                 |
+| **Payout eligibility**    | Whether the account qualifies for a withdrawal |
+| **Account status**        | Phase, plan, size, and trading status        |
 
-## Performance Analytics
+## Performance analytics
 
-Performance data can be viewed across **1D**, **1W**, **1M**, and **All Time**.
+View your history across **1 day, 1 week, 1 month, and all time**.
 
-<CardGroup cols={2}>
-  <Card icon="chart-line" title="Equity">Account value over time including open positions</Card>
-  <Card icon="scale-balanced" title="Balance">Closed account value excluding unrealized PnL</Card>
-  <Card icon="flag" title="Profit target">Progress line showing your target threshold</Card>
-  <Card icon="calendar-day" title="Daily drawdown">Daily loss usage charted over time</Card>
-  <Card icon="triangle-exclamation" title="Maximum drawdown">Max drawdown usage charted over time</Card>
-  <Card icon="calendar" title="Calendar view">Day-by-day performance in a calendar format</Card>
-</CardGroup>
+| View               | What it plots                                |
+| ------------------ | -------------------------------------------- |
+| **Equity**         | Account value over time, including open positions |
+| **Balance**        | Closed value only, excluding open positions  |
+| **Profit target**  | A line marking your target threshold         |
+| **Daily drawdown** | Daily loss usage over time                   |
+| **Maximum drawdown**| Max drawdown usage over time                |
+| **Calendar**       | Day-by-day performance                       |
 
-## Trading Statistics
+## Trading statistics
 
-Each account includes lifetime trading statistics and performance metrics.
+| Metric                    | Description                     |
+| ------------------------- | ------------------------------- |
+| **Total trades**          | Completed trades                |
+| **Win rate**              | Share of profitable trades      |
+| **Total volume**          | Total trading volume            |
+| **Average trade size**    | Typical position size per trade |
+| **Profit target remaining**| Amount still required to pass   |
+| **Current payout**        | Currently eligible payout amount |
 
-| Metric | Description |
-| --- | --- |
-| Total Trades | Total completed trades |
-| Win Rate | Percentage of profitable trades |
-| Total Volume | Total trading volume |
-| Average Trade Size | Average position size per trade |
-| Profit Target Remaining | Remaining amount required to pass |
-| Current Payout | Current eligible payout amount |
+## Open positions and history
 
-Statistics update automatically as positions are opened and closed.
+Live positions show size, entry price, current price, unrealized PnL, return on equity, and duration. Closed trades are stored in full detail, including realised PnL, timestamps, and verification records.
 
-## Open Positions & Trade History
+## Risk monitoring
 
-Active positions display live market data:
+Tracked live, with drawdown measured on realised balance while the rest updates with the market.
 
-<CardGroup cols={2}>
-  <Card icon="arrows-left-right" title="Position size">Current size of the open position</Card>
-  <Card icon="arrow-right-to-bracket" title="Entry price">Price at which the position was opened</Card>
-  <Card icon="circle-dot" title="Current price">Live market price for the position</Card>
-  <Card icon="chart-bar" title="Unrealized PnL">Live profit or loss on the open position</Card>
-  <Card icon="percent" title="ROE">Return on equity percentage</Card>
-  <Card icon="clock" title="Trade duration">Time elapsed since the position was opened</Card>
-</CardGroup>
+| Metric               | What it shows                          |
+| -------------------- | -------------------------------------- |
+| **Drawdown usage**   | How close realised balance is to the limit |
+| **Margin utilization**| Margin used across open positions      |
+| **Active exposure**  | Total open position exposure           |
+| **Breach proximity** | How close the account is to failing    |
 
-Completed trades are stored in the position history section with full execution details, realized PnL, timestamps, and trade verification records.
+## Payout tracking
 
-## Risk Monitoring
-
-The dashboard continuously tracks risk in real time. All calculations are based on live equity and update dynamically as market conditions change.
-
-<CardGroup cols={2}>
-  <Card icon="triangle-exclamation" title="Drawdown usage">Current drawdown against your account limit</Card>
-  <Card icon="percent" title="Margin utilization">Margin used across all open positions</Card>
-  <Card icon="eye" title="Active exposure">Total open position exposure</Card>
-  <Card icon="bell" title="Breach proximity">How close the account is to a breach threshold</Card>
-</CardGroup>
-
-## Payout Tracking
-
-Eligible funded traders can monitor payout availability directly from the dashboard.
-
-<CardGroup cols={2}>
-  <Card icon="circle-check" title="Current eligibility">Whether your account qualifies for a payout now</Card>
-  <Card icon="clock-rotate-left" title="Withdrawal history">Record of all previous payout requests</Card>
-  <Card icon="link" title="Settlement records">On-chain proof for each completed payout</Card>
-  <Card icon="chart-line" title="Payout progress">Progress toward your next payout threshold</Card>
-</CardGroup>
-
-All payouts are processed directly to the user's embedded wallet.
+Monitor your eligibility, withdrawal history, on-chain settlement records, and progress toward your next payout. All payouts settle to your embedded wallet.
 
 ## Next steps
 
-- Read about [payouts](/platform/payouts).
-- Return to the [platform overview](/platform/overview).
-- Learn the full [user lifecycle](/onboarding/user-lifecycle).
+<CardGroup cols={3}>
+  <Card title="Payouts" icon="hand-holding-dollar" href="/platform/payouts" />
+  <Card title="Overview" icon="grid-2" href="/platform/overview" />
+  <Card title="User lifecycle" icon="route" href="/onboarding/user-lifecycle" />
+</CardGroup>

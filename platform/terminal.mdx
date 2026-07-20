@@ -1,67 +1,66 @@
 ---
 title: "Terminal"
-description: "The DojiFunded terminal is a multi-asset trading environment for funded traders across crypto, forex, commodities, equities, and more."
+description: "A multi-asset trading environment for funded traders across crypto, forex, commodities, equities, and more."
 icon: "chart-line"
 ---
 
-<div className="product-card">
-  <img src="/images/Terminal.png" alt="DojiFunded terminal with charts, positions, and trading controls" />
-  <div className="product-card-caption">
-    <span className="product-card-label">Terminal</span>
-    <p className="product-card-desc">Full charting, position management, real-time PnL tracking, and integrated risk monitoring — all routed through on-chain execution venues.</p>
-  </div>
-</div>
+The terminal is a **multi-asset trading environment** covering crypto, forex, commodities, equities, and more, in a single workspace.
 
-The DojiFunded terminal is a multi-asset trading environment designed for funded traders across crypto, forex, commodities, equities, and additional supported markets.
+Every trade routes through the integrated on-chain venues, currently **GMX** and **Ostium**, and executes against live market conditions. Real prices, real liquidity, real spreads. Alongside that, you get full charting, position management, live PnL, and integrated risk monitoring.
 
-All trades are routed through integrated on-chain execution venues including [GMX](https://gmx.io) and [Ostium](https://ostium.io). Execution is simulated against live market conditions, liquidity, spreads, and venue-specific pricing models.
+{/* DIAGRAM: labeled screenshot of the terminal (asset: /images/Terminal.png), chart, order panel, position list, risk overlay. */}
 
-The terminal includes full charting, position management, real-time PnL tracking, and integrated risk monitoring.
+<Frame>
+  <img src="/images/Terminal.png" alt="DojiFunded terminal" />
+</Frame>
 
-## Order Types
+## Order types
 
-| Order Type   | Trigger               | Execution                          |
-| :----------: | :-------------------: | :--------------------------------: |
-| Market       | Immediate             | Executes against available liquidity |
-| Limit        | Price reaches limit   | Executes at limit price or better  |
-| Stop Market  | Trigger price reached | Converts into market order         |
-| Stop Limit   | Trigger price reached | Places a limit order               |
+| Order type     | Trigger                 | Execution                        |
+| -------------- | ----------------------- | -------------------------------- |
+| **Market**     | Immediate               | Fills against available liquidity |
+| **Limit**      | Price reaches your limit | Fills at your limit or better    |
+| **Stop market**| Trigger price reached   | Converts into a market order     |
+| **Stop limit** | Trigger price reached   | Places a limit order             |
 
-Market conditions, liquidity, and execution impact may affect final fill prices depending on venue conditions and order size.
+Your final fill price may move with market conditions, liquidity, and order size.
 
-## Margin Modes
+## Margin modes
 
-| Setting      | Options       |
-| :----------: | :-----------: |
-| Margin Mode  | Isolated      |
-| Cross Margin | Coming Soon   |
+Every position uses **isolated margin**. Cross margin is coming soon. Maximum leverage varies by market and venue, shown next to each pair in the terminal.
 
-Each position currently operates using isolated margin. Maximum leverage varies by market and execution venue, with supported leverage displayed directly next to each trading pair inside the terminal.
+## Market data
 
-## Market Data
+Live prices stream directly from the venues, driving your fills, PnL, drawdown monitoring, and funding or rollover calculations. On supported perpetual markets, funding fees accrue hourly.
 
-DojiFunded streams live market data directly from integrated execution venues. Real-time pricing is used for order execution, PnL calculations, drawdown monitoring, and funding or rollover calculations.
+## Risk overlay
 
-Execution conditions dynamically account for liquidity, volatility, and position size to simulate realistic trading environments. Additional funding fees may accrue hourly on supported perpetual markets.
+A live risk panel updates while your positions are open. Because drawdown limits are measured on **realised balance**, open positions show here as unrealized PnL but do not count against your drawdown until you close them.
 
-## Risk Overlay
+| Metric                     | What it shows                                |
+| -------------------------- | -------------------------------------------- |
+| **Current drawdown**       | Drawdown usage against your limit, on realised balance |
+| **Daily loss usage**       | Portion of today's daily loss allowance used |
+| **Margin utilization**     | Margin used across open positions            |
+| **Unrealized PnL**         | Live profit or loss on open positions        |
+| **Funding & holding costs**| Funding fees accruing on perpetuals          |
 
-The terminal includes a live risk overlay. Risk metrics update continuously while positions remain open.
+## PnL share cards
 
-<CardGroup cols={2}>
-  <Card icon="triangle-exclamation" title="Current drawdown">Live drawdown usage against your account limit</Card>
-  <Card icon="calendar-day" title="Daily loss usage">How much of your daily loss allowance has been used</Card>
-  <Card icon="percent" title="Margin utilization">Current margin usage across open positions</Card>
-  <Card icon="chart-line" title="Unrealized PnL">Live profit and loss on open positions</Card>
-  <Card icon="coins" title="Funding and holding costs">Accrued funding fees on perpetual positions</Card>
-</CardGroup>
-
-## PnL Share Cards
-
-Generate and share visual trading performance cards directly from the dashboard. PnL cards include profit and loss metrics, trading statistics, account performance, and payout information designed for public profiles and social sharing.
+Generate shareable performance cards with profit, statistics, and payout data, formatted for public profiles.
 
 ## Next steps
 
-- Review the [dashboard](/platform/dashboard).
-- Learn how [payouts](/platform/payouts) work.
-- Compare [Doji accounts](/doji-accounts).
+<CardGroup cols={3}>
+  <Card title="Dashboard" icon="gauge" href="/platform/dashboard">
+    Track your accounts.
+  </Card>
+
+  <Card title="Payouts" icon="hand-holding-dollar" href="/platform/payouts">
+    How payouts settle.
+  </Card>
+
+  <Card title="Doji accounts" icon="scale-balanced" href="/doji-accounts">
+    Compare account types.
+  </Card>
+</CardGroup>
