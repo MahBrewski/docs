@@ -1,216 +1,862 @@
 {
   "openapi": "3.1.0",
   "info": {
-    "title": "OpenAPI Plant Store",
-    "description": "A sample API that uses a plant store as an example to demonstrate features in the OpenAPI specification",
-    "license": {
-      "name": "MIT"
-    },
-    "version": "1.0.0"
+    "title": "DojiFunded Trading API",
+    "description": "Public REST interface for algorithmic trading on DojiFunded. Place orders, manage positions, and pull account state programmatically.",
+    "version": "1.0.0",
+    "contact": {
+      "email": "business@dojifunded.com"
+    }
   },
   "servers": [
     {
-      "url": "http://sandbox.mintlify.com"
+      "url": "https://engine.dojifunded.com/v1",
+      "description": "Production"
     }
   ],
   "security": [
     {
-      "bearerAuth": []
+      "apiKey": [],
+      "apiSecret": []
     }
   ],
+  "tags": [
+    { "name": "Accounts", "description": "Account state, positions, history, risk, and analytics." },
+    { "name": "Orders", "description": "Place, cancel, and close orders across all venues." },
+    { "name": "Market data", "description": "Public price feeds and symbol catalog. No authentication required." }
+  ],
   "paths": {
-    "/plants": {
-      "get": {
-        "description": "Returns all plants from the system that the user has access to",
-        "parameters": [
-          {
-            "name": "limit",
-            "in": "query",
-            "description": "The maximum number of results to return",
-            "schema": {
-              "type": "integer",
-              "format": "int32"
-            }
-          }
-        ],
+    "/accounts": {
+      "post": {
+        "tags": ["Accounts"],
+        "summary": "Create account",
+        "description": "Creates a trading account. One account per plan or challenge. Requires the `READ_ONLY` (or higher) permission scope.",
+        "operationId": "createAccount",
         "responses": {
           "200": {
-            "description": "Plant response",
+            "description": "The created account record.",
+            "content": {
+              "application/json": {
+                "schema": { "$ref": "#/components/schemas/Account" }
+              }
+            }
+          },
+          "401": { "$ref": "#/components/responses/Unauthorized" }
+        }
+      }
+    },
+    "/account/{account_id}": {
+      "get": {
+        "tags": ["Accounts"],
+        "summary": "Get account",
+        "description": "Returns the account record: plan ID, state, balances, allowed venues, and risk configuration. Requires the `READ_ONLY` (or higher) permission scope.",
+        "operationId": "getAccount",
+        "parameters": [{ "$ref": "#/components/parameters/AccountId" }],
+        "responses": {
+          "200": {
+            "description": "The account record.",
+            "content": {
+              "application/json": {
+                "schema": { "$ref": "#/components/schemas/Account" }
+              }
+            }
+          },
+          "401": { "$ref": "#/components/responses/Unauthorized" },
+          "404": { "$ref": "#/components/responses/NotFound" }
+        }
+      }
+    },
+    "/account/{account_id}/summary": {
+      "get": {
+        "tags": ["Accounts"],
+        "summary": "Account summary",
+        "description": "Live snapshot of the account. Requires the `READ_ONLY` (or higher) permission scope.",
+        "operationId": "getAccountSummary",
+        "parameters": [{ "$ref": "#/components/parameters/AccountId" }],
+        "responses": {
+          "200": {
+            "description": "Live account snapshot.",
             "content": {
               "application/json": {
                 "schema": {
-                  "type": "array",
-                  "items": {
-                    "$ref": "#/components/schemas/Plant"
+                  "type": "object",
+                  "properties": {
+                    "equity": { "type": "number", "description": "Current account equity." },
+                    "free_margin": { "type": "number", "description": "Margin available for new positions." },
+                    "used_margin": { "type": "number", "description": "Margin locked by open positions." },
+                    "unrealized_pnl": { "type": "number", "description": "Aggregate unrealized profit/loss across open positions." },
+                    "realized_pnl": { "type": "number", "description": "Realized profit/loss for the current trading day." }
                   }
                 }
               }
             }
           },
-          "400": {
-            "description": "Unexpected error",
+          "401": { "$ref": "#/components/responses/Unauthorized" },
+          "404": { "$ref": "#/components/responses/NotFound" }
+        }
+      }
+    },
+    "/account/{account_id}/positions": {
+      "get": {
+        "tags": ["Accounts"],
+        "summary": "Open positions",
+        "description": "Returns all currently open positions. Requires the `READ_ONLY` (or higher) permission scope.",
+        "operationId": "getOpenPositions",
+        "parameters": [{ "$ref": "#/components/parameters/AccountId" }],
+        "responses": {
+          "200": {
+            "description": "List of open positions.",
             "content": {
               "application/json": {
                 "schema": {
-                  "$ref": "#/components/schemas/Error"
+                  "type": "array",
+                  "items": { "$ref": "#/components/schemas/Position" }
+                }
+              }
+            }
+          },
+          "401": { "$ref": "#/components/responses/Unauthorized" },
+          "404": { "$ref": "#/components/responses/NotFound" }
+        }
+      }
+    },
+    "/account/{account_id}/positions/history": {
+      "get": {
+        "tags": ["Accounts"],
+        "summary": "Position history",
+        "description": "Paginated list of closed positions. Requires the `READ_ONLY` (or higher) permission scope.",
+        "operationId": "getPositionHistory",
+        "parameters": [
+          { "$ref": "#/components/parameters/AccountId" },
+          { "$ref": "#/components/parameters/From" },
+          { "$ref": "#/components/parameters/To" },
+          { "$ref": "#/components/parameters/Limit" }
+        ],
+        "responses": {
+          "200": {
+            "description": "List of closed positions.",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "array",
+                  "items": { "$ref": "#/components/schemas/Position" }
+                }
+              }
+            }
+          },
+          "401": { "$ref": "#/components/responses/Unauthorized" },
+          "404": { "$ref": "#/components/responses/NotFound" }
+        }
+      }
+    },
+    "/account/{account_id}/trades": {
+      "get": {
+        "tags": ["Accounts"],
+        "summary": "Trade history",
+        "description": "Paginated list of trade fills. Accepts the same `from`, `to`, and `limit` query parameters as position history. Requires the `READ_ONLY` (or higher) permission scope.",
+        "operationId": "getTradeHistory",
+        "parameters": [
+          { "$ref": "#/components/parameters/AccountId" },
+          { "$ref": "#/components/parameters/From" },
+          { "$ref": "#/components/parameters/To" },
+          { "$ref": "#/components/parameters/Limit" }
+        ],
+        "responses": {
+          "200": {
+            "description": "List of trade fills.",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "array",
+                  "items": { "$ref": "#/components/schemas/Trade" }
+                }
+              }
+            }
+          },
+          "401": { "$ref": "#/components/responses/Unauthorized" },
+          "404": { "$ref": "#/components/responses/NotFound" }
+        }
+      }
+    },
+    "/account/{account_id}/funding": {
+      "get": {
+        "tags": ["Accounts"],
+        "summary": "Funding payments",
+        "description": "Funding payments received and paid, broken down per asset class. Requires the `READ_ONLY` (or higher) permission scope.",
+        "operationId": "getFundingPayments",
+        "parameters": [{ "$ref": "#/components/parameters/AccountId" }],
+        "responses": {
+          "200": {
+            "description": "Funding payments per asset class.",
+            "content": {
+              "application/json": {
+                "schema": { "type": "object" }
+              }
+            }
+          },
+          "401": { "$ref": "#/components/responses/Unauthorized" },
+          "404": { "$ref": "#/components/responses/NotFound" }
+        }
+      }
+    },
+    "/account/{account_id}/breaches": {
+      "get": {
+        "tags": ["Accounts"],
+        "summary": "Breaches",
+        "description": "Risk-rule breaches tracked against your plan: drawdown, daily loss, and similar limits. Requires the `READ_ONLY` (or higher) permission scope.",
+        "operationId": "getBreaches",
+        "parameters": [{ "$ref": "#/components/parameters/AccountId" }],
+        "responses": {
+          "200": {
+            "description": "List of risk-rule breaches.",
+            "content": {
+              "application/json": {
+                "schema": { "type": "array", "items": { "type": "object" } }
+              }
+            }
+          },
+          "401": { "$ref": "#/components/responses/Unauthorized" },
+          "404": { "$ref": "#/components/responses/NotFound" }
+        }
+      }
+    },
+    "/account/{account_id}/violations": {
+      "get": {
+        "tags": ["Accounts"],
+        "summary": "Violations",
+        "description": "Hard violations that trigger account termination. Requires the `READ_ONLY` (or higher) permission scope.",
+        "operationId": "getViolations",
+        "parameters": [{ "$ref": "#/components/parameters/AccountId" }],
+        "responses": {
+          "200": {
+            "description": "List of hard violations.",
+            "content": {
+              "application/json": {
+                "schema": { "type": "array", "items": { "$ref": "#/components/schemas/Violation" } }
+              }
+            }
+          },
+          "401": { "$ref": "#/components/responses/Unauthorized" },
+          "404": { "$ref": "#/components/responses/NotFound" }
+        }
+      }
+    },
+    "/account/{account_id}/analytics": {
+      "get": {
+        "tags": ["Accounts"],
+        "summary": "Analytics",
+        "description": "Aggregated performance metrics. Requires the `READ_ONLY` (or higher) permission scope.",
+        "operationId": "getAnalytics",
+        "parameters": [{ "$ref": "#/components/parameters/AccountId" }],
+        "responses": {
+          "200": {
+            "description": "Aggregated performance metrics.",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "properties": {
+                    "win_rate": { "type": "number", "description": "Percentage of trades closed at a profit." },
+                    "avg_r": { "type": "number", "description": "Average R-multiple per trade." },
+                    "profit_factor": { "type": "number", "description": "Gross profit divided by gross loss." },
+                    "exposure_breakdown": { "type": "object", "description": "Exposure per asset class and venue." }
+                  }
+                }
+              }
+            }
+          },
+          "401": { "$ref": "#/components/responses/Unauthorized" },
+          "404": { "$ref": "#/components/responses/NotFound" }
+        }
+      }
+    },
+    "/order": {
+      "post": {
+        "tags": ["Orders"],
+        "summary": "Place order",
+        "description": "Single endpoint for all order types (market, limit, stop, take-profit) across all venues. Requires the `TRADE` permission scope.\n\nRisk-rule rejections come back with HTTP `200` but a non-empty `violations` array. The order is not placed when violations are present, so check this field in every response.\n\nAlways set a stable `client_id` per trading intent. If a request times out or returns a 5xx error, retry with the same `client_id` and the engine returns the original result without placing a duplicate order.",
+        "operationId": "placeOrder",
+        "requestBody": {
+          "required": true,
+          "content": {
+            "application/json": {
+              "schema": {
+                "type": "object",
+                "required": ["account_id", "symbol", "side", "kind", "quantity"],
+                "properties": {
+                  "account_id": {
+                    "type": "string",
+                    "format": "uuid",
+                    "description": "UUID of the account to trade on. Must be owned by the authenticated user."
+                  },
+                  "symbol": {
+                    "type": "string",
+                    "description": "Tradable symbol, e.g. `BTC-USD`, `ETH-USD`, `AAPL-USD`. Use `GET /tickers` for the full catalog. Symbol variants like `BTCUSD`, `BTC/USD`, and `btc-usd` are also accepted.",
+                    "example": "BTC-USD"
+                  },
+                  "side": {
+                    "type": "string",
+                    "enum": ["BUY", "SELL"],
+                    "description": "Order side."
+                  },
+                  "kind": {
+                    "type": "string",
+                    "enum": ["MARKET", "LIMIT", "STOP", "TAKE_PROFIT"],
+                    "description": "Order type."
+                  },
+                  "quantity": {
+                    "type": "number",
+                    "description": "Base-asset quantity. Must be positive.",
+                    "example": 0.05
+                  },
+                  "price": {
+                    "type": "number",
+                    "description": "Limit price. Required when `kind` is `LIMIT`.",
+                    "example": 62500
+                  },
+                  "trigger_price": {
+                    "type": "number",
+                    "description": "Trigger reference price. Required when `kind` is `STOP` or `TAKE_PROFIT`."
+                  },
+                  "tif": {
+                    "type": "string",
+                    "enum": ["GTC", "GTD", "GTX", "IOC", "FOK"],
+                    "description": "Time-in-force. `GTC` good till cancelled, `GTD` good till date, `GTX` post-only intent (same as `GTC` plus `post_only`), `IOC` immediate or cancel, `FOK` fill or kill."
+                  },
+                  "flags": {
+                    "type": "object",
+                    "description": "Order behaviour flags.",
+                    "properties": {
+                      "post_only": {
+                        "type": "boolean",
+                        "description": "Reject the order if it would be immediately matched as a taker."
+                      },
+                      "reduce_only": {
+                        "type": "boolean",
+                        "description": "Only reduce an existing position, never open or increase one."
+                      },
+                      "trigger_on_index": {
+                        "type": "boolean",
+                        "description": "For stop/TP orders: trigger against the index price."
+                      },
+                      "trigger_on_mark": {
+                        "type": "boolean",
+                        "description": "For stop/TP orders: trigger against the mark price."
+                      }
+                    }
+                  },
+                  "client_id": {
+                    "type": "string",
+                    "description": "Your own deduplication ID. Retrying with the same `client_id` is safe, the engine returns the original result rather than placing a duplicate. Surfaces in fills and audit logs.",
+                    "example": "my-bot:strategy-A:1234"
+                  },
+                  "platform_id": {
+                    "type": "string",
+                    "enum": ["GMX", "OSTIUM"],
+                    "description": "Execution venue override. Overrides the account default for this order only."
+                  },
+                  "parent_order_id": {
+                    "type": "string",
+                    "format": "uuid",
+                    "description": "UUID of a parent order. Links a TP or SL to its entry."
+                  },
+                  "position_id": {
+                    "type": "string",
+                    "format": "uuid",
+                    "description": "UUID of a specific open position to target when reducing."
+                  }
                 }
               }
             }
           }
-        }
-      },
-      "post": {
-        "description": "Creates a new plant in the store",
-        "requestBody": {
-          "description": "Plant to add to the store",
-          "content": {
-            "application/json": {
-              "schema": {
-                "$ref": "#/components/schemas/NewPlant"
-              }
-            }
-          },
-          "required": true
         },
         "responses": {
           "200": {
-            "description": "plant response",
+            "description": "Order result. Check `violations` before assuming success.",
             "content": {
               "application/json": {
                 "schema": {
-                  "$ref": "#/components/schemas/Plant"
+                  "type": "object",
+                  "properties": {
+                    "order": {
+                      "$ref": "#/components/schemas/Order"
+                    },
+                    "trades": {
+                      "type": "array",
+                      "items": { "$ref": "#/components/schemas/Trade" },
+                      "description": "Fills generated immediately by the order (market orders, IOC/FOK)."
+                    },
+                    "violations": {
+                      "type": "array",
+                      "items": { "$ref": "#/components/schemas/Violation" },
+                      "description": "Non-empty when the order was rejected by a risk rule. The order is not placed when violations are present."
+                    }
+                  }
                 }
               }
             }
           },
-          "400": {
-            "description": "unexpected error",
+          "401": { "$ref": "#/components/responses/Unauthorized" }
+        }
+      }
+    },
+    "/account/{account_id}/orders": {
+      "get": {
+        "tags": ["Orders"],
+        "summary": "List open orders",
+        "description": "Returns all working orders for the account. Requires the `READ_ONLY` (or higher) permission scope.",
+        "operationId": "listOpenOrders",
+        "parameters": [{ "$ref": "#/components/parameters/AccountId" }],
+        "responses": {
+          "200": {
+            "description": "List of working orders.",
+            "content": {
+              "application/json": {
+                "schema": { "type": "array", "items": { "$ref": "#/components/schemas/Order" } }
+              }
+            }
+          },
+          "401": { "$ref": "#/components/responses/Unauthorized" },
+          "404": { "$ref": "#/components/responses/NotFound" }
+        }
+      }
+    },
+    "/account/{account_id}/orders/{order_id}/cancel": {
+      "post": {
+        "tags": ["Orders"],
+        "summary": "Cancel order",
+        "description": "Cancels a working order. Returns the final order state. Requires the `MANAGE_ORDERS` permission scope.",
+        "operationId": "cancelOrder",
+        "parameters": [
+          { "$ref": "#/components/parameters/AccountId" },
+          {
+            "name": "order_id",
+            "in": "path",
+            "required": true,
+            "description": "UUID of the order to cancel.",
+            "schema": { "type": "string", "format": "uuid" }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "The final order state.",
+            "content": {
+              "application/json": {
+                "schema": { "$ref": "#/components/schemas/Order" }
+              }
+            }
+          },
+          "401": { "$ref": "#/components/responses/Unauthorized" },
+          "404": { "$ref": "#/components/responses/NotFound" }
+        }
+      }
+    },
+    "/account/{account_id}/close-position": {
+      "post": {
+        "tags": ["Orders"],
+        "summary": "Close position",
+        "description": "Convenience endpoint that sends a reduce-only order against an open position. Requires the `TRADE` permission scope.",
+        "operationId": "closePosition",
+        "parameters": [{ "$ref": "#/components/parameters/AccountId" }],
+        "requestBody": {
+          "required": true,
+          "content": {
+            "application/json": {
+              "schema": {
+                "type": "object",
+                "required": ["symbol"],
+                "properties": {
+                  "symbol": {
+                    "type": "string",
+                    "description": "Symbol of the position to close.",
+                    "example": "BTC-USD"
+                  },
+                  "quantity": {
+                    "type": "number",
+                    "description": "Partial close quantity. Omit to close the full position."
+                  },
+                  "kind": {
+                    "type": "string",
+                    "enum": ["MARKET", "LIMIT"],
+                    "description": "Order type for the closing order. Defaults to `MARKET`."
+                  },
+                  "price": {
+                    "type": "number",
+                    "description": "Limit price (required if `kind` is `LIMIT`)."
+                  },
+                  "tif": {
+                    "type": "string",
+                    "description": "Time-in-force for the closing order."
+                  },
+                  "client_id": {
+                    "type": "string",
+                    "description": "Deduplication ID. Safe to retry."
+                  }
+                }
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "Order result for the closing order.",
             "content": {
               "application/json": {
                 "schema": {
-                  "$ref": "#/components/schemas/Error"
+                  "type": "object",
+                  "properties": {
+                    "order": { "$ref": "#/components/schemas/Order" },
+                    "trades": { "type": "array", "items": { "$ref": "#/components/schemas/Trade" } },
+                    "violations": { "type": "array", "items": { "$ref": "#/components/schemas/Violation" } }
+                  }
                 }
+              }
+            }
+          },
+          "401": { "$ref": "#/components/responses/Unauthorized" },
+          "404": { "$ref": "#/components/responses/NotFound" }
+        }
+      }
+    },
+    "/price": {
+      "get": {
+        "tags": ["Market data"],
+        "summary": "Price",
+        "description": "Returns the last price, mark price, and index price for a symbol. Public endpoint, no authentication required.",
+        "operationId": "getPrice",
+        "security": [],
+        "parameters": [{ "$ref": "#/components/parameters/Symbol" }],
+        "responses": {
+          "200": {
+            "description": "Price snapshot for the symbol.",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "properties": {
+                    "last_price": { "type": "number", "description": "Last traded price." },
+                    "mark_price": { "type": "number", "description": "Current mark price." },
+                    "index_price": { "type": "number", "description": "Current index price." }
+                  }
+                }
+              }
+            }
+          },
+          "404": { "$ref": "#/components/responses/NotFound" }
+        }
+      }
+    },
+    "/orderbook": {
+      "get": {
+        "tags": ["Market data"],
+        "summary": "Orderbook",
+        "description": "Aggregated order book. Default depth is 24 levels; the maximum is defined in engine config. Public endpoint, no authentication required.",
+        "operationId": "getOrderbook",
+        "security": [],
+        "parameters": [
+          { "$ref": "#/components/parameters/Symbol" },
+          {
+            "name": "depth",
+            "in": "query",
+            "description": "Number of price levels to return per side. Default: `24`.",
+            "schema": { "type": "integer", "default": 24 }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Aggregated order book.",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "properties": {
+                    "bids": { "type": "array", "items": { "type": "array", "items": { "type": "number" } } },
+                    "asks": { "type": "array", "items": { "type": "array", "items": { "type": "number" } } }
+                  }
+                }
+              }
+            }
+          },
+          "404": { "$ref": "#/components/responses/NotFound" }
+        }
+      }
+    },
+    "/trades": {
+      "get": {
+        "tags": ["Market data"],
+        "summary": "Recent trades",
+        "description": "Latest public trade feed for a symbol. Public endpoint, no authentication required.",
+        "operationId": "getRecentTrades",
+        "security": [],
+        "parameters": [
+          { "$ref": "#/components/parameters/Symbol" },
+          {
+            "name": "limit",
+            "in": "query",
+            "description": "Number of trades to return. Capped per endpoint config.",
+            "schema": { "type": "integer" }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Recent public trades.",
+            "content": {
+              "application/json": {
+                "schema": { "type": "array", "items": { "$ref": "#/components/schemas/Trade" } }
+              }
+            }
+          },
+          "404": { "$ref": "#/components/responses/NotFound" }
+        }
+      }
+    },
+    "/tickers": {
+      "get": {
+        "tags": ["Market data"],
+        "summary": "Tickers",
+        "description": "Full catalog of tradable symbols, grouped by asset class. Use this to discover valid values for the `symbol` field in order requests. Public endpoint, no authentication required.",
+        "operationId": "getTickers",
+        "security": [],
+        "responses": {
+          "200": {
+            "description": "Symbol catalog grouped by asset class.",
+            "content": {
+              "application/json": {
+                "schema": { "type": "object" }
               }
             }
           }
         }
       }
     },
-    "/plants/{id}": {
-      "delete": {
-        "description": "Deletes a single plant based on the ID supplied",
+    "/ticker/metadata": {
+      "get": {
+        "tags": ["Market data"],
+        "summary": "Ticker metadata",
+        "description": "Per-symbol trading parameters. Public endpoint, no authentication required.",
+        "operationId": "getTickerMetadata",
+        "security": [],
         "parameters": [
           {
-            "name": "id",
-            "in": "path",
-            "description": "ID of plant to delete",
+            "name": "ticker",
+            "in": "query",
             "required": true,
-            "schema": {
-              "type": "integer",
-              "format": "int64"
-            }
+            "description": "Symbol to look up. Fuzzy matching accepted: `BTCUSD`, `BTC/USD`, and `btc-usd` all resolve.",
+            "schema": { "type": "string", "example": "BTC-USD" }
+          },
+          {
+            "name": "type",
+            "in": "query",
+            "description": "Asset class hint: `crypto`, `equity`, etc. Helps disambiguation when the same ticker exists across classes.",
+            "schema": { "type": "string", "example": "crypto" }
           }
         ],
         "responses": {
-          "204": {
-            "description": "Plant deleted",
-            "content": {}
-          },
-          "400": {
-            "description": "unexpected error",
+          "200": {
+            "description": "Per-symbol trading parameters.",
             "content": {
               "application/json": {
                 "schema": {
-                  "$ref": "#/components/schemas/Error"
+                  "type": "object",
+                  "properties": {
+                    "tick_size": { "type": "number", "description": "Minimum price increment." },
+                    "lot_size": { "type": "number", "description": "Minimum quantity increment." },
+                    "max_leverage": { "type": "number", "description": "Maximum leverage allowed for this symbol." },
+                    "funding_cadence": { "type": "string", "description": "Funding interval (e.g. `8h`)." }
+                  }
                 }
+              }
+            }
+          },
+          "404": { "$ref": "#/components/responses/NotFound" }
+        }
+      }
+    },
+    "/config": {
+      "get": {
+        "tags": ["Market data"],
+        "summary": "Engine config",
+        "description": "Engine-wide configuration: default book depths, supported venues, and feature flags. Public endpoint, no authentication required.",
+        "operationId": "getConfig",
+        "security": [],
+        "responses": {
+          "200": {
+            "description": "Engine-wide configuration.",
+            "content": {
+              "application/json": {
+                "schema": { "type": "object" }
               }
             }
           }
         }
       }
-    }
-  },
-  "webhooks": {
-    "/plant/webhook": {
-      "post": {
-        "description": "Information about a new plant added to the store",
-        "requestBody": {
-          "description": "Plant added to the store",
-          "content": {
-            "application/json": {
-              "schema": {
-                "$ref": "#/components/schemas/NewPlant"
-              }
-            }
-          }
-        },
+    },
+    "/metrics": {
+      "get": {
+        "tags": ["Market data"],
+        "summary": "Symbol metrics",
+        "description": "Per-symbol engine metrics. Public endpoint, no authentication required.",
+        "operationId": "getSymbolMetrics",
+        "security": [],
+        "parameters": [{ "$ref": "#/components/parameters/Symbol" }],
         "responses": {
           "200": {
-            "description": "Return a 200 status to indicate that the data was received successfully"
-          }
+            "description": "Per-symbol engine metrics.",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "properties": {
+                    "open_interest": { "type": "number", "description": "Total open interest for the symbol." },
+                    "recent_volume": { "type": "number", "description": "Trading volume over the recent window." },
+                    "last_funding_rate": { "type": "number", "description": "Most recent funding rate." }
+                  }
+                }
+              }
+            }
+          },
+          "404": { "$ref": "#/components/responses/NotFound" }
         }
       }
     }
   },
   "components": {
-    "schemas": {
-      "Plant": {
-        "required": [
-          "name"
-        ],
-        "type": "object",
-        "properties": {
-          "name": {
-            "description": "The name of the plant",
-            "type": "string"
-          },
-          "tag": {
-            "description": "Tag to specify the type",
-            "type": "string"
-          }
-        }
+    "securitySchemes": {
+      "apiKey": {
+        "type": "apiKey",
+        "in": "header",
+        "name": "X-API-Key",
+        "description": "API key generated at Dashboard, Settings, Developer. Format: `doji_ak_...`"
       },
-      "NewPlant": {
-        "allOf": [
-          {
-            "$ref": "#/components/schemas/Plant"
-          },
-          {
-            "required": [
-              "id"
-            ],
-            "type": "object",
-            "properties": {
-              "id": {
-                "description": "Identification number of the plant",
-                "type": "integer",
-                "format": "int64"
+      "apiSecret": {
+        "type": "apiKey",
+        "in": "header",
+        "name": "X-API-Secret",
+        "description": "API secret returned once at key creation. Format: `doji_sk_...`"
+      }
+    },
+    "parameters": {
+      "AccountId": {
+        "name": "account_id",
+        "in": "path",
+        "required": true,
+        "description": "UUID of the account. Must be owned by the authenticated user.",
+        "schema": { "type": "string", "format": "uuid" }
+      },
+      "Symbol": {
+        "name": "symbol",
+        "in": "query",
+        "required": true,
+        "description": "Tradable symbol. Variants like `BTCUSD`, `BTC/USD`, and `btc-usd` are resolved automatically.",
+        "schema": { "type": "string", "example": "BTC-USD" }
+      },
+      "From": {
+        "name": "from",
+        "in": "query",
+        "description": "ISO 8601 start timestamp (inclusive).",
+        "schema": { "type": "string", "format": "date-time" }
+      },
+      "To": {
+        "name": "to",
+        "in": "query",
+        "description": "ISO 8601 end timestamp (inclusive).",
+        "schema": { "type": "string", "format": "date-time" }
+      },
+      "Limit": {
+        "name": "limit",
+        "in": "query",
+        "description": "Number of results to return (capped per endpoint).",
+        "schema": { "type": "integer" }
+      }
+    },
+    "responses": {
+      "Unauthorized": {
+        "description": "Missing or invalid API credentials.",
+        "content": {
+          "application/json": {
+            "schema": {
+              "type": "object",
+              "properties": {
+                "error": { "type": "string", "example": "unauthorized" }
               }
             }
           }
-        ]
+        }
       },
-      "Error": {
-        "required": [
-          "error",
-          "message"
-        ],
-        "type": "object",
-        "properties": {
-          "error": {
-            "type": "integer",
-            "format": "int32"
-          },
-          "message": {
-            "type": "string"
+      "NotFound": {
+        "description": "Resource not found.",
+        "content": {
+          "application/json": {
+            "schema": {
+              "type": "object",
+              "properties": {
+                "error": { "type": "string", "example": "not_found" }
+              }
+            }
           }
         }
       }
     },
-    "securitySchemes": {
-      "bearerAuth": {
-        "type": "http",
-        "scheme": "bearer"
+    "schemas": {
+      "Account": {
+        "type": "object",
+        "properties": {
+          "id": { "type": "string", "format": "uuid", "description": "Account UUID." },
+          "plan_id": { "type": "string", "description": "Plan or challenge this account belongs to." },
+          "state": { "type": "string", "description": "Account state." },
+          "balance": { "type": "number", "description": "Realised account balance." },
+          "allowed_venues": {
+            "type": "array",
+            "items": { "type": "string" },
+            "description": "Execution venues enabled for this account."
+          },
+          "risk_config": { "type": "object", "description": "Risk configuration applied to this account." }
+        }
+      },
+      "Position": {
+        "type": "object",
+        "properties": {
+          "symbol": { "type": "string", "description": "Tradable symbol.", "example": "BTC-USD" },
+          "side": { "type": "string", "enum": ["BUY", "SELL"], "description": "Position side." },
+          "quantity": { "type": "number", "description": "Position size in base asset." },
+          "entry_price": { "type": "number", "description": "Average entry price." },
+          "mark_price": { "type": "number", "description": "Current mark price." },
+          "unrealized_pnl": { "type": "number", "description": "Unrealized profit or loss." },
+          "leverage": { "type": "number", "description": "Position leverage." },
+          "venue": { "type": "string", "description": "Execution venue.", "example": "GMX" }
+        }
+      },
+      "Order": {
+        "type": "object",
+        "properties": {
+          "id": { "type": "string", "format": "uuid", "description": "Order UUID." },
+          "status": { "type": "string", "description": "Current order status.", "example": "OPEN" },
+          "symbol": { "type": "string", "description": "Tradable symbol." },
+          "side": { "type": "string", "enum": ["BUY", "SELL"] },
+          "kind": { "type": "string", "enum": ["MARKET", "LIMIT", "STOP", "TAKE_PROFIT"] },
+          "quantity": { "type": "number" },
+          "price": { "type": "number" },
+          "client_id": { "type": "string", "description": "Client-supplied deduplication ID." }
+        }
+      },
+      "Trade": {
+        "type": "object",
+        "properties": {
+          "id": { "type": "string", "description": "Trade fill ID." },
+          "symbol": { "type": "string" },
+          "side": { "type": "string", "enum": ["BUY", "SELL"] },
+          "quantity": { "type": "number" },
+          "price": { "type": "number", "description": "Fill price." },
+          "timestamp": { "type": "string", "format": "date-time" }
+        }
+      },
+      "Violation": {
+        "type": "object",
+        "properties": {
+          "rule": { "type": "string", "description": "The risk rule that was tripped." },
+          "severity": { "type": "string", "description": "Violation severity." },
+          "message": { "type": "string", "description": "Human-readable message." }
+        }
       }
     }
   }

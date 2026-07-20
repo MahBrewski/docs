@@ -1,13 +1,17 @@
 ---
 title: "API Reference"
-description: "Programmatic access to DojiFunded — place orders, manage positions, and pull account state."
+description: "Programmatic access to DojiFunded - place orders, manage positions, and pull account state."
 icon: "code"
 ---
 
 The DojiFunded Trading API is a public REST interface for algorithmic trading. Customers generate API keys in the dashboard and use them to place orders, manage positions, and pull account state programmatically.
 
+<Warning>
+  **Production.** For actual trading. Orders placed here execute against your live DojiFunded accounts. Test your bot on testnet first before pointing it at production.
+</Warning>
+
 <Note>
-  The legacy admin API for the copy-engine lives in a separate surface with different auth. This reference covers the **customer-facing trading API only**.
+  **Testnet.** Current testnet endpoints accept calls without headers while enforcement is being wired at the gateway. Build your client with headers attached from day one - production will return `401` without them.
 </Note>
 
 ## At a glance
@@ -20,6 +24,20 @@ The DojiFunded Trading API is a public REST interface for algorithmic trading. C
 | **Rate limit** | 1,200 req/min per key |
 | **Versioning** | URL prefix `/v1` |
 | **Key creation** | Dashboard → Settings → Developer |
+
+## Your first request
+
+```bash
+curl "https://engine.dojifunded.com/v1/price?symbol=BTC-USD"
+```
+
+Market data is public. For everything else, [create an API key](/api-reference/authentication) and pass it on every request:
+
+```bash
+curl "https://engine.dojifunded.com/v1/account/$ACC/summary" \
+  -H "X-API-Key: $KEY" \
+  -H "X-API-Secret: $SECRET"
+```
 
 ## Use cases
 
@@ -38,48 +56,25 @@ The DojiFunded Trading API is a public REST interface for algorithmic trading. C
   </Card>
 </CardGroup>
 
-## Sections
+## Explore the API
 
 <CardGroup cols={2}>
+  <Card title="Quickstart" icon="bolt" href="/api-reference/quickstart">
+    A working bot in 30 lines. Place your first limit order in under 5 minutes.
+  </Card>
   <Card title="Authentication" icon="key" href="/api-reference/authentication">
     Mint API keys, understand permission scopes, and authenticate every request.
   </Card>
-  <Card title="Account endpoints" icon="user" href="/api-reference/account-endpoints">
+  <Card title="Accounts" icon="user" href="/api-reference/accounts/get-account">
     Account state, positions, trades, funding, breaches, and analytics.
   </Card>
-  <Card title="Order endpoints" icon="arrow-right-arrow-left" href="/api-reference/order-endpoints">
+  <Card title="Orders" icon="arrow-right-arrow-left" href="/api-reference/orders/place-order">
     Place, cancel, and close orders across all order types and venues.
   </Card>
-  <Card title="Market data" icon="chart-bar" href="/api-reference/market-data">
-    Public price, orderbook, trades, tickers, and symbol metadata — no auth needed.
+  <Card title="Market data" icon="chart-bar" href="/api-reference/market-data-api/price">
+    Public price, orderbook, trades, tickers, and symbol metadata. No auth needed.
   </Card>
-  <Card title="Webhooks" icon="bell" href="/api-reference/webhooks">
-    Receive push notifications for order fills, position closes, and breaches.
-  </Card>
-  <Card title="Errors" icon="circle-exclamation" href="/api-reference/errors">
-    HTTP error codes, risk violations, and operational guidelines.
+  <Card title="Webhooks & errors" icon="bell" href="/api-reference/webhooks">
+    Trade lifecycle pushes, HTTP error codes, risk violations, and retry guidance.
   </Card>
 </CardGroup>
-
-## Quick start
-
-Jump straight to a working 30-line Node bot:
-
-<Card title="Quickstart — bot in 30 lines" icon="bolt" href="/api-reference/quickstart">
-  Place your first limit order in under 5 minutes.
-</Card>
-
-## Code locations
-
-| Component | Path |
-|---|---|
-| API-key controller | `doji-auth-backend/apps/wallet-service/src/apikeys/apikeys.controller.ts` |
-| API-key service | `doji-auth-backend/apps/wallet-service/src/apikeys/apikeys.service.ts` |
-| API-key DB schema | `doji-auth-backend/apps/wallet-service/src/common/schema/apikeys.ts` |
-| Trading routes (Rust/Axum) | `doji-perp-engine/src/api/http.rs` |
-| Order handlers | `doji-perp-engine/src/api/http/orders.rs` |
-| Account handlers | `doji-perp-engine/src/api/http/accounts.rs` |
-| Market data handlers | `doji-perp-engine/src/api/http/market_data.rs` |
-| Order/Side/TIF enums | `doji-perp-engine/src/domain/order.rs` |
-| Frontend Developer page | `doji-interface/src/components/settings/sections/DeveloperSection.tsx` |
-| Frontend API-keys client | `doji-interface/src/lib/api-keys-client.ts` + `src/hooks/useApiKeys.ts` |

@@ -94,25 +94,48 @@
             "group": "Overview",
             "pages": [
               "api-reference/introduction",
-              "api-reference/quickstart"
+              "api-reference/quickstart",
+              "api-reference/authentication"
             ]
           },
           {
-            "group": "Core",
+            "group": "Accounts",
             "pages": [
-              "api-reference/authentication",
-              "api-reference/account-endpoints",
-              "api-reference/order-endpoints"
+              "api-reference/accounts/create-account",
+              "api-reference/accounts/get-account",
+              "api-reference/accounts/account-summary",
+              "api-reference/accounts/open-positions",
+              "api-reference/accounts/position-history",
+              "api-reference/accounts/trade-history",
+              "api-reference/accounts/funding-payments",
+              "api-reference/accounts/breaches",
+              "api-reference/accounts/violations",
+              "api-reference/accounts/analytics"
+            ]
+          },
+          {
+            "group": "Orders",
+            "pages": [
+              "api-reference/orders/place-order",
+              "api-reference/orders/list-open-orders",
+              "api-reference/orders/cancel-order",
+              "api-reference/orders/close-position"
             ]
           },
           {
             "group": "Market data",
             "pages": [
-              "api-reference/market-data"
+              "api-reference/market-data-api/price",
+              "api-reference/market-data-api/orderbook",
+              "api-reference/market-data-api/recent-trades",
+              "api-reference/market-data-api/tickers",
+              "api-reference/market-data-api/ticker-metadata",
+              "api-reference/market-data-api/engine-config",
+              "api-reference/market-data-api/symbol-metrics"
             ]
           },
           {
-            "group": "Reference",
+            "group": "Integration",
             "pages": [
               "api-reference/webhooks",
               "api-reference/errors"

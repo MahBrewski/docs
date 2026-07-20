@@ -1,13 +1,13 @@
 ---
 title: "Quickstart"
-description: "Place your first order in under 5 minutes — a working bot in 30 lines of TypeScript."
+description: "Place your first order in under 5 minutes - a working bot in 30 lines of TypeScript."
 icon: "bolt"
 ---
 
 ## Prerequisites
 
 1. A DojiFunded account with an active plan.
-2. An API key with `TRADE` and `READ_ONLY` permissions — create one at Dashboard → Settings → Developer.
+2. An API key with `TRADE` and `READ_ONLY` permissions - create one at Dashboard → Settings → Developer.
 3. Your `account_id` from the dashboard.
 
 ---
@@ -71,20 +71,20 @@ if (res.violations?.length) {
 
 ## What just happened
 
-1. **Account summary** — reads live equity and margin state before acting.
-2. **Limit order** — a `post_only` limit buy that will only rest on the book, never take liquidity.
-3. **`client_id`** — a timestamp-based ID that makes the request idempotent. Safe to retry on failure.
-4. **Violation check** — always inspect `violations` before assuming success.
+1. **Account summary** - reads live equity and margin state before acting.
+2. **Limit order** - a `post_only` limit buy that will only rest on the book, never take liquidity.
+3. **`client_id`** - a timestamp-based ID that makes the request idempotent. Safe to retry on failure.
+4. **Violation check** - always inspect `violations` before assuming success.
 
 ---
 
 ## Next steps
 
 <CardGroup cols={2}>
-  <Card title="Order endpoints" icon="arrow-right-arrow-left" href="/api-reference/order-endpoints">
+  <Card title="Orders" icon="arrow-right-arrow-left" href="/api-reference/orders/place-order">
     Explore all order types: stop, take-profit, reduce-only, and cross-venue.
   </Card>
-  <Card title="Account endpoints" icon="user" href="/api-reference/account-endpoints">
+  <Card title="Accounts" icon="user" href="/api-reference/accounts/get-account">
     Pull positions, trade history, breaches, and analytics.
   </Card>
   <Card title="Webhooks" icon="bell" href="/api-reference/webhooks">

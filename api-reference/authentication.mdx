@@ -13,7 +13,7 @@ doji_ak_a3f2b1c9d8e7…   ← public key  →  sent in X-API-Key header
 doji_sk_5b2a8f4c1e9d…   ← secret      →  sent in X-API-Secret header (never logged)
 ```
 
-Both values are SHA-256 hashed at rest. The raw secret is returned **only once** at creation — save it immediately or revoke and regenerate.
+Both values are SHA-256 hashed at rest. The raw secret is returned **only once** at creation - save it immediately or revoke and regenerate.
 
 ---
 
@@ -95,7 +95,7 @@ curl -X POST https://api.dojifunded.com/api/api-keys \
 
 **Constraints**
 
-- Maximum **10 active keys** per user — revoke before creating an 11th.
+- Maximum **10 active keys** per user - revoke before creating an 11th.
 - `webhookUrl` must use `https://`.
 - `expiresAt` must be an ISO 8601 timestamp in the future.
 
@@ -120,7 +120,7 @@ Revocation is immediate and unrecoverable.
 
 | Scope | Grants access to |
 |---|---|
-| `READ_ONLY` | All `GET` endpoints — account, positions, market data |
+| `READ_ONLY` | All `GET` endpoints - account, positions, market data |
 | `TRADE` | `POST /v1/order`, close-position |
 | `MANAGE_ORDERS` | Cancel orders, modify TP/SL, full order management |
 
@@ -147,7 +147,7 @@ The engine validates each request by calling `POST /api/api-keys/validate` again
 - Key permissions cover the endpoint being called
 
 <Note>
-  **Testnet caveat:** current testnet endpoints accept calls without headers while enforcement is being wired at the gateway. Build your client with headers attached from day one — production will return `401` without them.
+  **Testnet caveat:** current testnet endpoints accept calls without headers while enforcement is being wired at the gateway. Build your client with headers attached from day one - production will return `401` without them.
 </Note>
 
 ---

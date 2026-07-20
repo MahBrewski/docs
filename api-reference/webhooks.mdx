@@ -7,7 +7,7 @@ icon: "bell"
 If you set a `webhookUrl` when [creating an API key](/api-reference/authentication#create-a-key), the engine POSTs trade lifecycle events to that URL in real time.
 
 <Note>
-  Webhook delivery and the verification scheme are in active development. The events listed here reflect current intent — the exact payload shapes will be documented as they are finalised.
+  Webhook delivery and the verification scheme are in active development. The events listed here reflect current intent - the exact payload shapes will be documented as they are finalised.
 </Note>
 
 ---
@@ -29,7 +29,7 @@ curl -X POST https://api.dojifunded.com/api/api-keys \
 
 Requirements:
 - The URL **must** use `https://`.
-- The URL must be reachable from the engine — test with a public endpoint before going to production.
+- The URL must be reachable from the engine - test with a public endpoint before going to production.
 
 ---
 
@@ -53,7 +53,7 @@ Sign your endpoint to reject requests that didn't originate from DojiFunded. A f
 
 As an interim measure, verify that:
 1. The source IP matches the known DojiFunded engine IP range.
-2. Your endpoint returns `2xx` within a reasonable timeout — failed deliveries will be retried.
+2. Your endpoint returns `2xx` within a reasonable timeout - failed deliveries will be retried.
 
 ---
 
