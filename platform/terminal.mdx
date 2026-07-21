@@ -35,11 +35,11 @@ Live prices stream directly from the venues, driving your fills, PnL, drawdown m
 
 ## Risk overlay
 
-A live risk panel updates while your positions are open. Because drawdown limits are measured on **realised balance**, open positions show here as unrealized PnL but do not count against your drawdown until you close them.
+A live risk panel updates while your positions are open. Drawdown limits are measured on **HWM basis**, so open positions count against your drawdown in real time.
 
 | Metric                     | What it shows                                |
 | -------------------------- | -------------------------------------------- |
-| **Current drawdown**       | Drawdown usage against your limit, on realised balance |
+| **Current drawdown**       | Drawdown usage against your limit, from your high water mark |
 | **Daily loss usage**       | Portion of today's daily loss allowance used |
 | **Margin utilization**     | Margin used across open positions            |
 | **Unrealized PnL**         | Live profit or loss on open positions        |

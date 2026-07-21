@@ -43,9 +43,9 @@ icon: "circle-question"
     Even if you grow the account to $120,000, the limit stays the same.
   </Accordion>
   <Accordion title="Are drawdowns equity-based?">
-    No, the drawdowns are based on realised account balance, not floating PnL. Open trades do not affect drawdown calculations until positions are closed.
+    Drawdowns are calculated on your high water mark (HWM): whichever is higher of your equity and balance counts. Open trades affect your drawdown in real time, since equity moves with them.
 
-    Daily drawdown is calculated using a high-water mark (HWM), while maximum drawdown depends on your account type.
+    The daily HWM resets every day at 00:00 UTC. Maximum drawdown depends on your account type.
 
     **Example of Daily Drawdown (HWM)**
 
@@ -53,13 +53,13 @@ icon: "circle-question"
 
     Your daily loss limit is 5% of account size. This means your maximum daily loss is: $5,000
 
-    During the day, your balance reaches: $105,000
+    During the day, your account reaches $105,000, in balance or equity.
 
     Your daily drawdown floor now becomes: $100,000 ($105,000 − $5,000)
 
-    You later close losing trades and your balance drops to: $99,500
+    Your account later drops to: $99,500
 
-    The account fails because the realised balance fell below the daily drawdown limit.
+    The account fails because it fell below the daily drawdown floor.
 
     **Another example makes it even clearer:**
 
@@ -69,7 +69,7 @@ icon: "circle-question"
 
     So the formula is always:
 
-    Daily HWM Floor = Highest Balance of the Day − (Daily Loss % × Initial Account Size)
+    Daily HWM Floor = Day's High Water Mark − (Daily Loss % × Initial Account Size)
   </Accordion>
   <Accordion title="What happens if I break a rule?">
     If your account breaches a daily or maximum drawdown limit, it fails automatically.
@@ -116,6 +116,10 @@ icon: "circle-question"
   </Accordion>
   <Accordion title="Are they any timelimits per trade?">
     Every trade/position opened on Dojifunded has to be held for a minimum of 60 seconds before it can be closed to prevent gaming and HFT strategies being run on the platform.
+
+    This applies to TP/SL as well. Even if your set TP/SL closes the trade within 60 seconds, it will still be considered a violation of the rule.
+
+    We understand that sometimes a trade can get closed by mistake, so every trader gets two warnings before a breach. The third time a trade gets closed within 60 seconds, it will lead to a breach.
   </Accordion>
 </AccordionGroup>
 

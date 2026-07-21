@@ -14,13 +14,13 @@ The central hub for your evaluations, funded accounts, payouts, and analytics, u
 
 ## Account overview
 
-Each account shows its key metrics live. Equity displays in real time including open positions, but since drawdown limits are measured on **realised balance**, open positions do not count against your drawdown until you close them.
+Each account shows its key metrics live. Equity displays in real time including open positions, and drawdown limits are measured on **HWM basis**, so open positions count the moment they move.
 
 | Metric                    | What it shows                                |
 | ------------------------- | -------------------------------------------- |
 | **Current equity**        | Account value now, including open positions  |
 | **Remaining daily loss**  | Portion of today's daily loss allowance left |
-| **Remaining max drawdown**| Distance from realised balance to the floor  |
+| **Remaining max drawdown**| Distance from your account value to the floor |
 | **Profit target progress**| How close you are to passing                 |
 | **Payout eligibility**    | Whether the account qualifies for a withdrawal |
 | **Account status**        | Phase, plan, size, and trading status        |
@@ -55,11 +55,11 @@ Live positions show size, entry price, current price, unrealized PnL, return on 
 
 ## Risk monitoring
 
-Tracked live, with drawdown measured on realised balance while the rest updates with the market.
+Tracked live. Drawdown limits are measured on HWM basis while the rest updates with the market.
 
 | Metric               | What it shows                          |
 | -------------------- | -------------------------------------- |
-| **Drawdown usage**   | How close realised balance is to the limit |
+| **Drawdown usage**   | How close your account value is to the limit |
 | **Margin utilization**| Margin used across open positions      |
 | **Active exposure**  | Total open position exposure           |
 | **Breach proximity** | How close the account is to failing    |

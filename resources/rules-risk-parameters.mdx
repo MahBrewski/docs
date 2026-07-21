@@ -57,8 +57,8 @@ The complete trading, payout, risk, and compliance framework for every DojiFunde
     A fixed floor set from your starting balance that never moves as the account grows.
   </Card>
 
-  <Card title="Realised balance" icon="circle-check">
-    Only closed trades count. A floating loss on an open position does nothing until you close it.
+  <Card title="High water mark" icon="arrow-trend-up">
+    Whichever is higher of your balance and equity. All drawdown is measured against it, and the daily mark resets at 00:00 UTC.
   </Card>
 </CardGroup>
 
@@ -85,7 +85,7 @@ The platform provides:
 
 ## 02 · Account types
 
-Four models, in sizes from **$1,000 to $100,000**. Every one uses static drawdown, measured on realised balance.
+Four models, in sizes from **$1,000 to $100,000**. Every one uses static drawdown, with limits measured on HWM basis.
 
 | Account type               | Model                |
 | -------------------------- | -------------------- |
@@ -100,19 +100,19 @@ Read these first. Every rule below is written in these terms.
 
 <CardGroup cols={2}>
   <Card title="Balance" icon="scale-balanced">
-    Your closed account value, from trades already closed. This is what drawdown is measured against.
+    Your closed account value, from trades already closed.
   </Card>
 
   <Card title="Equity" icon="chart-line">
-    Real-time account value including open positions. Displayed live, but not used for drawdown.
+    Real-time account value including open positions. When it sits above your balance, it sets the high water mark.
   </Card>
 
-  <Card title="Realised balance" icon="circle-check">
-    Your balance from closed trades. Drawdown rules reference this alone, so open positions do not count until you close them.
+  <Card title="High water mark (HWM)" icon="arrow-trend-up">
+    Whichever is higher of your balance and equity. Every drawdown calculation references this value.
   </Card>
 
   <Card title="Daily drawdown" icon="calendar-day">
-    Maximum loss allowed within a single day, measured on realised balance using the day's high-water mark.
+    Maximum loss allowed within a single day, measured from the day's high water mark.
   </Card>
 
   <Card title="Maximum drawdown" icon="triangle-exclamation">
@@ -120,23 +120,23 @@ Read these first. Every rule below is written in these terms.
   </Card>
 
   <Card title="Breach" icon="circle-xmark">
-    Automatic, permanent termination of an account, triggered when realised balance crosses a risk limit.
+    Automatic, permanent termination of an account, triggered when your account value crosses a risk limit.
   </Card>
 
   <Card title="Profit target" icon="flag-checkered">
     The balance growth required to pass an evaluation.
   </Card>
 
-  <Card title="Daily high-water mark" icon="arrow-trend-up">
-    The highest realised balance reached so far today. It sets the day's daily loss floor and resets each day.
+  <Card title="Daily high water mark" icon="calendar-check">
+    The highest your balance or equity has reached so far today. It sets the day's daily loss floor and resets at 00:00 UTC.
   </Card>
 </CardGroup>
 
-{/* DIAGRAM: single-trade chart with realised balance as a step line that moves only when a trade closes, static floor drawn flat beneath it, open PnL floating above the balance without touching the floor. */}
+{/* DIAGRAM: chart with balance and equity lines, HWM tracing whichever is higher, static floor drawn flat beneath. */}
 
 ## 04 · Drawdown rules
 
-Every account uses **one drawdown model: static**, measured on **realised balance** (closed trades only). A losing open position does not breach you. A breach happens only when your realised balance crosses a floor.
+Every account uses **one drawdown model: static**, and drawdown limits are measured on **HWM basis**: whichever is higher of your balance and equity counts. Open positions matter, because equity moves with them. A breach happens when your account value crosses a floor.
 
 The floor is set once, from your starting balance, and never moves. It does not rise as the account grows.
 
@@ -144,7 +144,7 @@ The floor is set once, from your starting balance, and never moves. It does not 
 Static floor = Starting balance × (1 − max drawdown %)
 ```
 
-Start a $100,000 account with a 6% limit and your floor is **$94,000**. Grow it to $120,000 and the floor stays at $94,000. If realised balance ever reaches $94,000, the account is breached.
+Start a $100,000 account with a 6% limit and your floor is **$94,000**. Grow it to $120,000 and the floor stays at $94,000. If your balance or equity ever reaches $94,000, the account is breached.
 
 | Account                  | Max drawdown | Static floor on $100K | Daily drawdown |
 | ------------------------ | ------------ | --------------------- | -------------- |
@@ -154,38 +154,36 @@ Start a $100,000 account with a 6% limit and your floor is **$94,000**. Grow it 
 | 2-Step Elite             | 8%           | $92,000               | 5%             |
 
 <Tip>
-  Because drawdown references realised balance only, a losing open position does not breach your maximum drawdown. It counts only once you close it. Margin and liquidation on the position itself are handled separately by the venue.
+  Because equity counts, a losing open position can breach you before you close it. Watch your floating PnL against both floors, not just your closed balance. Margin and liquidation on the position itself are handled separately by the venue.
 </Tip>
 
-{/* DIAGRAM: flat static floor beneath a rising realised-balance step chart, open position floating below the balance but above the floor, labeled "does not count until closed". */}
+{/* DIAGRAM: flat static floor beneath balance and equity lines, equity dipping toward the floor while a position is open, labeled "equity counts". */}
 
 ## 05 · Daily loss limits
 
-On top of the static maximum drawdown, each account other than Instant Funding carries a daily loss limit that resets each day.
+On top of the static maximum drawdown, each account other than Instant Funding carries a daily loss limit that resets every day at **00:00 UTC**.
 
-The daily loss amount is a fixed dollar figure: the daily percentage times your initial account size. On a $100,000 account at 5%, that's **$5,000** every day. The daily floor is set from the highest realised balance you reach that day, minus that fixed amount.
+The daily loss amount is a fixed dollar figure: the daily percentage times your initial account size. On a $100,000 account at 5%, that's **$5,000** every day. The daily floor is set from the day's high water mark, the highest your balance or equity gets that day, minus that fixed amount.
 
 ```
 Daily loss amount = Daily loss % × Initial account size
-Daily floor       = Highest balance of the day − Daily loss amount
+Daily floor       = Day's high water mark − Daily loss amount
 ```
 
-The floor moves up as your balance climbs during the day, while the amount you can give back stays fixed. Like the maximum drawdown, it's measured on realised balance.
+The floor moves up as your high water mark climbs during the day, while the amount you can give back stays fixed. Like the maximum drawdown, it's calculated on whichever is higher of your balance and equity, so open positions count.
 
-**Worked example.** Start the day at $100,000 with a 5% daily loss limit, which is $5,000. Reach $105,000 during the day and your daily floor becomes $100,000. Close losing trades down to $99,500 and the account is breached, because realised balance dropped below the daily floor. Had you reached $110,000, the floor would sit at $105,000.
+**Worked example.** Start the day at $100,000 with a 5% daily loss limit, which is $5,000. Reach $105,000 during the day, in balance or equity, and your daily floor becomes $100,000. Drop to $99,500 and the account is breached, because your account value fell below the daily floor. Had you reached $110,000, the floor would sit at $105,000.
 
 <Warning>
-  No grace periods, no manual resets. The daily floor is measured on realised balance and resets at the start of each day.
+  No grace periods, no manual resets. The daily floor is set from your high water mark and resets at 00:00 UTC.
 </Warning>
-
-{/* CONFIRM: daily reset clock, the exact reset time (e.g. 00:00 UTC) is not stated, and traders plan holds around it. */}
 
 ## 06 · Breach conditions
 
 A breach occurs when:
 
-* Your realised balance crosses the maximum drawdown floor.
-* Your realised balance crosses the daily floor.
+* Your balance or equity crosses the maximum drawdown floor.
+* Your balance or equity crosses the daily floor.
 * A platform rule is violated.
 
 When it happens:
@@ -214,7 +212,7 @@ Targets are measured on balance, so you have to close trades to realize the prog
 
 **General rules.**
 
-* Minimum trade duration is 60 seconds.
+* Minimum trade duration is 60 seconds. This holds even if a TP/SL you set closes the trade earlier. You get two warnings for trades closed within 60 seconds, and the third one leads to a breach.
 * No account arbitrage.
 * No exploiting latency or pricing errors.
 * No copy trading between users.
@@ -372,7 +370,7 @@ DojiFunded may update its rules prospectively. Past performance does not guarant
     | Max drawdown   | 5% static        | 6% static | 6% static      | 8% static    |
     | Daily drawdown | None             | 3%        | 3%             | 5%           |
 
-    **Applies to all:** drawdown measured on realised balance · 60s minimum trade time · no time limit · no minimum trading days · a breach is permanent.
+    **Applies to all:** drawdown limits measured on HWM basis · daily reset at 00:00 UTC · 60s minimum trade time · no time limit · no minimum trading days · a breach is permanent.
   </Tab>
 
   <Tab title="Funded">
