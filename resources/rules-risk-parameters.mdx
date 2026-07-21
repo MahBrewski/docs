@@ -85,11 +85,11 @@ The platform provides:
 
 ## 02 · Account types
 
-Four models, in sizes from **$1,000 to $100,000**. Every one uses static drawdown, with limits measured on HWM basis.
+Four models, in sizes from **\$1,000 to \$100,000**. Every one uses static drawdown, with limits measured on HWM basis.
 
 | Account type               | Model                |
 | -------------------------- | -------------------- |
-| Instant Funding *(soon)*   | Instant funding      |
+| Instant Funding (soon)   | Instant funding      |
 | 1-Step                     | Single evaluation    |
 | 2-Step Elite               | Two-phase evaluation |
 | 2-Step Classic             | Two-phase evaluation |
@@ -144,11 +144,11 @@ The floor is set once, from your starting balance, and never moves. It does not 
 Static floor = Starting balance × (1 − max drawdown %)
 ```
 
-Start a $100,000 account with a 6% limit and your floor is **$94,000**. Grow it to $120,000 and the floor stays at $94,000. If your balance or equity ever reaches $94,000, the account is breached.
+Start a \$100,000 account with a 6% limit and your floor is **\$94,000**. Grow it to \$120,000 and the floor stays at \$94,000. If your balance or equity ever reaches \$94,000, the account is breached.
 
 | Account                  | Max drawdown | Static floor on $100K | Daily drawdown |
 | ------------------------ | ------------ | --------------------- | -------------- |
-| Instant Funding *(soon)* | 5%           | $95,000               | None           |
+| Instant Funding (soon) | 5%           | $95,000               | None           |
 | 1-Step                   | 6%           | $94,000               | 3%             |
 | 2-Step Classic           | 6%           | $94,000               | 3%             |
 | 2-Step Elite             | 8%           | $92,000               | 5%             |
@@ -163,7 +163,7 @@ Start a $100,000 account with a 6% limit and your floor is **$94,000**. Grow it 
 
 On top of the static maximum drawdown, each account other than Instant Funding carries a daily loss limit that resets every day at **00:00 UTC**.
 
-The daily loss amount is a fixed dollar figure: the daily percentage times your initial account size. On a $100,000 account at 5%, that's **$5,000** every day. The daily floor is set from the day's high water mark, the highest your balance or equity gets that day, minus that fixed amount.
+The daily loss amount is a fixed dollar figure: the daily percentage times your initial account size. On a \$100,000 account at 5%, that's **\$5,000** every day. The daily floor is set from the day's high water mark, the highest your balance or equity gets that day, minus that fixed amount.
 
 ```
 Daily loss amount = Daily loss % × Initial account size
@@ -172,7 +172,7 @@ Daily floor       = Day's high water mark − Daily loss amount
 
 The floor moves up as your high water mark climbs during the day, while the amount you can give back stays fixed. Like the maximum drawdown, it's calculated on whichever is higher of your balance and equity, so open positions count.
 
-**Worked example.** Start the day at $100,000 with a 5% daily loss limit, which is $5,000. Reach $105,000 during the day, in balance or equity, and your daily floor becomes $100,000. Drop to $99,500 and the account is breached, because your account value fell below the daily floor. Had you reached $110,000, the floor would sit at $105,000.
+**Worked example.** Start the day at \$100,000 with a 5% daily loss limit, which is \$5,000. Reach \$105,000 during the day, in balance or equity, and your daily floor becomes \$100,000. Drop to \$99,500 and the account is breached, because your account value fell below the daily floor. Had you reached \$110,000, the floor would sit at \$105,000.
 
 <Warning>
   No grace periods, no manual resets. The daily floor is set from your high water mark and resets at 00:00 UTC.
@@ -199,7 +199,7 @@ Breached accounts cannot be restored. No resets, appeals, or exceptions. That sa
 
 | Account type               | Profit target                     |
 | -------------------------- | --------------------------------- |
-| Instant Funding *(soon)*   | None                              |
+| Instant Funding (soon)   | None                              |
 | 1-Step                     | 10%                               |
 | 2-Step Elite               | 10% in step 1, then 5% in step 2  |
 | 2-Step Classic             | 10% in step 1, then 5% in step 2  |
@@ -253,7 +253,7 @@ Eligible funded traders request payouts from the dashboard. Payouts are processe
 
 | Account type               | Withdrawal requirement           |
 | -------------------------- | -------------------------------- |
-| Instant Funding *(soon)*   | First withdrawal after 5% profit |
+| Instant Funding (soon)   | First withdrawal after 5% profit |
 | 1-Step                     | At least 1% account profit       |
 | 2-Step Elite               | At least 1% account profit       |
 | 2-Step Classic             | At least 1% account profit       |
@@ -364,7 +364,7 @@ DojiFunded may update its rules prospectively. Past performance does not guarant
 
 <Tabs>
   <Tab title="Evaluation">
-    | Parameter      | Instant *(soon)* | 1-Step    | 2-Step Classic | 2-Step Elite |
+    | Parameter      | Instant (soon) | 1-Step    | 2-Step Classic | 2-Step Elite |
     | -------------- | ---------------- | --------- | -------------- | ------------ |
     | Profit target  | None             | 10%       | 5% → 10%       | 5% → 10%     |
     | Max drawdown   | 5% static        | 6% static | 6% static      | 8% static    |
@@ -374,7 +374,7 @@ DojiFunded may update its rules prospectively. Past performance does not guarant
   </Tab>
 
   <Tab title="Funded">
-    | Parameter       | Instant *(soon)*  | 1-Step    | 2-Step Classic | 2-Step Elite |
+    | Parameter       | Instant (soon)  | 1-Step    | 2-Step Classic | 2-Step Elite |
     | --------------- | ----------------- | --------- | -------------- | ------------ |
     | Profit target   | None              | None      | None           | None         |
     | Max drawdown    | 5% static         | 6% static | 6% static      | 8% static    |
