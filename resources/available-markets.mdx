@@ -4,7 +4,7 @@ description: "Understand the market categories supported by the DojiFunded platf
 icon: "chart-bar"
 ---
 
-Multi-asset market access from a single platform. This page reflects the current go-live market set, based on the launch list as of **May 9, 2026**.
+Multi-asset market access from a single platform. This page lists the final go-live market set: 81 markets across crypto, forex, commodities, indices, and stocks.
 
 {/* DIAGRAM: brand market banner (asset: /images/Cool.png), retained as the page header. */}
 
@@ -12,193 +12,126 @@ Multi-asset market access from a single platform. This page reflects the current
   <img src="/images/Cool.png" alt="DojiFunded markets" />
 </Frame>
 
-The reference is organized two ways: by asset class and by execution venue. The tables below show only the go-live pairs. If a pair exists in internal tooling but isn't listed here, treat it as outside the launch set.
+Each market has its own maximum leverage and maximum position size. Both are enforced when you place the order, so a position that exceeds either limit is rejected rather than partially filled. If a pair exists in internal tooling but isn't listed here, treat it as outside the launch set.
 
-| Venue  | Main coverage                                              |
-| ------ | --------------------------------------------------------- |
-| GMX    | Crypto and commodities                                    |
-| Ostium | Stocks, ETFs, commodities, indices, currencies, and selected crypto |
+| Venue  | Main coverage                                                       |
+| ------ | ------------------------------------------------------------------- |
+| GMX    | Crypto and commodities                                              |
+| Ostium | Stocks, commodities, indices, currencies, and selected crypto       |
 
-**Available on both venues at launch:** ADA/USD, BNB/USD, BTC/USD, CVX/USD, ETH/USD, HYPE/USD, LINK/USD, SOL/USD, TRX/USD, XRP/USD.
+The terminal shows the execution venue for each market. Ten crypto pairs route to either venue at launch: ADA/USD, BNB/USD, BTC/USD, CVX/USD, ETH/USD, HYPE/USD, LINK/USD, SOL/USD, TRX/USD, XRP/USD.
 
-{/* DIAGRAM: optional venue-split visual, two columns (GMX, Ostium) with the shared pairs in the overlap. */}
+## Crypto
 
-## GMX markets
+| Name              | Ticker     | Max leverage | Max position size |
+| ----------------- | ---------- | ------------ | ----------------- |
+| Bitcoin           | BTCUSD     | 5x           | $1,000,000        |
+| Ethereum          | ETHUSD     | 5x           | $1,000,000        |
+| Solana            | SOLUSD     | 3x           | $300,000          |
+| Ripple            | XRPUSD     | 3x           | $300,000          |
+| Hyperliquid       | HYPEUSD    | 3x           | $300,000          |
+| Bittensor         | TAOUSD     | 3x           | $300,000          |
+| Zcash             | ZECUSD     | 3x           | $300,000          |
+| Binance Coin      | BNBUSD     | 2x           | $100,000          |
+| Cardano           | ADAUSD     | 2x           | $100,000          |
+| Dogecoin          | DOGEUSD    | 2x           | $100,000          |
+| Chainlink         | LINKUSD    | 2x           | $100,000          |
+| Avalanche         | AVAXUSD    | 2x           | $100,000          |
+| NEAR Protocol     | NEARUSD    | 2x           | $100,000          |
+| Sui               | SUIUSD     | 2x           | $100,000          |
+| Aave              | AAVEUSD    | 2x           | $100,000          |
+| Sei               | SEIUSD     | 2x           | $100,000          |
+| Monero            | XMRUSD     | 2x           | $100,000          |
+| Litecoin          | LTCUSD     | 2x           | $50,000           |
+| Arbitrum          | ARBUSD     | 2x           | $50,000           |
+| Optimism          | OPUSD      | 2x           | $50,000           |
+| Uniswap           | UNIUSD     | 2x           | $50,000           |
+| Curve DAO         | CRVUSD     | 2x           | $50,000           |
+| GMX               | GMXUSD     | 2x           | $50,000           |
+| TRON              | TRXUSD     | 2x           | $50,000           |
+| Pendle            | PENDLEUSD  | 2x           | $50,000           |
+| Ondo              | ONDOUSD    | 2x           | $50,000           |
+| Convex Finance    | CVXUSD     | 2x           | $50,000           |
+| dYdX              | DYDXUSD    | 2x           | $50,000           |
+| Jupiter           | JUPUSD     | 2x           | $50,000           |
+| PancakeSwap       | CAKEUSD    | 2x           | $50,000           |
+| Toncoin           | TONUSD     | 2x           | $50,000           |
+| Aptos             | APTUSD     | 2x           | $50,000           |
+| Virtuals Protocol | VIRTUALUSD | 2x           | $50,000           |
+| Polygon           | POLUSD     | 2x           | $50,000           |
+| Tether Gold       | XAUTUSD    | 2x           | $50,000           |
 
-### Crypto
+## Forex (all 15x)
 
-| Name              | Ticker       | Max leverage | Max position size |
-| ----------------- | ------------ | ------------ | ----------------- |
-| Bitcoin           | BTCUSD       | 5x           | $1,000,000        |
-| Ethereum          | ETHUSD       | 5x           | $1,000,000        |
-| Solana            | SOLUSD       | 3x           | $300,000          |
-| Binance Coin      | BNBUSD       | 2x           | $100,000          |
-| Ripple            | XRPUSD       | 3x           | $300,000          |
-| Litecoin          | LTCUSD       | 2x           | $50,000           |
-| Cardano           | ADAUSD       | 2x           | $100,000          |
-| Dogecoin          | DOGEUSD      | 2x           | $100,000          |
-| Chainlink         | LINKUSD      | 2x           | $100,000          |
-| Avalanche         | AVAXUSD      | 2x           | $100,000          |
-| NEAR Protocol     | NEARUSD      | 2x           | $100,000          |
-| Pepe              | kPEPEUSD     | 3x           | $300,000          |
-| Shiba Inu         | kSHIBUSD     | 2x           | $50,000           |
-| Hyperliquid       | HYPEUSD      | 3x           | $300,000          |
-| Sui               | SUIUSD       | 2x           | $100,000          |
-| Arbitrum          | ARBUSD       | 2x           | $50,000           |
-| Optimism          | OPUSD        | 2x           | $50,000           |
-| Uniswap           | UNIUSD       | 2x           | $50,000           |
-| Aave              | AAVEUSD      | 2x           | $100,000          |
-| Curve DAO         | CRVUSD       | 2x           | $50,000           |
-| GMX               | GMXUSD       | 2x           | $50,000           |
-| TRON              | TRXUSD       | 2x           | $50,000           |
-| Bittensor         | TAOUSD       | 3x           | $300,000          |
-| Pendle            | PENDLEUSD    | 2x           | $50,000           |
-| Sei               | SEIUSD       | 2x           | $100,000          |
-| Ondo              | ONDOUSD      | 2x           | $50,000           |
-| Convex Finance    | CVXUSD       | 2x           | $50,000           |
-| dYdX              | DYDXUSD      | 2x           | $50,000           |
-| Jupiter           | JUPUSD       | 2x           | $50,000           |
-| PancakeSwap       | CAKEUSD      | 2x           | $50,000           |
-| Toncoin           | TONUSD       | 2x           | $50,000           |
-| Cosmos            | ATOMUSD      | 2x           | $50,000           |
-| Polkadot          | DOTUSD       | 2x           | $50,000           |
-| Filecoin          | FILUSD       | 2x           | $50,000           |
-| Internet Computer | ICPUSD       | 2x           | $50,000           |
-| Aptos             | APTUSD       | 2x           | $50,000           |
-| Virtuals Protocol | VIRTUALUSD   | 2x           | $50,000           |
-| Polygon           | POLUSD       | 2x           | $50,000           |
-| Fartcoin          | FARTCOINUSD  | 3x           | $300,000          |
-| Official Trump    | TRUMPUSD     | 2x           | $50,000           |
-| Pudgy Penguins    | PENGUUSD     | 2x           | $50,000           |
-| Bitcoin Cash      | BCHUSD       | 2x           | $100,000          |
-| Mantle            | MNTUSD       | 2x           | $50,000           |
-| Berachain         | BERAUSD      | 2x           | $50,000           |
-| LayerZero         | ZROUSD       | 2x           | $100,000          |
-| Algorand          | ALGOUSD      | 2x           | $100,000          |
-| Cronos            | CROUSD       | 2x           | $50,000           |
-| Aster             | ASTERUSD     | 2x           | $50,000           |
-| Monad             | MONUSD       | 2x           | $100,000          |
-| Maple Syrup       | SYRUPUSD     | 2x           | $50,000           |
-| Lighter           | LITUSD       | 2x           | $100,000          |
-| Tether Gold       | XAUTUSD      | 2x           | $50,000           |
-| Dash              | DASHUSD      | 2x           | $50,000           |
-| Monero            | XMRUSD       | 2x           | $100,000          |
-| Zcash             | ZECUSD       | 3x           | $300,000          |
-| MEGA              | MEGAUSD      | 2x           | $50,000           |
+| Name                          | Ticker  | Max position size |
+| ----------------------------- | ------- | ----------------- |
+| Euro / US Dollar              | EUR/USD | $2,000,000        |
+| British Pound / US Dollar     | GBP/USD | $1,500,000        |
+| Australian Dollar / US Dollar | AUD/USD | $1,000,000        |
+| New Zealand Dollar / US Dollar| NZD/USD | $1,000,000        |
+| US Dollar / Canadian Dollar   | USD/CAD | $1,000,000        |
+| US Dollar / Swiss Franc       | USD/CHF | $1,000,000        |
+| US Dollar / South Korean Won  | USD/KRW | $500,000          |
+| US Dollar / Mexican Peso      | USD/MXN | $500,000          |
 
-### Commodities
+## Commodities (up to 10x)
 
-| Name           | Ticker      | Max leverage | Max position size |
-| -------------- | ----------- | ------------ | ----------------- |
-| WTI Crude Oil  | WTIOILUSD   | 8x           | $1,000,000        |
-| Brent Crude Oil| BRENTOILUSD | 8x           | $1,000,000        |
-| Gold           | GOLDUSD     | 10x          | $1,000,000        |
-| Silver         | SILVERUSD   | 8x           | $700,000          |
-| Natural Gas    | NATGASUSD   | 5x           | $1,000,000        |
+| Name             | Ticker    | Max leverage | Max position size |
+| ---------------- | --------- | ------------ | ----------------- |
+| Gold             | XAU/USD   | 10x          | $1,000,000        |
+| WTI Oil          | WTI/USD   | 8x           | $1,000,000        |
+| Brent Crude Oil  | BRENT/USD | 8x           | $1,000,000        |
+| Silver           | XAG/USD   | 8x           | $700,000          |
+| Copper (Spot)    | XCU/USD   | 6x           | $500,000          |
+| Platinum         | XPT/USD   | 5x           | $300,000          |
+| Palladium        | XPD/USD   | 5x           | $300,000          |
 
-## Ostium markets
+## Indices (all 10x)
 
-### Crypto
+| Name                             | Ticker    | Max position size |
+| -------------------------------- | --------- | ----------------- |
+| US 500 (S&P 500)                 | US500/USD | $1,000,000        |
+| US Tech 100 (Nasdaq 100)         | US100/USD | $1,000,000        |
+| US Wall Street 30 (Dow Jones 30) | US30/USD  | $1,000,000        |
+| Germany 40 (DAX)                 | GER40/EUR | $500,000          |
+| UK 100 (FTSE 100)                | UK100/GBP | $500,000          |
+| Hong Kong 50 (Hang Seng)         | HK50/HKD  | $300,000          |
 
-| Ticker  | Max leverage | Max position size |
-| ------- | ------------ | ----------------- |
-| BTC/USD | 5x           | $1,000,000        |
-| ETH/USD | 5x           | $1,000,000        |
-| SOL/USD | 3x           | $300,000          |
-| XRP/USD | 3x           | $300,000          |
-| BNB/USD | 2x           | $100,000          |
-| ADA/USD | 2x           | $50,000           |
-| LINK/USD| 2x           | $100,000          |
-| TRX/USD | 2x           | $50,000           |
-| HYPE/USD| 3x           | $300,000          |
+## Stocks (all 10x)
 
-### Stocks (all 10x)
-
-| Ticker   | Max position size |
-| -------- | ----------------- |
-| AAPL/USD | $1,000,000        |
-| AMD/USD  | $500,000          |
-| AMZN/USD | $1,000,000        |
-| ARM/USD  | $400,000          |
-| ASML/USD | $600,000          |
-| AVGO/USD | $400,000          |
-| BMNR/USD | $300,000          |
-| CAT/USD  | $400,000          |
-| COIN/USD | $300,000          |
-| COST/USD | $600,000          |
-| CRCL/USD | $300,000          |
-| CVX/USD  | $300,000          |
-| GEV/USD  | $300,000          |
-| GLXY/USD | $300,000          |
-| GOOG/USD | $1,000,000        |
-| HOOD/USD | $300,000          |
-| INTC/USD | $300,000          |
-| META/USD | $1,000,000        |
-| MSFT/USD | $1,000,000        |
-| MSTR/USD | $300,000          |
-| MU/USD   | $300,000          |
-| NFLX/USD | $600,000          |
-| NVDA/USD | $1,000,000        |
-| ORCL/USD | $600,000          |
-| PLTR/USD | $300,000          |
-| SBET/USD | $200,000          |
-| SMCI/USD | $300,000          |
-| SNDK/USD | $300,000          |
-| TSLA/USD | $600,000          |
-| TSM/USD  | $400,000          |
-| XOM/USD  | $300,000          |
-
-### ETFs (all 20x)
-
-| Ticker     | Max position size |
-| ---------- | ----------------- |
-| HYG/USD    | $500,000          |
-| KR2550/USD | $300,000          |
-| TLT/USD    | $750,000          |
-| UNG/USD    | $300,000          |
-| URA/USD    | $300,000          |
-| XLE/USD    | $750,000          |
-
-### Commodities
-
-| Ticker           | Max leverage | Max position size |
-| ---------------- | ------------ | ----------------- |
-| XAU/USD (Gold)   | 10x          | $1,000,000        |
-| BRENT/USD        | 8x           | $1,000,000        |
-| XCU/USD (Copper) | 6x           | $500,000          |
-| XAG/USD (Silver) | 8x           | $700,000          |
-| XPT/USD (Platinum)| 5x          | $300,000          |
-| XPD/USD (Palladium)| 5x         | $300,000          |
-
-### Forex (all 25x)
-
-| Ticker  | Max position size |
-| ------- | ----------------- |
-| AUD/USD | $1,000,000        |
-| EUR/USD | $2,000,000        |
-| GBP/USD | $1,500,000        |
-| NZD/USD | $1,000,000        |
-| USD/CAD | $1,000,000        |
-| USD/CHF | $1,000,000        |
-| USD/MXN | $500,000          |
-| USD/KRW | $500,000          |
-
-### Indices (all 10x)
-
-| Ticker                     | Max position size |
-| -------------------------- | ----------------- |
-| US500/USD (US 500)         | $1,000,000        |
-| US100/USD (US Tech 100)    | $1,000,000        |
-| US30/USD (US Wall Street 30)| $1,000,000       |
-| GER40/EUR (Germany 40)     | $500,000          |
-| UK100/GBP (UK 100)         | $500,000          |
-| HK50/HKD (Hong Kong 50)    | $300,000          |
+| Name                           | Ticker    | Max position size |
+| ------------------------------ | --------- | ----------------- |
+| Apple                          | AAPL/USD  | $1,000,000        |
+| Amazon                         | AMZN/USD  | $1,000,000        |
+| Alphabet (Google)              | GOOG/USD  | $1,000,000        |
+| Meta Platforms                 | META/USD  | $1,000,000        |
+| Microsoft                      | MSFT/USD  | $1,000,000        |
+| NVIDIA                         | NVDA/USD  | $1,000,000        |
+| ASML Holding                   | ASML/USD  | $600,000          |
+| Netflix                        | NFLX/USD  | $600,000          |
+| Oracle                         | ORCL/USD  | $600,000          |
+| Tesla                          | TSLA/USD  | $600,000          |
+| Advanced Micro Devices         | AMD/USD   | $500,000          |
+| Arm Holdings                   | ARM/USD   | $400,000          |
+| Broadcom                       | AVGO/USD  | $400,000          |
+| Taiwan Semiconductor (TSMC)    | TSM/USD   | $400,000          |
+| BitMine Immersion Technologies | BMNR/USD  | $300,000          |
+| Coinbase                       | COIN/USD  | $300,000          |
+| Circle Internet Group          | CRCL/USD  | $300,000          |
+| Robinhood Markets              | HOOD/USD  | $300,000          |
+| Intel                          | INTC/USD  | $300,000          |
+| Strategy (MicroStrategy)       | MSTR/USD  | $300,000          |
+| Micron Technology              | MU/USD    | $300,000          |
+| Palantir Technologies          | PLTR/USD  | $300,000          |
+| Super Micro Computer           | SMCI/USD  | $300,000          |
+| SanDisk                        | SNDK/USD  | $300,000          |
+| SharpLink Gaming               | SBET/USD  | $200,000          |
 
 <Note>
   The market list can change before launch. Treat this as the current go-live set and verify the terminal before trading.
 </Note>
 
-{/* CONFIRM: forex list, the Execution Venues page lists USD/JPY as a forex example, yet it's absent from this go-live forex table. Confirm whether USD/JPY is live and reconcile both pages. Also note: forex here is listed at 25x, while the Rulebook and Doji Accounts state 15x. */}
+{/* CONFIRM: the Execution Venues page lists USD/JPY as a forex example, yet it is absent from this final forex set. Confirm whether USD/JPY is live and reconcile both pages. */}
 
 ## Next steps
 
